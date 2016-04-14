@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>max</key>
+		<string>999</string>
+		<key>tag</key>
+		<string>testTag0</string>
+		<key>count</key>
+		<string>999</string>
+		<key>logo</key>
+		<string>h1</string>
+		<key>title</key>
+		<string>Apple iPhone 6s Plus (A1687) 港版 移动联通 4G手机 玫瑰金  128GB</string>
+		<key>color</key>
+		<string>土豪金</string>
+		<key>norm</key>
+		<string>128GB</string>
+		<key>price</key>
+		<string>1.00</string>
+	</dict>
+	<dict>
+		<key>max</key>
+		<string>999</string>
+		<key>tag</key>
+		<string>testTag1</string>
+		<key>count</key>
+		<string>999</string>
+		<key>logo</key>
+		<string>h1</string>
+		<key>title</key>
+		<string>Apple iPhone 6s Plus (A1687) 港版 移动联通 4G手机 玫瑰金  128GB</string>
+		<key>color</key>
+		<string>土豪金</string>
+		<key>norm</key>
+		<string>128GB</string>
+		<key>price</key>
+		<string>1.00</string>
+	</dict>
+	<dict>
+		<key>max</key>
+		<string>999</string>
+		<key>tag</key>
+		<string>testTag2</string>
+		<key>count</key>
+		<string>999</string>
+		<key>logo</key>
+		<string>h1</string>
+		<key>title</key>
+		<string>Apple iPhone 6s Plus (A1687) 港版 移动联通 4G手机 玫瑰金  128GB</string>
+		<key>color</key>
+		<string>土豪金</string>
+		<key>norm</key>
+		<string>128GB</string>
+		<key>price</key>
+		<string>1.00</string>
+	</dict>
+</array>
+</plist>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="lwHomeHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="208"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUg-pg-cr8">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="8t3-HC-Xfd">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="AUg-pg-cr8" secondAttribute="height" multiplier="5:2" id="1nI-YM-2TP"/>
+                        <constraint firstAttribute="trailing" secondItem="8t3-HC-Xfd" secondAttribute="trailing" id="8r0-jp-jEM"/>
+                        <constraint firstAttribute="bottom" secondItem="8t3-HC-Xfd" secondAttribute="bottom" id="W9S-zt-oy0"/>
+                        <constraint firstItem="8t3-HC-Xfd" firstAttribute="top" secondItem="AUg-pg-cr8" secondAttribute="top" id="hgJ-h6-LsY"/>
+                        <constraint firstItem="8t3-HC-Xfd" firstAttribute="leading" secondItem="AUg-pg-cr8" secondAttribute="leading" id="jMK-aR-mlp"/>
+                        <constraint firstItem="8t3-HC-Xfd" firstAttribute="centerY" secondItem="AUg-pg-cr8" secondAttribute="centerY" id="pTd-bk-EYf"/>
+                        <constraint firstItem="8t3-HC-Xfd" firstAttribute="centerX" secondItem="AUg-pg-cr8" secondAttribute="centerX" id="vcG-Cn-kBp"/>
+                    </constraints>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvu-kR-E5V">
+                    <rect key="frame" x="0.0" y="136" width="64" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Gvu-kR-E5V" secondAttribute="height" multiplier="1:1" id="2EY-DT-OjG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="20"/>
+                    <state key="normal" title="充值" image="j_02">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51w-Bd-yNC">
+                    <rect key="frame" x="64" y="136" width="64" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="51w-Bd-yNC" secondAttribute="height" multiplier="1:1" id="aTL-7a-1af"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="20"/>
+                    <state key="normal" title="二维码" image="j_04">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5P-4d-GNS">
+                    <rect key="frame" x="128" y="136" width="64" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="V5P-4d-GNS" secondAttribute="height" multiplier="1:1" id="uWR-X1-9GK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="20"/>
+                    <state key="normal" title="兑换" image="j_05">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWf-vG-zlT">
+                    <rect key="frame" x="256" y="136" width="64" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="TWf-vG-zlT" secondAttribute="height" multiplier="1:1" id="mk6-tS-IK3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="20"/>
+                    <state key="normal" title="积分规则" image="j_03">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1y-H8-YET">
+                    <rect key="frame" x="192" y="136" width="64" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="H1y-H8-YET" secondAttribute="height" multiplier="1:1" id="p4V-Ma-EVU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="20"/>
+                    <state key="normal" title="合伙人" image="j_06">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="V5P-4d-GNS" firstAttribute="height" secondItem="Gvu-kR-E5V" secondAttribute="height" id="1ba-m7-foC"/>
+                <constraint firstItem="Gvu-kR-E5V" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="1za-23-U0s"/>
+                <constraint firstItem="H1y-H8-YET" firstAttribute="top" secondItem="AUg-pg-cr8" secondAttribute="bottom" constant="8" id="3TS-Pr-2kQ"/>
+                <constraint firstItem="H1y-H8-YET" firstAttribute="leading" secondItem="V5P-4d-GNS" secondAttribute="trailing" id="58V-nf-3FO"/>
+                <constraint firstAttribute="trailing" secondItem="AUg-pg-cr8" secondAttribute="trailing" id="5hh-Mg-vaS"/>
+                <constraint firstItem="AUg-pg-cr8" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="8OF-Ev-zYH"/>
+                <constraint firstItem="51w-Bd-yNC" firstAttribute="height" secondItem="Gvu-kR-E5V" secondAttribute="height" id="8Px-lQ-sTx"/>
+                <constraint firstItem="V5P-4d-GNS" firstAttribute="top" secondItem="AUg-pg-cr8" secondAttribute="bottom" constant="8" id="ADv-IU-ZD8"/>
+                <constraint firstAttribute="bottom" secondItem="Gvu-kR-E5V" secondAttribute="bottom" constant="8" id="BPU-8T-u3X"/>
+                <constraint firstItem="Gvu-kR-E5V" firstAttribute="top" secondItem="AUg-pg-cr8" secondAttribute="bottom" constant="8" id="DkA-Ez-4I5"/>
+                <constraint firstItem="TWf-vG-zlT" firstAttribute="leading" secondItem="H1y-H8-YET" secondAttribute="trailing" id="Epa-lB-XSf"/>
+                <constraint firstItem="TWf-vG-zlT" firstAttribute="height" secondItem="Gvu-kR-E5V" secondAttribute="height" id="Jx4-dX-Tiy"/>
+                <constraint firstItem="H1y-H8-YET" firstAttribute="height" secondItem="Gvu-kR-E5V" secondAttribute="height" id="KaF-Jk-X2G"/>
+                <constraint firstAttribute="bottom" secondItem="H1y-H8-YET" secondAttribute="bottom" constant="8" id="ML7-4V-QVJ"/>
+                <constraint firstItem="V5P-4d-GNS" firstAttribute="leading" secondItem="51w-Bd-yNC" secondAttribute="trailing" id="OBb-S8-8Sk"/>
+                <constraint firstItem="TWf-vG-zlT" firstAttribute="width" secondItem="Gvu-kR-E5V" secondAttribute="width" id="OUz-j1-aGZ"/>
+                <constraint firstItem="V5P-4d-GNS" firstAttribute="width" secondItem="Gvu-kR-E5V" secondAttribute="width" id="RR8-TS-btC"/>
+                <constraint firstItem="51w-Bd-yNC" firstAttribute="leading" secondItem="Gvu-kR-E5V" secondAttribute="trailing" id="Uo2-eM-XEb"/>
+                <constraint firstItem="AUg-pg-cr8" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="Wij-hr-HAX"/>
+                <constraint firstAttribute="bottom" secondItem="V5P-4d-GNS" secondAttribute="bottom" constant="8" id="XWE-Fd-A9L"/>
+                <constraint firstAttribute="trailing" secondItem="TWf-vG-zlT" secondAttribute="trailing" id="c0d-qy-0UT"/>
+                <constraint firstItem="51w-Bd-yNC" firstAttribute="width" secondItem="Gvu-kR-E5V" secondAttribute="width" id="fPG-uO-bgh"/>
+                <constraint firstAttribute="bottom" secondItem="TWf-vG-zlT" secondAttribute="bottom" constant="8" id="lzI-av-oYQ"/>
+                <constraint firstAttribute="bottom" secondItem="51w-Bd-yNC" secondAttribute="bottom" constant="8" id="nes-5A-2xa"/>
+                <constraint firstItem="H1y-H8-YET" firstAttribute="width" secondItem="Gvu-kR-E5V" secondAttribute="width" id="uzS-jY-DNG"/>
+                <constraint firstItem="TWf-vG-zlT" firstAttribute="top" secondItem="AUg-pg-cr8" secondAttribute="bottom" constant="8" id="yFB-fL-yhX"/>
+                <constraint firstItem="51w-Bd-yNC" firstAttribute="top" secondItem="AUg-pg-cr8" secondAttribute="bottom" constant="8" id="zhr-qv-TOd"/>
+            </constraints>
+            <connections>
+                <outletCollection property="menuArray" destination="Gvu-kR-E5V" id="nY2-oR-Fdz"/>
+                <outletCollection property="menuArray" destination="51w-Bd-yNC" id="Z3a-OH-a1r"/>
+                <outletCollection property="menuArray" destination="V5P-4d-GNS" id="iNC-yF-tuB"/>
+                <outletCollection property="menuArray" destination="H1y-H8-YET" id="tPw-dO-Jtg"/>
+                <outletCollection property="menuArray" destination="TWf-vG-zlT" id="mbl-CN-0Eq"/>
+            </connections>
+            <point key="canvasLocation" x="389" y="455"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="banner" width="950" height="300"/>
+        <image name="j_02" width="100" height="100"/>
+        <image name="j_03" width="100" height="100"/>
+        <image name="j_04" width="100" height="100"/>
+        <image name="j_05" width="100" height="100"/>
+        <image name="j_06" width="100" height="100"/>
+    </resources>
+</document>

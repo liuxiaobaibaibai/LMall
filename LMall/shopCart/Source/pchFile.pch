@@ -1,0 +1,37 @@
+//
+//  pchFile.pch
+//  shopCart
+//
+//  Created by 刘威 on 16/4/4.
+//  Copyright © 2016年 lw. All rights reserved.
+//
+
+#ifndef pchFile_pch
+#define pchFile_pch
+
+#import "lwEntity.h"
+#import <UIKit/UIKit.h>
+#import "UIColor+lwColor.h"
+#import "NSString+lwString.h"
+#import "lwStyleTool.h"
+#import "Masonry.h"
+#import "AFNetworking.h"
+#import "UIKeyboardViewController.h"
+#import "SDWebImage/UIImageView+WebCache.h"
+
+
+//  屏幕的宽度
+#define lW [UIApplication sharedApplication].delegate.window.bounds.size.width
+//  屏幕的高度
+#define lH [UIApplication sharedApplication].delegate.window.bounds.size.height
+//  rgb颜色
+#define RGB(r,g,b) RGBA(r,g,b,1.0)
+//  rgb颜色加透明度
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+//  十六进度颜色，预设透明度
+#define HTMLColor(c) HTMLColorWithA(c,1.0)
+//  十六进制颜色，不预设透明度
+#define HTMLColorWithA(c,a) [UIColor colorWithHexString:c Alpha:a]
+
+
+#endif
