@@ -34,4 +34,7 @@
 #define HTMLColorWithA(c,a) [UIColor colorWithHexString:c Alpha:a]
 
 
+#define mall_getIndex @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getIndexData"
+#define mall_getPrducts @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getRecProducts"
+
 #endif

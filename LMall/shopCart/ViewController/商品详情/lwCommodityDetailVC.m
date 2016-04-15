@@ -12,7 +12,7 @@
 
 #import "lwTitleCell.h"
 #import "lwCustomCell.h"
-
+#import "lwSelectWindow.h"
 
 /******/
 #import "lwCustomCellContentFrameModel.h"
@@ -22,12 +22,17 @@
 
 @interface lwCommodityDetailVC ()
 
+<
+    lwSelectNormViewDelegate
+>
+
 {
     NSMutableArray *dataArray;
     NSMutableArray *secondArray;
     AppDelegate *_appDelegate;
     
     UIWindow *toolView;
+    lwSelectWindow *selectWindow;
 }
 
 @end
@@ -121,7 +126,7 @@
     NSArray *array = @[@"卖家",@"店铺",@"关注",@"购物车"];
     NSArray *imgArray = @[@"pd_dongdong_bottom",@"pd_shop_bottom",@"pd_unfavorite_bottom",@"pd_shopcart_bottom"];
     for (int i = 0; i<array.count; i++) {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*((lW-100)/4), 0, (lW-100)/4, 60)];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*(lW/6), 0, lW/6, 60)];
         [btn setTitleColor:[lwStyleTool colorInstance].DZClolor forState:UIControlStateNormal];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
         [btn setTitle:array[i] forState:UIControlStateNormal];
@@ -129,16 +134,18 @@
         [btn.layer setBorderColor:RGB(120, 120, 120).CGColor];
         [btn setImage:[UIImage imageNamed:imgArray[i]] forState:UIControlStateNormal];
         [btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentCenter];
-        [btn setTitleEdgeInsets:UIEdgeInsetsMake(35, -(lW-100)/15, 0, 5)];
-        [btn setImageEdgeInsets:UIEdgeInsetsMake(8, 15, 25, 0)];
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(8, (lW/18), 20, (lW/18))];
+        [btn setTitleEdgeInsets:UIEdgeInsetsMake(lW/6-20, -(lW/16),8, 0)];
         [btn setTag:i];
         [btn addTarget:self action:@selector(commodityBottomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [firstView addSubview:btn];
     }
     
-    UIButton *secondView = [[UIButton alloc] initWithFrame:CGRectMake(lW-100, 0, 100, 60)];
+    UIButton *secondView = [[UIButton alloc] initWithFrame:CGRectMake(lW-(lW/3), 0, lW/3, 60)];
     secondView.backgroundColor = [lwStyleTool colorInstance].JDColor;
     [secondView setTitle:@"加入购物车" forState:UIControlStateNormal];
+    [secondView setTag:5];
+    [secondView addTarget:self action:@selector(commodityBottomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [toolView addSubview:firstView];
     [toolView addSubview:secondView];
@@ -162,6 +169,12 @@
             }
         }
             break;
+        case 5:
+        {
+            selectWindow = [[lwSelectWindow alloc] initWithFrame:self.view.frame Delegate:self];
+            [selectWindow showInView:self.tableView];
+        }
+            break;
             
         default:
         {
@@ -174,9 +187,14 @@
     }
 }
 
+#pragma mark - 弹窗代理
+- (void)removeWindow
+{
+    selectWindow.hidden = YES;
+}
+
+
 #pragma mark - userOperationEnd
-
-
 
 - (void)releaseToolView{
     [toolView resignKeyWindow];

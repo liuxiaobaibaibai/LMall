@@ -50,6 +50,11 @@
 		C90C40A81CB7A3890090E3A1 /* lwNoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C40A71CB7A3890090E3A1 /* lwNoContentView.m */; };
 		C90C40A91CB7A4B40090E3A1 /* lwCompletedOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C40641CB7772A0090E3A1 /* lwCompletedOrderVC.m */; };
 		C90C40AC1CB7AAFD0090E3A1 /* lwAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C40AB1CB7AAFD0090E3A1 /* lwAddressCell.m */; };
+		C922F89B1CC07C26009E0E39 /* lwSelectWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F89A1CC07C26009E0E39 /* lwSelectWindow.m */; };
+		C922F89E1CC0AD7A009E0E39 /* lwMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */; };
+		C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F8A01CC0B6B9009E0E39 /* lwCommodityModel.m */; };
+		C922F8A51CC0C238009E0E39 /* lwHedaerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F8A31CC0C238009E0E39 /* lwHedaerCell.m */; };
+		C922F8A61CC0C238009E0E39 /* lwHedaerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C922F8A41CC0C238009E0E39 /* lwHedaerCell.xib */; };
 		C9240DEE1CBF225400B5B5E9 /* lwHomeCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240DEC1CBF225400B5B5E9 /* lwHomeCommonCell.m */; };
 		C9240DEF1CBF225400B5B5E9 /* lwHomeCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9240DED1CBF225400B5B5E9 /* lwHomeCommonCell.xib */; };
 		C9240DF31CBF226500B5B5E9 /* lwHomeCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240DF11CBF226500B5B5E9 /* lwHomeCustomCell.m */; };
@@ -164,6 +169,15 @@
 		C90C40A71CB7A3890090E3A1 /* lwNoContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwNoContentView.m; sourceTree = "<group>"; };
 		C90C40AA1CB7AAFD0090E3A1 /* lwAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwAddressCell.h; sourceTree = "<group>"; };
 		C90C40AB1CB7AAFD0090E3A1 /* lwAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwAddressCell.m; sourceTree = "<group>"; };
+		C922F8991CC07C26009E0E39 /* lwSelectWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwSelectWindow.h; sourceTree = "<group>"; };
+		C922F89A1CC07C26009E0E39 /* lwSelectWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwSelectWindow.m; sourceTree = "<group>"; };
+		C922F89C1CC0AD7A009E0E39 /* lwMallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwMallModel.h; sourceTree = "<group>"; };
+		C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwMallModel.m; sourceTree = "<group>"; };
+		C922F89F1CC0B6B9009E0E39 /* lwCommodityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCommodityModel.h; sourceTree = "<group>"; };
+		C922F8A01CC0B6B9009E0E39 /* lwCommodityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCommodityModel.m; sourceTree = "<group>"; };
+		C922F8A21CC0C238009E0E39 /* lwHedaerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwHedaerCell.h; sourceTree = "<group>"; };
+		C922F8A31CC0C238009E0E39 /* lwHedaerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwHedaerCell.m; sourceTree = "<group>"; };
+		C922F8A41CC0C238009E0E39 /* lwHedaerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwHedaerCell.xib; sourceTree = "<group>"; };
 		C9240DEB1CBF225400B5B5E9 /* lwHomeCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwHomeCommonCell.h; sourceTree = "<group>"; };
 		C9240DEC1CBF225400B5B5E9 /* lwHomeCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwHomeCommonCell.m; sourceTree = "<group>"; };
 		C9240DED1CBF225400B5B5E9 /* lwHomeCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwHomeCommonCell.xib; sourceTree = "<group>"; };
@@ -395,6 +409,8 @@
 				C90C40A71CB7A3890090E3A1 /* lwNoContentView.m */,
 				C90C40741CB777D10090E3A1 /* lwStepper.h */,
 				C90C40751CB777D10090E3A1 /* lwStepper.m */,
+				C922F8991CC07C26009E0E39 /* lwSelectWindow.h */,
+				C922F89A1CC07C26009E0E39 /* lwSelectWindow.m */,
 			);
 			path = "公共";
 			sourceTree = "<group>";
@@ -440,6 +456,9 @@
 				C9240DFF1CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.h */,
 				C9240E001CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m */,
 				C9240E011CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.xib */,
+				C922F8A21CC0C238009E0E39 /* lwHedaerCell.h */,
+				C922F8A31CC0C238009E0E39 /* lwHedaerCell.m */,
+				C922F8A41CC0C238009E0E39 /* lwHedaerCell.xib */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -478,6 +497,10 @@
 		C90C40931CB778870090E3A1 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
+				C922F89C1CC0AD7A009E0E39 /* lwMallModel.h */,
+				C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */,
+				C922F89F1CC0B6B9009E0E39 /* lwCommodityModel.h */,
+				C922F8A01CC0B6B9009E0E39 /* lwCommodityModel.m */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -674,6 +697,7 @@
 				C99588111C8D468D00A540B0 /* lwShopcart.plist in Resources */,
 				C99587F81C8D460800A540B0 /* Assets.xcassets in Resources */,
 				C9240DEF1CBF225400B5B5E9 /* lwHomeCommonCell.xib in Resources */,
+				C922F8A61CC0C238009E0E39 /* lwHedaerCell.xib in Resources */,
 				01B7014B1CB919AC007110A9 /* lwCompletedCustomCell.xib in Resources */,
 				0116A9DB1CB8A9040080B07F /* lwCommodityCell.xib in Resources */,
 				C99587F31C8D460800A540B0 /* Main.storyboard in Resources */,
@@ -748,22 +772,26 @@
 				0116A9E21CB8E5BF0080B07F /* UIKeyboardViewController.m in Sources */,
 				01156BA21CB275CC0015C602 /* View+MASAdditions.m in Sources */,
 				01156B9E1CB275CC0015C602 /* MASViewAttribute.m in Sources */,
+				C922F89B1CC07C26009E0E39 /* lwSelectWindow.m in Sources */,
 				01156B9C1CB275CC0015C602 /* MASConstraintMaker.m in Sources */,
 				C99587F61C8D460800A540B0 /* shopCart.xcdatamodeld in Sources */,
 				C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */,
 				C99587ED1C8D460800A540B0 /* AppDelegate.m in Sources */,
 				C90C40871CB777D10090E3A1 /* lwTitleCell.m in Sources */,
+				C922F89E1CC0AD7A009E0E39 /* lwMallModel.m in Sources */,
 				01156BA31CB275CC0015C602 /* ViewController+MASAdditions.m in Sources */,
 				0116A9E91CB8E81A0080B07F /* UITableView+lwTableView.m in Sources */,
 				C90C40861CB777D10090E3A1 /* lwCustomCellContentView.m in Sources */,
 				C90C40951CB778870090E3A1 /* lwCommodityDetailModel.m in Sources */,
 				01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */,
+				C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */,
 				C9240DF81CBF2ED900B5B5E9 /* lwHomeHeaderView.m in Sources */,
 				C90C40701CB7772A0090E3A1 /* lwCommodityDetailVC.m in Sources */,
 				0116A9E11CB8E5BF0080B07F /* UIKeyboardView.m in Sources */,
 				C90C40961CB778870090E3A1 /* lwCustomCellContentFrameModel.m in Sources */,
 				C90C40821CB777D10090E3A1 /* lwStepper.m in Sources */,
 				C9240E021CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m in Sources */,
+				C922F8A51CC0C238009E0E39 /* lwHedaerCell.m in Sources */,
 				C90C40711CB7772A0090E3A1 /* lwMallVC.m in Sources */,
 				C90C40851CB777D10090E3A1 /* lwCustomCell.m in Sources */,
 				C99587EA1C8D460800A540B0 /* main.m in Sources */,

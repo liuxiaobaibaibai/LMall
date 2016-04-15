@@ -23,6 +23,11 @@
 #import "lwCommodityDetailVC.h"
 #import "lwShopcartVC.h"
 
+
+// model
+#import "lwMallModel.h"
+#import "lwCommodityModel.h"
+
 @interface lwMallVC ()
 <
     UICollectionViewDataSource,
@@ -32,6 +37,7 @@
 >
 {
     UICollectionView *myCollectionView;
+    NSMutableArray *commodityArray;
 }
 @end
 
@@ -45,6 +51,35 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    
+    
+    [self initDataSource];
+}
+
+- (void)initDataSource{
+    commodityArray = [NSMutableArray new];
+    [lwMallModel getProducts:^(id result, NSError *error) {
+        if (!error) {
+            for (int i = 0; i<[result count]; i++) {
+                lwCommodityModel *cModel = [lwCommodityModel new];
+                cModel.pid = result[i][@"pid"];
+                cModel.commodityName = result[i][@"name"];
+                cModel.logoUrl = result[i][@"logourl"];
+                cModel.price = result[i][@"price"];
+                [commodityArray addObject:cModel];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [myCollectionView reloadData];
+            });
+            
+        }else{
+            NSLog(@"^66");
+        }
+    }];
+    
+
+    
 }
 
 
@@ -105,7 +140,7 @@
     myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, lW, lH-108) collectionViewLayout:layout];
     myCollectionView.delegate = self;
     myCollectionView.dataSource = self;
-    myCollectionView.backgroundColor = [UIColor whiteColor];
+    myCollectionView.backgroundColor = RGB(220, 220, 220);
 
     [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeCommonCell" bundle:nil] forCellWithReuseIdentifier:[lwEntity entitySingleton].homeCommonCellID];
     [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeCustomCell" bundle:nil] forCellWithReuseIdentifier:[lwEntity entitySingleton].homeCustomCellID];
@@ -133,7 +168,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return section == 2 ? 20 : 4;
+    return section == 2 ? commodityArray.count : 4;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
@@ -146,14 +181,14 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(2, 2, 1, 1);
+    return UIEdgeInsetsMake(1, 1, 1, 1);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     
     if (section == 0) {
-        return CGSizeMake(lW, 208);
+        return CGSizeMake(lW, 260);
     }else{
         return CGSizeMake(lW, 50);
     }
@@ -164,7 +199,7 @@
     if (indexPath.section == 0) {
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
             lwHomeHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderFirstViewID forIndexPath:indexPath];
-            NSArray *menuArr = @[@"1",@"2",@"3",@"4",@"5"];
+            NSArray *menuArr = @[@"1",@"2",@"3",@"4"];
             for (int i = 0; i<menuArr.count; i++) {
                 UIButton *btn = headerView.menuArray[i];
                 [btn setTitle:menuArr[i] forState:UIControlStateNormal];
@@ -202,24 +237,22 @@
     if (indexPath.section == 0 || indexPath.section == 1) {
         return commonCell;
     }else{
+        
+        [customCell setCModel:(lwCommodityModel *)commodityArray[indexPath.row]];
         return customCell;
     }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 || indexPath.section == 1) {
-        return CGSizeMake(lW/2-4, lW/4-4);
+        return CGSizeMake(lW/2-2, lW/4-2);
     }else{
-        return CGSizeMake(lW/2-4, 266);
+        return CGSizeMake(lW/2-2, 235);
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 2) {
-        [self goCommodityDetailVC];
-    }else{
-        NSLog(@"广告详情");
-    }
+    [self goCommodityDetailVC];
 }
 
 
@@ -242,6 +275,7 @@
         case 0:
         {
             // 头像按钮
+            [self initDataSource];
         }
             break;
         case 1:

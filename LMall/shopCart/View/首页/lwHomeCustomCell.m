@@ -8,10 +8,20 @@
 
 #import "lwHomeCustomCell.h"
 
+#import "lwCommodityModel.h"
+
 @implementation lwHomeCustomCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)awakeFromNib{
+    
 }
+
+- (void)setCModel:(lwCommodityModel *)cModel{
+    [_logoUrl sd_setImageWithURL:[NSURL URLWithString:cModel.logoUrl]];
+    [_commodityTitleLabel setText:cModel.commodityName];
+    [_priceLabel setText:[NSString stringWithFormat:@"￥ %@",cModel.price]];
+    [_scoreLabel setTitle:[NSString stringWithFormat:@"  %@",cModel.price] forState:UIControlStateNormal];
+}
+
 
 @end
