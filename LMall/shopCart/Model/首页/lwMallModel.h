@@ -12,6 +12,7 @@ typedef void(^MallBlock)(id result, NSError *error);
 
 @interface lwMallModel : NSObject
 
++ (void)getTopData:(MallBlock)completion;
 
 + (void)getMallData:(MallBlock)completion;
 

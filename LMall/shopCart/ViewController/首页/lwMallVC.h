@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#import "lwBaseVC.h"
+typedef enum : NSUInteger {
+    lwMallTypeMenu = 0,
+    lwMallTypeTitle,
+    lwMallTypeChannel,
+    lwMallTypeAD
+} lwMallType;
 
-@interface lwMallVC : lwBaseVC
+@interface lwMallVC : UIViewController
+
+
+
 
 @end

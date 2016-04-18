@@ -10,4 +10,5 @@
 
 @interface lwHomeFooterView : UICollectionReusableView
 
+
 @end

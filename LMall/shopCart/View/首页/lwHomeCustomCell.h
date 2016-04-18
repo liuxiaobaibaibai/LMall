@@ -11,6 +11,7 @@
 @class lwCommodityModel;
 
 @interface lwHomeCustomCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *logoUrl;
 @property (weak, nonatomic) IBOutlet UILabel *commodityTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;

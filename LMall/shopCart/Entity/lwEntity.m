@@ -48,6 +48,7 @@ static lwEntity *entity = nil;
     /*** 商品详情结束 ***/
     
     /*** 商城首页开始 ***/
+    _homeHeaderCellID = @"asdaisfhi";
     _homeCommonCellID = @"celasd";
     _homeCustomCellID = @"cejs";
     _homeHeaderFirstViewID = @"homecell1";

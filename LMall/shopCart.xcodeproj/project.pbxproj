@@ -59,8 +59,6 @@
 		C9240DEF1CBF225400B5B5E9 /* lwHomeCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9240DED1CBF225400B5B5E9 /* lwHomeCommonCell.xib */; };
 		C9240DF31CBF226500B5B5E9 /* lwHomeCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240DF11CBF226500B5B5E9 /* lwHomeCustomCell.m */; };
 		C9240DF41CBF226500B5B5E9 /* lwHomeCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9240DF21CBF226500B5B5E9 /* lwHomeCustomCell.xib */; };
-		C9240DF81CBF2ED900B5B5E9 /* lwHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240DF61CBF2ED900B5B5E9 /* lwHomeHeaderView.m */; };
-		C9240DF91CBF2ED900B5B5E9 /* lwHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9240DF71CBF2ED900B5B5E9 /* lwHomeHeaderView.xib */; };
 		C9240DFD1CBF2EEE00B5B5E9 /* lwHomeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240DFB1CBF2EEE00B5B5E9 /* lwHomeFooterView.m */; };
 		C9240DFE1CBF2EEE00B5B5E9 /* lwHomeFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9240DFC1CBF2EEE00B5B5E9 /* lwHomeFooterView.xib */; };
 		C9240E021CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240E001CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m */; };
@@ -184,9 +182,6 @@
 		C9240DF01CBF226500B5B5E9 /* lwHomeCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwHomeCustomCell.h; sourceTree = "<group>"; };
 		C9240DF11CBF226500B5B5E9 /* lwHomeCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwHomeCustomCell.m; sourceTree = "<group>"; };
 		C9240DF21CBF226500B5B5E9 /* lwHomeCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwHomeCustomCell.xib; sourceTree = "<group>"; };
-		C9240DF51CBF2ED800B5B5E9 /* lwHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwHomeHeaderView.h; sourceTree = "<group>"; };
-		C9240DF61CBF2ED900B5B5E9 /* lwHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwHomeHeaderView.m; sourceTree = "<group>"; };
-		C9240DF71CBF2ED900B5B5E9 /* lwHomeHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwHomeHeaderView.xib; sourceTree = "<group>"; };
 		C9240DFA1CBF2EEE00B5B5E9 /* lwHomeFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwHomeFooterView.h; sourceTree = "<group>"; };
 		C9240DFB1CBF2EEE00B5B5E9 /* lwHomeFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwHomeFooterView.m; sourceTree = "<group>"; };
 		C9240DFC1CBF2EEE00B5B5E9 /* lwHomeFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwHomeFooterView.xib; sourceTree = "<group>"; };
@@ -447,9 +442,6 @@
 				C9240DF01CBF226500B5B5E9 /* lwHomeCustomCell.h */,
 				C9240DF11CBF226500B5B5E9 /* lwHomeCustomCell.m */,
 				C9240DF21CBF226500B5B5E9 /* lwHomeCustomCell.xib */,
-				C9240DF51CBF2ED800B5B5E9 /* lwHomeHeaderView.h */,
-				C9240DF61CBF2ED900B5B5E9 /* lwHomeHeaderView.m */,
-				C9240DF71CBF2ED900B5B5E9 /* lwHomeHeaderView.xib */,
 				C9240DFA1CBF2EEE00B5B5E9 /* lwHomeFooterView.h */,
 				C9240DFB1CBF2EEE00B5B5E9 /* lwHomeFooterView.m */,
 				C9240DFC1CBF2EEE00B5B5E9 /* lwHomeFooterView.xib */,
@@ -692,7 +684,6 @@
 				C90C40841CB777D10090E3A1 /* lwShopcartCell.xib in Resources */,
 				01156B991CB275CC0015C602 /* LICENSE in Resources */,
 				C99587FB1C8D460800A540B0 /* LaunchScreen.storyboard in Resources */,
-				C9240DF91CBF2ED900B5B5E9 /* lwHomeHeaderView.xib in Resources */,
 				C9240E031CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.xib in Resources */,
 				C99588111C8D468D00A540B0 /* lwShopcart.plist in Resources */,
 				C99587F81C8D460800A540B0 /* Assets.xcassets in Resources */,
@@ -785,7 +776,6 @@
 				C90C40951CB778870090E3A1 /* lwCommodityDetailModel.m in Sources */,
 				01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */,
 				C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */,
-				C9240DF81CBF2ED900B5B5E9 /* lwHomeHeaderView.m in Sources */,
 				C90C40701CB7772A0090E3A1 /* lwCommodityDetailVC.m in Sources */,
 				0116A9E11CB8E5BF0080B07F /* UIKeyboardView.m in Sources */,
 				C90C40961CB778870090E3A1 /* lwCustomCellContentFrameModel.m in Sources */,

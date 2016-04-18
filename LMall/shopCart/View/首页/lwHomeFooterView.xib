@@ -12,15 +12,15 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="5Ro-yM-NDW">
-                    <rect key="frame" x="0.0" y="10" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.89625529179999996" green="0.89625529179999996" blue="0.89625529179999996" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="5Ro-yM-NDW" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="Mdt-Ym-jgt"/>
-                <constraint firstItem="5Ro-yM-NDW" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="10" id="kND-AR-Eq3"/>
-                <constraint firstItem="5Ro-yM-NDW" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="vfD-Ku-Rdc"/>
-                <constraint firstAttribute="trailing" secondItem="5Ro-yM-NDW" secondAttribute="trailing" id="yqg-Bt-ePI"/>
+                <constraint firstAttribute="trailing" secondItem="5Ro-yM-NDW" secondAttribute="trailing" id="1LY-sr-ggm"/>
+                <constraint firstItem="5Ro-yM-NDW" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="8Vs-Gj-sGV"/>
+                <constraint firstItem="5Ro-yM-NDW" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="KqO-qn-aF8"/>
+                <constraint firstAttribute="bottom" secondItem="5Ro-yM-NDW" secondAttribute="bottom" constant="10" id="QCU-2h-9yJ"/>
             </constraints>
         </collectionReusableView>
     </objects>

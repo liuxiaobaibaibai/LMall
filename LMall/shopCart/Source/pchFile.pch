@@ -33,8 +33,11 @@
 //  十六进制颜色，不预设透明度
 #define HTMLColorWithA(c,a) [UIColor colorWithHexString:c Alpha:a]
 
-
+/// getTop
+#define mall_getTop @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getTop"
+/// getIndexData
 #define mall_getIndex @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getIndexData"
+/// getProducts
 #define mall_getPrducts @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getRecProducts"
 
 #endif

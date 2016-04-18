@@ -29,7 +29,7 @@
 // 商品详情结束 //
 
 // 商城首页开始
-
+@property (copy, nonatomic, readonly) NSString *homeHeaderCellID;
 @property (copy, nonatomic, readonly) NSString *homeCommonCellID;
 @property (copy, nonatomic, readonly) NSString *homeCustomCellID;
 
