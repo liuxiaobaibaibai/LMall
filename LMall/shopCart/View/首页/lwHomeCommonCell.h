@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface lwHomeCommonCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIButton *imgView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+
+@property (retain, nonatomic) NSString *urlStr;
 
 @end

@@ -10,4 +10,10 @@
 
 @interface lwHomeHeaderOtherView : UICollectionReusableView
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerImgView;
+
+@property (weak, nonatomic) IBOutlet UIButton *moreButton;
+
+@property (retain, nonatomic) NSString *headerImgUrlPath;
+
 @end

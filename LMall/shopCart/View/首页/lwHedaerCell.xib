@@ -15,14 +15,14 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="224"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aew-aW-5LO">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aew-aW-5LO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                     </scrollView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-Bm-YAj">
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-Bm-YAj">
                         <rect key="frame" x="8" y="136" width="70" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="6KF-Bm-YAj" secondAttribute="height" multiplier="1:1" id="UuN-yE-yAn"/>
+                            <constraint firstAttribute="width" secondItem="6KF-Bm-YAj" secondAttribute="height" multiplier="1:1" id="ZeE-13-f5b"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
@@ -35,7 +35,7 @@
                         <rect key="frame" x="86" y="136" width="70" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="bA1-aQ-MQg" secondAttribute="height" multiplier="1:1" id="TtX-ZP-ZsF"/>
+                            <constraint firstAttribute="width" secondItem="bA1-aQ-MQg" secondAttribute="height" multiplier="1:1" id="xtw-eO-9Pg"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
@@ -48,7 +48,7 @@
                         <rect key="frame" x="164" y="136" width="70" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="qvS-9I-Pwg" secondAttribute="height" multiplier="1:1" id="a2X-vw-Jsi"/>
+                            <constraint firstAttribute="width" secondItem="qvS-9I-Pwg" secondAttribute="height" multiplier="1:1" id="TWB-pr-42I"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
@@ -68,7 +68,7 @@
                         <rect key="frame" x="242" y="136" width="70" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Cww-iM-diJ" secondAttribute="height" multiplier="1:1" id="N10-RU-woC"/>
+                            <constraint firstAttribute="width" secondItem="Cww-iM-diJ" secondAttribute="height" multiplier="1:1" id="Kmb-yF-7hc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="titleEdgeInsets" minX="-100" minY="50" maxX="0.0" maxY="0.0"/>
@@ -83,30 +83,45 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="z7Q-n6-jNH" firstAttribute="top" secondItem="6KF-Bm-YAj" secondAttribute="bottom" constant="8" id="1jx-qG-7dp"/>
+                <constraint firstItem="bA1-aQ-MQg" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="3Fj-SJ-s0Z"/>
                 <constraint firstItem="z7Q-n6-jNH" firstAttribute="top" secondItem="bA1-aQ-MQg" secondAttribute="bottom" constant="8" id="66Y-Ta-FVA"/>
                 <constraint firstItem="z7Q-n6-jNH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6Nc-Zb-bfh"/>
                 <constraint firstItem="z7Q-n6-jNH" firstAttribute="top" secondItem="Cww-iM-diJ" secondAttribute="bottom" constant="8" id="6XD-3X-8Dh"/>
                 <constraint firstItem="Cww-iM-diJ" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="7l3-EA-r8l"/>
+                <constraint firstItem="bA1-aQ-MQg" firstAttribute="width" secondItem="6KF-Bm-YAj" secondAttribute="width" id="Fq5-V4-8KW"/>
+                <constraint firstItem="Cww-iM-diJ" firstAttribute="width" secondItem="6KF-Bm-YAj" secondAttribute="width" id="Gt2-IF-u5F"/>
                 <constraint firstAttribute="trailing" secondItem="Aew-aW-5LO" secondAttribute="trailing" id="M0H-c3-gdF"/>
                 <constraint firstAttribute="trailing" secondItem="z7Q-n6-jNH" secondAttribute="trailing" id="NFE-EY-4zc"/>
                 <constraint firstItem="Aew-aW-5LO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Nsb-vs-qWu"/>
                 <constraint firstItem="6KF-Bm-YAj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="O5W-kr-7Jn"/>
                 <constraint firstItem="6KF-Bm-YAj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="R1c-5a-w3p"/>
+                <constraint firstItem="6KF-Bm-YAj" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="R6K-gU-HQa"/>
                 <constraint firstItem="qvS-9I-Pwg" firstAttribute="leading" secondItem="bA1-aQ-MQg" secondAttribute="trailing" constant="8" symbolic="YES" id="TYY-IE-4g8"/>
+                <constraint firstItem="Cww-iM-diJ" firstAttribute="centerX" secondItem="6KF-Bm-YAj" secondAttribute="centerX" id="Unr-Ih-GIA"/>
                 <constraint firstItem="Aew-aW-5LO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VcZ-TY-bhg"/>
                 <constraint firstAttribute="bottom" secondItem="z7Q-n6-jNH" secondAttribute="bottom" id="Wj1-OK-MDR"/>
-                <constraint firstItem="bA1-aQ-MQg" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="ZII-9O-MaN"/>
                 <constraint firstItem="bA1-aQ-MQg" firstAttribute="leading" secondItem="6KF-Bm-YAj" secondAttribute="trailing" constant="8" id="Zze-5Q-YCY"/>
+                <constraint firstItem="Cww-iM-diJ" firstAttribute="height" secondItem="6KF-Bm-YAj" secondAttribute="height" id="akH-Vh-rcP"/>
                 <constraint firstAttribute="trailing" secondItem="Cww-iM-diJ" secondAttribute="trailing" constant="8" id="bha-Uu-cf7"/>
-                <constraint firstItem="Cww-iM-diJ" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="eLd-me-ouT"/>
-                <constraint firstItem="6KF-Bm-YAj" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="fxP-mJ-viL"/>
+                <constraint firstItem="qvS-9I-Pwg" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="cTn-o6-daO"/>
+                <constraint firstItem="qvS-9I-Pwg" firstAttribute="centerY" secondItem="6KF-Bm-YAj" secondAttribute="centerY" id="dJo-lb-ckv"/>
+                <constraint firstItem="qvS-9I-Pwg" firstAttribute="width" secondItem="6KF-Bm-YAj" secondAttribute="width" id="dyc-Gx-lTo"/>
+                <constraint firstItem="bA1-aQ-MQg" firstAttribute="centerY" secondItem="6KF-Bm-YAj" secondAttribute="centerY" id="e3Z-0m-DU5"/>
+                <constraint firstItem="qvS-9I-Pwg" firstAttribute="centerX" secondItem="6KF-Bm-YAj" secondAttribute="centerX" id="fGm-p3-hhj"/>
+                <constraint firstItem="Cww-iM-diJ" firstAttribute="centerY" secondItem="6KF-Bm-YAj" secondAttribute="centerY" id="gi5-uL-Nzc"/>
                 <constraint firstItem="Cww-iM-diJ" firstAttribute="leading" secondItem="qvS-9I-Pwg" secondAttribute="trailing" constant="8" symbolic="YES" id="hKi-2a-yrW"/>
-                <constraint firstItem="qvS-9I-Pwg" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="hOR-SA-0Kc"/>
+                <constraint firstItem="bA1-aQ-MQg" firstAttribute="centerX" secondItem="6KF-Bm-YAj" secondAttribute="centerX" id="lkU-V1-NKt"/>
+                <constraint firstItem="qvS-9I-Pwg" firstAttribute="height" secondItem="6KF-Bm-YAj" secondAttribute="height" id="lvt-Qy-ntz"/>
+                <constraint firstItem="Cww-iM-diJ" firstAttribute="top" secondItem="Aew-aW-5LO" secondAttribute="bottom" constant="8" id="o7G-QW-Qx7"/>
+                <constraint firstItem="bA1-aQ-MQg" firstAttribute="height" secondItem="6KF-Bm-YAj" secondAttribute="height" id="uKE-my-B9j"/>
                 <constraint firstItem="z7Q-n6-jNH" firstAttribute="top" secondItem="qvS-9I-Pwg" secondAttribute="bottom" constant="8" id="wWB-Hf-jHX"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="lkU-V1-NKt"/>
+                    <exclude reference="fGm-p3-hhj"/>
                     <exclude reference="7l3-EA-r8l"/>
+                    <exclude reference="Unr-Ih-GIA"/>
                 </mask>
             </variation>
             <connections>

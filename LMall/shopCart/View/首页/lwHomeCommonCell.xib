@@ -26,6 +26,9 @@
                 <constraint firstAttribute="bottom" secondItem="ENi-Nm-X2t" secondAttribute="bottom" id="rVb-90-vuu"/>
             </constraints>
             <size key="customSize" width="50" height="131"/>
+            <connections>
+                <outlet property="imgView" destination="ENi-Nm-X2t" id="RHD-Xu-tTQ"/>
+            </connections>
             <point key="canvasLocation" x="432" y="421"/>
         </collectionViewCell>
     </objects>

@@ -10,5 +10,6 @@
 
 @interface lwHomeFooterView : UICollectionReusableView
 
+@property (retain, nonatomic) NSMutableArray *footerArray;
 
 @end

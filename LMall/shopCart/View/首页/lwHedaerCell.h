@@ -18,4 +18,5 @@
 /**幻灯片数组*/
 @property (retain, nonatomic) NSArray *flashArray;
 
+@property (retain, nonatomic) NSMutableArray *menu;
 @end

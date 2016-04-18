@@ -15,4 +15,9 @@
     _imgView.clipsToBounds = YES;
 }
 
+- (void)setUrlStr:(NSString *)urlStr{
+    _urlStr = urlStr;
+    [_imgView sd_setImageWithURL:[NSURL URLWithString:urlStr]];
+}
+
 @end

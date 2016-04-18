@@ -62,6 +62,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationController.navigationBarHidden = YES;
     [self initDataSource];
 }
@@ -79,42 +80,51 @@
     
     commodityArray = [NSMutableArray new];
     
-    [lwMallModel getTopData:^(id result, NSError *error) {
-        if (!error) {
-            for (int i = 0; i<[result count]; i++) {
-                [flashArray addObject:result[i][@"img"]];
-            }
-        }
-    }];
-    
-//    [lwMallModel getMallData:^(id result, NSError *error) {
-//        if (!error) {
-//            for (int i = 0; i<[result count]; i++) {
-//                if (i == 0) {
-//                    menuArray = result[0][@"son"];
-//                }
-//                
-//            }
-//        }
-//    }];
-    
-    [lwMallModel getProducts:^(id result, NSError *error) {
-        if (!error) {
-            for (int i = 0; i<[result count]; i++) {
-                lwCommodityModel *cModel = [lwCommodityModel new];
-                cModel.pid = result[i][@"pid"];
-                cModel.commodityName = result[i][@"name"];
-                cModel.logoUrl = result[i][@"logourl"];
-                cModel.price = result[i][@"price"];
-                [commodityArray addObject:cModel];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [myCollectionView reloadData];
-            });
-        }
-    }];
-    
 
+    dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_sync(queue, ^{
+        [lwMallModel getTopData:^(id result, NSError *error) {
+            if (!error) {
+                for (int i = 0; i<[result count]; i++) {
+                    [flashArray addObject:result[i][@"img"]];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [myCollectionView reloadData];
+                });
+            }
+        }];
+        
+        [lwMallModel getMallData:^(id result, NSError *error) {
+            if (!error) {
+                menuArray = result[@"menu"];
+                titleArray = result[@"title"];
+                floorArray = result[@"channel"];
+                footerArray = result[@"AD"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [myCollectionView reloadData];
+                });
+            }
+        }];
+        
+        [lwMallModel getProducts:^(id result, NSError *error) {
+            if (!error) {
+                for (int i = 0; i<[result count]; i++) {
+                    lwCommodityModel *cModel = [lwCommodityModel new];
+                    cModel.pid = result[i][@"pid"];
+                    cModel.commodityName = result[i][@"name"];
+                    cModel.logoUrl = result[i][@"logourl"];
+                    cModel.price = result[i][@"price"];
+                    [commodityArray addObject:cModel];
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [myCollectionView reloadData];
+                });
+            }
+        }];
+        
+        
+    });
     
 }
 
@@ -209,7 +219,7 @@
     }else if (section == 3){
         return commodityArray.count;
     }else{
-        return 4;
+        return floorArray.count == 0 ? 0 : [floorArray[section] count];
     }
 }
 
@@ -264,9 +274,11 @@
     }else{
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
             lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
+            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section+1];
             return homeOtherView;
         }else{
             lwHomeFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID forIndexPath:indexPath];
+//            footerView.footerArray = footerArray.count == 0 ? [NSMutableArray new] : footerArray;
             return footerView;
         }
     }
@@ -282,11 +294,13 @@
     
     if (indexPath.section == 0) {
         [headerCell setFlashArray:flashArray];
+        [headerCell setMenu:menuArray];
         return headerCell;
     }else if (indexPath.section == 3){
         [customCell setCModel:(lwCommodityModel *)commodityArray[indexPath.row]];
         return customCell;
     }else{
+        [commonCell setUrlStr:floorArray[indexPath.section-1][indexPath.row][@"img"]];
         return commonCell;
     }
 }
@@ -296,7 +310,7 @@
  */
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return CGSizeMake(lW-2, 224);
+        return CGSizeMake(lW-2, 250);
     }else if (indexPath.section == 3){
         return CGSizeMake(lW/2-2, 235);
     }else{

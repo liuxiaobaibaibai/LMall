@@ -14,4 +14,9 @@
     // Initialization code
 }
 
+- (void)setHeaderImgUrlPath:(NSString *)headerImgUrlPath{
+    _headerImgUrlPath = headerImgUrlPath;
+    [_headerImgView sd_setImageWithURL:[NSURL URLWithString:headerImgUrlPath]];
+}
+
 @end
