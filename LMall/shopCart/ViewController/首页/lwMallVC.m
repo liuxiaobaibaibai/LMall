@@ -7,22 +7,18 @@
 //
 
 #import "lwMallVC.h"
-#import <JavaScriptCore/JavaScriptCore.h>
-#import "UIWebView+lwWebView.h"
-
-#import "lwPersonalFooterView.h"
-
+// view
 #import "lwHomeCommonCell.h"
 #import "lwHomeCustomCell.h"
 #import "lwHomeHeaderOtherView.h"
 #import "lwHomeFooterView.h"
 #import "lwHedaerCell.h"
 
-
 // ViewController
 #import "lwSearchVC.h"
 #import "lwCommodityDetailVC.h"
 #import "lwShopcartVC.h"
+#import "lwPartnerVC.h"
 
 
 // model
@@ -210,16 +206,16 @@
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 4;
+    return 5;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
-    }else if (section == 3){
+    }else if (section == 4){
         return commodityArray.count;
     }else{
-        return floorArray.count == 0 ? 0 : [floorArray[section] count];
+        return floorArray.count == 0 ? 0 : [floorArray[section-1] count];
     }
 }
 
@@ -267,6 +263,7 @@
     }else if(indexPath.section == 3){
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
             lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
+            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section];
             return homeOtherView;
         }else{
             return nil;
@@ -274,11 +271,11 @@
     }else{
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
             lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
-            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section+1];
+            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
             return homeOtherView;
         }else{
             lwHomeFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID forIndexPath:indexPath];
-//            footerView.footerArray = footerArray.count == 0 ? [NSMutableArray new] : footerArray;
+            footerView.footerArray = footerArray.count == 0 ? [NSMutableArray new] : footerArray[indexPath.section-1];
             return footerView;
         }
     }
@@ -296,7 +293,7 @@
         [headerCell setFlashArray:flashArray];
         [headerCell setMenu:menuArray];
         return headerCell;
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == 4){
         [customCell setCModel:(lwCommodityModel *)commodityArray[indexPath.row]];
         return customCell;
     }else{
@@ -311,7 +308,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return CGSizeMake(lW-2, 250);
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == 4){
         return CGSizeMake(lW/2-2, 235);
     }else{
         return CGSizeMake(lW/2-2, lW/4-1);
@@ -322,7 +319,11 @@
  *  设置选中
  */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self goCommodityDetailVC];
+    if (indexPath.section == 0) {
+        return;
+    }else{
+        [self goCommodityDetailVC];
+    }
 }
 
 #pragma mark - 用户操作事件
@@ -346,7 +347,8 @@
         case 0:
         {
             // 头像按钮
-            [self initDataSource];
+//            [self initDataSource];
+            [self goPartnerVC];
         }
             break;
         case 1:
@@ -357,6 +359,13 @@
         default:
             break;
     }
+}
+
+- (void)goPartnerVC{
+    lwPartnerVC *partnerVC = [[lwPartnerVC alloc] init];
+    partnerVC.title = @"成为合伙人";
+    partnerVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:partnerVC animated:YES];
 }
 
 @end

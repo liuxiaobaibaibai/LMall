@@ -17,6 +17,14 @@
 
 - (void)awakeFromNib{
     _flashScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    for (UIButton *btn in _menuArray) {
+        [btn addTarget:self action:@selector(headerCellButtonCLick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+- (void)headerCellButtonCLick:(UIButton *)btn{
+    NSLog(@"%@",btn.titleLabel.text);
 }
 
 - (void)setFlashArray:(NSArray *)flashArray{
@@ -25,6 +33,7 @@
     
     [_flashScrollView setContentSize:CGSizeMake(flashArray.count*(lW-2), 115)];
     _flashScrollView.pagingEnabled = YES;
+
     
     for (int i = 0; i<flashArray.count; i++) {
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake((lW-2)*i, 0, (lW-2), 120)];
@@ -39,8 +48,6 @@
     for (int i = 0; i<menu.count; i++) {
         UIButton *btn = (UIButton *)_menuArray[i];
         [btn setTitle:menu[i][@"name"] forState:UIControlStateNormal];
-//        [btn.imageView sd_setImageWithURL:[NSURL URLWithString:menu[i][@"img"]]];
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:menu[i][@"img"]]];
             UIImage *img = [UIImage imageWithData:data];

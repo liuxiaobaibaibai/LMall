@@ -7,24 +7,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="lwHomeFooterView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="5Ro-yM-NDW">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVu-bR-plY">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
-                </imageView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.89625529179999996" green="0.89625529179999996" blue="0.89625529179999996" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="5Ro-yM-NDW" secondAttribute="trailing" id="1LY-sr-ggm"/>
-                <constraint firstItem="5Ro-yM-NDW" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="8Vs-Gj-sGV"/>
-                <constraint firstItem="5Ro-yM-NDW" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="KqO-qn-aF8"/>
-                <constraint firstAttribute="bottom" secondItem="5Ro-yM-NDW" secondAttribute="bottom" constant="10" id="QCU-2h-9yJ"/>
+                <constraint firstAttribute="bottom" secondItem="RVu-bR-plY" secondAttribute="bottom" constant="10" id="1HY-nL-LJf"/>
+                <constraint firstAttribute="trailing" secondItem="RVu-bR-plY" secondAttribute="trailing" id="68b-ew-UHP"/>
+                <constraint firstItem="RVu-bR-plY" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="PeI-4p-E71"/>
+                <constraint firstItem="RVu-bR-plY" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="edq-jc-I4D"/>
             </constraints>
+            <connections>
+                <outlet property="_footerScrollview" destination="RVu-bR-plY" id="XSa-OH-4CI"/>
+            </connections>
         </collectionReusableView>
     </objects>
-    <resources>
-        <image name="banner2" width="650" height="220"/>
-    </resources>
 </document>

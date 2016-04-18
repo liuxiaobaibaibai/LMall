@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {margin:0;}
+body{font-size:12px; font-family:"微软雅黑"; color:#000; background:#ffece9;}
+
+img{ border:0}
+h1, h2, h3, h4, h5, h6, h7, p, ul, ol, dl, dt, dd, li, body, form, input, button, img, cite, strong, em{ padding:0; margin:0;}
+ul, ol,li{ list-style-type:none;}
+input,select {font-size:12px;vertical-align:absmiddle;}
+.wrap li,.d10 a,h2{text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+a{ color:#e43c1d; text-decoration: none;cursor:pointer;}
+a:hover{ text-decoration:underline; color:#e43c1d;}
+.clear{ clear:both;}
+html{ overflow-x:hidden; overflow-y:auto;}
+
+input{outline:0px;}
+input{outline:0px;}
+
+select{outline:0px;}
+select{outline:0px;}
+
+
+.main{ width:100%; margin:0 auto;}
+
+
+.banner{ width:100%; float:left;}
+.banner img{ width:100%;}
+
+
+.content{ width:90%; float:left; padding:1% 5% 5% 5%;}
+
+
+.public{ width:100%; float:left;}
+
+
+.f16{ font-size:16px;}
+.f18{ font-size:18px;}
+.f21{ font-size:21px;}
+.f24{ font-size:24px;}
+
+.bold{ font-weight:bold;}
+
+.red{ color:#ff5742;}
+
+.pad_t{ padding-top:10px;}
+
+.t_align{ text-align:center;}
+.hs{ color:#666;}
+
+.title_h{ font-size:21px; font-weight:bold; letter-spacing:1px; text-align:center; color:#ff5742; line-height:30px; }
+
+
+.but_k{ width:100%; height:35px; float:left; background:#fff; border-radius:5px; line-height:35px; font-size:16px; margin-top:10px;  color:#ff5742;}
+
+.but_k select{ width:96%; float:left; line-height:40px; height:40px; background:none; border:none; font-size:18px; color:#333; padding-left:3%;}
+
+.but_k input{ width:53%; float:left; line-height:35px; height:35px; background:none; border:none; font-size:18px; color:#333; padding-left:3%;}
+
+.but_k1{ width:40%; float:left; text-align:center; background:#fee4e0; border-radius:5px 0px 0px 5px;}
+
+
+.but_tj{ width:100%; height:40px; float:left; background:#ff5742; border-radius:5px; line-height:40px; font-size:16px; margin-top:15px; text-align:center;}
+.but_tj input{ background:none; border:none; font-size:18px; font-weight:bold; line-height:40px; color:#FFF;}
+
+
+
+.hhr_jb{ width:100%; float:left; margin-top:8px;}
+.hhr_jb ul{}
+.hhr_jb ul li{ width:31%; height:35px; line-height:35px; float:left; margin-right:2%; text-align:center; font-size:15px; font-weight:bold;}
+.hhr_jb ul li a{ width:100%; background:#fbd439; border-radius:5px; display:block; color:#000;}
+.hhr_jb ul li a:hover{ width:100%; background:#ff5742; border-radius:5px; color:#fff; text-decoration:none}
+
+.hhr_pay{ width:100%; float:left; margin-top:8px;}
+.hhr_pay ul{}
+.hhr_pay ul li{ width:48%; height:35px; line-height:35px; float:left; margin-right:2%; text-align:center; font-size:16px; font-weight:bold;}
+.hhr_pay ul li a{ width:100%; background:#fbd439; border-radius:5px; display:block; color:#000;}
+.hhr_pay ul li a:hover{ width:100%; background:#ff5742; border-radius:5px; color:#fff; text-decoration:none}

@@ -64,6 +64,8 @@
 		C9240E021CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240E001CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m */; };
 		C9240E031CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9240E011CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.xib */; };
 		C9240E071CBF60B600B5B5E9 /* lwSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9240E061CBF60B600B5B5E9 /* lwSearchVC.m */; };
+		C94FEEA31CC4DB5400D1D54D /* lwPartnerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C94FEEA21CC4DB5400D1D54D /* lwPartnerVC.m */; };
+		C94FEEA51CC4DC9200D1D54D /* partner in Resources */ = {isa = PBXBuildFile; fileRef = C94FEEA41CC4DC9200D1D54D /* partner */; };
 		C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */; };
 		C96C70F41CB4E65500C3B68D /* UIWebView+lwWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C70F31CB4E65500C3B68D /* UIWebView+lwWebView.m */; };
 		C99587EA1C8D460800A540B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C99587E91C8D460800A540B0 /* main.m */; };
@@ -190,6 +192,9 @@
 		C9240E011CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwHomeHeaderOtherView.xib; sourceTree = "<group>"; };
 		C9240E051CBF60B600B5B5E9 /* lwSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwSearchVC.h; sourceTree = "<group>"; };
 		C9240E061CBF60B600B5B5E9 /* lwSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwSearchVC.m; sourceTree = "<group>"; };
+		C94FEEA11CC4DB5400D1D54D /* lwPartnerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPartnerVC.h; sourceTree = "<group>"; };
+		C94FEEA21CC4DB5400D1D54D /* lwPartnerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPartnerVC.m; sourceTree = "<group>"; };
+		C94FEEA41CC4DC9200D1D54D /* partner */ = {isa = PBXFileReference; lastKnownFileType = folder; path = partner; sourceTree = "<group>"; };
 		C96439121CBCBCAD0031B6F3 /* lwPersonalFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonalFooterView.h; sourceTree = "<group>"; };
 		C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalFooterView.m; sourceTree = "<group>"; };
 		C96C70F21CB4E65500C3B68D /* UIWebView+lwWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+lwWebView.h"; sourceTree = "<group>"; };
@@ -524,6 +529,16 @@
 			path = "搜索";
 			sourceTree = "<group>";
 		};
+		C94FEEA01CC4DB2F00D1D54D /* 合伙人 */ = {
+			isa = PBXGroup;
+			children = (
+				C94FEEA41CC4DC9200D1D54D /* partner */,
+				C94FEEA11CC4DB5400D1D54D /* lwPartnerVC.h */,
+				C94FEEA21CC4DB5400D1D54D /* lwPartnerVC.m */,
+			);
+			path = "合伙人";
+			sourceTree = "<group>";
+		};
 		C99587DC1C8D460800A540B0 = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +625,7 @@
 		C995880D1C8D468D00A540B0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C94FEEA01CC4DB2F00D1D54D /* 合伙人 */,
 				0116A9E31CB8E6000080B07F /* Base */,
 				C90C40621CB7772A0090E3A1 /* 订单完成 */,
 				C90C40651CB7772A0090E3A1 /* 购物车 */,
@@ -680,6 +696,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94FEEA51CC4DC9200D1D54D /* partner in Resources */,
 				C9240DF41CBF226500B5B5E9 /* lwHomeCustomCell.xib in Resources */,
 				C90C40841CB777D10090E3A1 /* lwShopcartCell.xib in Resources */,
 				01156B991CB275CC0015C602 /* LICENSE in Resources */,
@@ -799,6 +816,7 @@
 				C90C409B1CB77DE80090E3A1 /* lwMall_AddressModel.m in Sources */,
 				01156B9A1CB275CC0015C602 /* MASCompositeConstraint.m in Sources */,
 				C9240DF31CBF226500B5B5E9 /* lwHomeCustomCell.m in Sources */,
+				C94FEEA31CC4DB5400D1D54D /* lwPartnerVC.m in Sources */,
 				C96C70F41CB4E65500C3B68D /* UIWebView+lwWebView.m in Sources */,
 				C9C50B2F1CB4BA3C00BB90B6 /* NSString+lwString.m in Sources */,
 				01156B6D1CB255EC0015C602 /* lwEntity.m in Sources */,

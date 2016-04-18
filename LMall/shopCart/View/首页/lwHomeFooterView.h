@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface lwHomeFooterView : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UIScrollView *_footerScrollview;
 
 @property (retain, nonatomic) NSMutableArray *footerArray;
 
