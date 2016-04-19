@@ -21,6 +21,7 @@ static lwStyleTool *style = nil;
 
 + (void)setStyleColor:(UIColor *)aColor TitleColor:(UIColor *)bColor{
     [[UINavigationBar appearance] setTintColor:bColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     [[UINavigationBar appearance] setBarTintColor:aColor];
     [[UITabBar appearance] setBackgroundColor:aColor];
     [[UITabBar appearance] setBarTintColor:aColor];

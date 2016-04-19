@@ -19,6 +19,16 @@
     return [NSString stringWithFormat:@"%.0f", now.timeIntervalSince1970];
 }
 
+NSString * gen_uuid()
+{
+    CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+    CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+    CFRelease(uuid_ref);
+    NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
+    CFRelease(uuid_string_ref);
+    return uuid;
+}
+
 /**
  *  大写MD5 加密
  */

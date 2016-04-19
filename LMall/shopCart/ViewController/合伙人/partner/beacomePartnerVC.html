@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="聚赢宝">
+    <meta name="keywords" content="聚赢宝">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我要成为合伙人</title>
+    <link rel="stylesheet" href="http://www.juyingbao.cn/tpl/wap/default/tc/css/amazeui.min.css">
+    <link rel="stylesheet" href="http://www.juyingbao.cn/tpl/wap/default/css/Shop/hhr.css">
+    <style>
+        .am-g{padding: 8px 12px;}
+        #level .am-btn,#paytype .am-btn{background: #fbd439;border-radius: 5px;display: block;color: #000;padding: 8px 12px;margin-left: 1% ; text-align: center}
+        #level .am-btn.btn-select,#paytype .am-btn.btn-select{background: #ff5742;color: #fff;}
+    </style>
+</head>
+<body>
+    <div class="main am-g">
+    <div class="banner"><img src="http://www.juyingbao.cn/tpl/wap/default/img/hhr_02.png"/></div>
+    <form action="" method="POST" id="order">
+    <div class="content">
+        <div class="public title_h">我要成为合伙人</div>
+        <div class="but_k bold"><span style="padding-left:5%;">选择合伙人级别</span></div>
+        <input type="text" value="" name="level" id="levelinput" style="display: none;">
+        <div class="am-btn-group am-btn-group-justify" id="level" style="padding-right: 1%;padding-top: 10px;">
+            	<a class="am-btn am-btn-default" role="button" data-type="40000">金牌合伙人</a>
+                <a class="am-btn am-btn-default" role="button" data-type="1000">银牌合伙人</a>
+                <a class="am-btn am-btn-default" role="button" data-type="1">普通合伙人</a>
+        </div>
+            <h3 id="levelprice"></h3>
+            <div class="but_k bold"><span style="padding-left:5%;">请选择支付方式</span></div>
+            <input type="text" value="" name="paytype" id="paytypeinput" style="display: none;">
+                <div class="am-btn-group am-btn-group-justify" id="paytype" style="padding-right: 1%;padding-top: 10px;">
+                    <a class="am-btn am-btn-default" role="button" data-type="0">支付宝支付</a>
+                    <a class="am-btn am-btn-default" role="button" data-type="1">微信支付</a>
+                    <a class="am-btn am-btn-default" role="button" data-type="4">线下支付</a>
+                </div>
+                <div class="but_k"><span class="but_k1 bold">合伙人推广码</span><input name="" type="text" ></div>
+                <div class="public pad_t f16 hs"><input id="access" name="" type="checkbox" />&nbsp;同意<a href="#">《合伙人协议》</a></div>
+                <div class="but_tj"><input name="" type="button" value="我要成为合伙人"/></div>
+                <div class="public pad_t hs">备注：需要查看更多内容，请升级为合伙人</div>
+                </div>
+        </form>
+    </div>
+    <script src="http://www.juyingbao.cn/tpl/wap/default/tc/js/jquery.min.js" type="text/javascript"></script>
+    <script src="http://www.juyingbao.cn/tpl/wap/default/tc/js/amazeui.min.js" type="text/javascript"></script>
+    <script>
+        
+        function initDataSource(param){
+            alert(param)
+        }
+        
+        $('#level').on('click','a',function(){
+            // 移除其他的选中状态
+            $('#level a').each(function(){
+	            $(this).removeClass('btn-select');
+            })
+            // 修改按钮选中状态
+            $(this).addClass('btn-select');
+            // 修改标签的值
+            $('#levelinput').val($(this).attr('data-type'));
+        })
+        $('#paytype').on('click','a',function(){
+            // 移除其他的选中状态
+	        $('#paytype a').each(function(){
+		        $(this).removeClass('btn-select');
+		        })
+            // 修改按钮选中状态
+            $(this).addClass('btn-select');
+            // 修改标签的值
+            $('#paytypeinput').val($(this).attr('data-type'));
+        })
+
+        $('.but_tj').on('click',function(){
+            if($('#levelinput').val()==''){
+                showToast('请选择合伙人');
+                return;
+            }
+            if($('#paytypeinput').val()==''){
+                showToast('请选择支付方式');
+                return;
+            }
+            if(document.getElementById('access').checked == false){
+                showToast('请同意合伙人协议!');
+                return;
+            }
+            var str = '{"partnerType":"' + $('#levelinput').val() + '","payType":"' + $('#paytypeinput').val() + '"}';
+            payment(str);
+        });
+    </script>
+</body>
+</html>

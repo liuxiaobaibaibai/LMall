@@ -51,7 +51,7 @@ select{outline:0px;}
 .title_h{ font-size:21px; font-weight:bold; letter-spacing:1px; text-align:center; color:#ff5742; line-height:30px; }
 
 
-.but_k{ width:100%; height:35px; float:left; background:#fff; border-radius:5px; line-height:35px; font-size:16px; margin-top:10px;  color:#ff5742;}
+.but_k{ height:35px; float:left; background:#fff; border-radius:5px; line-height:35px; font-size:16px; margin-top:10px;  color:#ff5742; border-bottom:1px solid #ffd4cf;}
 
 .but_k select{ width:96%; float:left; line-height:40px; height:40px; background:none; border:none; font-size:18px; color:#333; padding-left:3%;}
 
@@ -62,7 +62,6 @@ select{outline:0px;}
 
 .but_tj{ width:100%; height:40px; float:left; background:#ff5742; border-radius:5px; line-height:40px; font-size:16px; margin-top:15px; text-align:center;}
 .but_tj input{ background:none; border:none; font-size:18px; font-weight:bold; line-height:40px; color:#FFF;}
-
 
 
 .hhr_jb{ width:100%; float:left; margin-top:8px;}

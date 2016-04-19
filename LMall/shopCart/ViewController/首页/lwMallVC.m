@@ -189,7 +189,7 @@
     [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[lwEntity entitySingleton].homeHeaderFirstViewID];
     [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeHeaderOtherView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID];
     [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeFooterView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID];
-    
+    [myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:[lwEntity entitySingleton].homeFooterCommonViewID];
     
     [self.view addSubview:myCollectionView];
 }
@@ -237,8 +237,10 @@
  */
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
-    if (section == 1 || section == 2) {
+    if (section == 2 || section == 3) {
         return CGSizeMake(lW, 100);
+    }else if(section == 1){
+        return CGSizeMake(lW, 10);
     }else{
         return CGSizeMake(0, 0);
     }
@@ -260,13 +262,25 @@
 {
     if (indexPath.section == 0){
         return nil;
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 2 || indexPath.section == 3){
+
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
             lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
-            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section];
+            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
             return homeOtherView;
         }else{
-            return nil;
+            lwHomeFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID forIndexPath:indexPath];
+            footerView.footerArray = footerArray.count == 0 ? [NSMutableArray new] : footerArray[indexPath.section-2];
+            return footerView;
+        }
+    }else if(indexPath.section == 1){
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
+            homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
+            return homeOtherView;
+        }else{
+            UICollectionReusableView *commonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterCommonViewID forIndexPath:indexPath];
+            return commonView;
         }
     }else{
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
@@ -274,9 +288,7 @@
             homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
             return homeOtherView;
         }else{
-            lwHomeFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID forIndexPath:indexPath];
-            footerView.footerArray = footerArray.count == 0 ? [NSMutableArray new] : footerArray[indexPath.section-1];
-            return footerView;
+            return nil;
         }
     }
 }

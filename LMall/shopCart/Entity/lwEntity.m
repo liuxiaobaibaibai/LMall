@@ -54,6 +54,7 @@ static lwEntity *entity = nil;
     _homeHeaderFirstViewID = @"homecell1";
     _homeHeaderOtherViewID = @"homecell2";
     _homeFooterViewID = @"homecell3";
+    _homeFooterCommonViewID = @"homeheaderviewCellID";
     /*** 商城首页结束 ***/
 }
 

@@ -35,6 +35,7 @@
 
 @property (copy, nonatomic, readonly) NSString *homeHeaderFirstViewID;
 @property (copy, nonatomic, readonly) NSString *homeHeaderOtherViewID;
+@property (copy, nonatomic, readonly) NSString *homeFooterCommonViewID;
 @property (copy, nonatomic, readonly) NSString *homeFooterViewID;
 
 // 商城首页结束

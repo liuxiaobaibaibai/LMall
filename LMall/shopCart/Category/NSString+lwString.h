@@ -19,6 +19,8 @@
 /**MD5（小写加密）*/
 - (NSString *)md5;
 
+NSString * gen_guid();
+
 /**sha1加密*/
 - (NSString *) sha1;
 
