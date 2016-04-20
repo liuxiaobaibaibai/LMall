@@ -3,6 +3,14 @@
 
 **有很多东西本来可以拎出来，但是最后还是丢到控制器里面。有时间再改吧！**
 
+
+----------
+最新更新
+动态关注效果：
+![enter image description here](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/YW.gif)
+
+----------
+
 界面大概截图如下：
 
     1、首页
