@@ -77,8 +77,49 @@
     commodityArray = [NSMutableArray new];
     
 
-    dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
+    [lwMallModel getTopData:^(id result, NSError *error) {
+        if (!error) {
+            for (int i = 0; i<[result count]; i++) {
+                [flashArray addObject:result[i][@"img"]];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [myCollectionView reloadData];
+            });
+        }
+    }];
+    
+    [lwMallModel getMallData:^(id result, NSError *error) {
+        if (!error) {
+            menuArray = result[@"menu"];
+            titleArray = result[@"title"];
+            floorArray = result[@"channel"];
+            footerArray = result[@"AD"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [myCollectionView reloadData];
+            });
+        }
+    }];
+    
+    [lwMallModel getProducts:^(id result, NSError *error) {
+        if (!error) {
+            for (int i = 0; i<[result count]; i++) {
+                lwCommodityModel *cModel = [lwCommodityModel new];
+                cModel.pid = result[i][@"pid"];
+                cModel.commodityName = result[i][@"name"];
+                cModel.logoUrl = result[i][@"logourl"];
+                cModel.price = result[i][@"price"];
+                [commodityArray addObject:cModel];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [myCollectionView reloadData];
+            });
+        }
+    }];
+    /*
+     
+    dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+     
     dispatch_sync(queue, ^{
         [lwMallModel getTopData:^(id result, NSError *error) {
             if (!error) {
@@ -118,10 +159,8 @@
                 });
             }
         }];
-        
-        
     });
-    
+    */
 }
 
 
@@ -359,8 +398,8 @@
         case 0:
         {
             // 头像按钮
-//            [self initDataSource];
-            [self goPartnerVC];
+            [self initDataSource];
+//            [self goPartnerVC];
         }
             break;
         case 1:

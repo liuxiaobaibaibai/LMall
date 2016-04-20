@@ -56,6 +56,9 @@ static lwEntity *entity = nil;
     _homeFooterViewID = @"homecell3";
     _homeFooterCommonViewID = @"homeheaderviewCellID";
     /*** 商城首页结束 ***/
+    /*** 发现页面开始 ***/
+    _lwFindVCellID = @"finasld";
+    /*** 发现页面结束 ***/
 }
 
 

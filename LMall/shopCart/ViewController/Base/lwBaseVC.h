@@ -10,7 +10,4 @@
 
 @interface lwBaseVC : UIViewController
 
-/**键盘处理的通知，放在基类里面处理*/
-- (void)keyboardWillShow:(NSNotification *)noti;
-
 @end

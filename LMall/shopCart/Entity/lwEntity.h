@@ -40,6 +40,10 @@
 
 // 商城首页结束
 
+// 发现页面开始
+@property (copy, nonatomic, readonly) NSString *lwFindVCellID;
+// 发现页面结束
+
 + (instancetype)entitySingleton;
 
 
