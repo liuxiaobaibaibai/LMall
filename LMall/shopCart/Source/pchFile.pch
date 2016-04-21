@@ -19,8 +19,11 @@
 #import "AFNetworking.h"
 #import "UIKeyboardViewController.h"
 #import "SDWebImage/UIImageView+WebCache.h"
-
 #import "lwPayCommon.h"
+
+#import "lwLocation.h"
+
+#import <MAMapKit/MAMapKit.h>
 
 
 //  屏幕的宽度
@@ -35,6 +38,15 @@
 #define HTMLColor(c) HTMLColorWithA(c,1.0)
 //  十六进制颜色，不预设透明度
 #define HTMLColorWithA(c,a) [UIColor colorWithHexString:c Alpha:a]
+
+#define systemVersions [[[UIDevice currentDevice] systemVersion] floatValue]
+//是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+//是否为iOS8及以上系统
+#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
+
+#define gaodeMapKey @"113fce5a6b78ebc731c826eef8c81a72"
+
 
 /// getTop
 #define mall_getTop @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getTop"

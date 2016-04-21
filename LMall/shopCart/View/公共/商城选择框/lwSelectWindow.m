@@ -8,12 +8,15 @@
 
 #import "lwSelectWindow.h"
 
+#import "lwSelectCell.h"
+
 #define padding 8
 
 @implementation lwSelectWindow
 {
     UIView *backGroundView;
     UIView *backView;
+    UIView *otherView;
     UITableView *myTbaleView;
     UIView *headerView;
     UIButton *bottomBtn;
@@ -31,10 +34,15 @@
         self.frame = CGRectMake(0, 0, lW, lH);
         self.windowLevel = UIWindowLevelAlert + 1;
         self.delegate = delegate;
+        _normArray = [NSMutableArray arrayWithObjects:@[@"27",@"28",@"29",@"30",@"31"],@[@"青色",@"藏青",@"红色"], nil];
         [self setupView];
     }
     
     return self;
+}
+
+- (void)calculate:(NSMutableArray *)arr{
+    
 }
 
 - (void)showInView:(UIView *)aView{
@@ -51,13 +59,64 @@
 
 - (void)tapClick:(UITapGestureRecognizer *)tap{
     if ([_delegate respondsToSelector:@selector(removeWindow)]) {
-        [_delegate removeWindow];
+        [UIView animateWithDuration:0.3 animations:^{
+            backView.frame = CGRectMake(0, lH, lW, lH);
+        }completion:^(BOOL finished) {
+            if (finished) {
+                [_delegate removeWindow];
+            }
+        }];
     }
+}
+
+
+- (CGFloat )height:(NSArray *)arr{
+    NSArray *titleArr = arr;
+    int width = 0;
+    int height = 0;
+    int column = 0;
+    int row = 0;
+    
+    //创建button
+    for (int i = 0; i < titleArr.count; i++) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag = i;
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        CGSize titleSize = [self getSizeByString:titleArr[i] AndFontSize:14];
+        row = row +titleSize.width;
+        if (row > [[UIScreen mainScreen]bounds].size.width) {
+            row = 0;
+            row = row + titleSize.width;
+            height++;
+            width = 0;
+            width = width+titleSize.width;
+            column = 0;
+        }else{
+            width = width+titleSize.width;
+        }
+        column++;
+    }
+    
+    return 40 * row + 8 * row;
+}
+
+- (CGSize)getSizeByString:(NSString*)string AndFontSize:(CGFloat)font
+{
+    CGSize size = [string boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size;
+    size.width += 5;
+    return size;
 }
 
 - (void)selectWindowButtonClick:(UIButton *)btn{
     if ([_delegate respondsToSelector:@selector(removeWindow)]) {
-        [_delegate removeWindow];
+        [UIView animateWithDuration:0.3 animations:^{
+            backView.frame = CGRectMake(0, lH, lW, lH);
+        }completion:^(BOOL finished) {
+            if (finished) {
+                [_delegate removeWindow];
+            }
+        }];
     }
 }
 
@@ -66,15 +125,18 @@
     backGroundView = [[UIView alloc] init];
     backGroundView.backgroundColor = [UIColor blackColor];
     backGroundView.alpha = 0.5;
-    UITapGestureRecognizer *bgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
-    [backGroundView addGestureRecognizer:bgTap];
     [self addSubview:backGroundView];
     
     backView = [[UIView alloc] init];
     backView.backgroundColor = [UIColor clearColor];
-    UITapGestureRecognizer *bTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
-    [backView addGestureRecognizer:bTap];
     [self addSubview:backView];
+    
+    otherView = [[UIView alloc] init];
+    otherView.backgroundColor = [UIColor clearColor];
+    UITapGestureRecognizer *bTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+    [otherView addGestureRecognizer:bTap];
+    [self addSubview:otherView];
+    
     
     // 头部视图
     headerView = [[UIView alloc] init];
@@ -95,6 +157,7 @@
     closeButton = [[UIButton alloc] init];
     [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     [headerView addSubview:closeButton];
+    [closeButton addTarget:self action:@selector(selectWindowButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // 价格标签
     priceLabel = [[UILabel alloc] init];
@@ -122,10 +185,13 @@
     [headerView addSubview:lineView];
     
     // 列表视图
-    myTbaleView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, lW, lW) style:UITableViewStylePlain];
+    myTbaleView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, lW, lW) style:UITableViewStyleGrouped];
     myTbaleView.delegate = self;
     myTbaleView.dataSource = self;
+    myTbaleView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [myTbaleView setTableFooterView:[[UIView alloc] init]];
     [backView addSubview:myTbaleView];
+
     
     // 底部按钮
     bottomBtn = [[UIButton alloc] init];
@@ -140,6 +206,13 @@
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
         make.bottom.mas_equalTo(0);
+    }];
+    
+    [otherView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(headerView.mas_top).with.offset(0);
     }];
     
     [backGroundView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -221,35 +294,69 @@
     
 }
 
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return _normArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 44;
 }
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @[@"尺寸",@"颜色"][section];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    lwSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = myTbaleView.backgroundColor;
+        cell.lwSelectWindow = self;
+        info = [NSMutableArray arrayWithObjects:@"尺寸",@"颜色", nil];
     }
     
-    cell.textLabel.text = @"卧槽你妈";
+    [cell setLabelArray:_normArray[indexPath.section]];
+    [cell setSign:@[@"尺寸",@"颜色"][indexPath.section]];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selected = NO;
+static NSMutableArray *info;
+- (void)updateInfo:(NSString *)param Sign:(NSString *)sign{
+    
+    if ([sign isEqualToString:@"尺寸"]) {
+        for (int i = 0; i<[[_normArray firstObject] count]; i++) {
+            NSString *str = [_normArray firstObject][i];
+            if ([str isEqualToString:param]) {
+                [info replaceObjectAtIndex:0 withObject:str];
+            }
+        }
+    }else{
+        for (int i = 0; i<[[_normArray lastObject] count]; i++) {
+            NSString *str = [_normArray lastObject][i];
+            if ([str isEqualToString:param]) {
+                [info replaceObjectAtIndex:info.count-1 withObject:str];
+            }
+        }
+    }
+    if (info.count != 2) {
+        normLabel.text = @"请选择规格";
+    }else
+    
+    normLabel.text = [NSString stringWithFormat:@"%@ | %@",[info firstObject],[info lastObject]];
 }
+
 
 
 @end

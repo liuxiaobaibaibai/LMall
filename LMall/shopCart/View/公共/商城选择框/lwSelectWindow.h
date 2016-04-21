@@ -18,8 +18,8 @@
 @interface lwSelectWindow : UIWindow
 
 <
-UITableViewDataSource,
-UITableViewDelegate
+    UITableViewDataSource,
+    UITableViewDelegate
 >
 
 @property (assign, nonatomic) id<lwSelectNormViewDelegate>delegate;
@@ -27,5 +27,9 @@ UITableViewDelegate
 - (id)initWithFrame:(CGRect)frame Delegate:(id)delegate;
 
 - (void)showInView:(UIView *)aView;
+
+@property (retain, nonatomic) NSMutableArray *normArray;
+
+- (void)updateInfo:(NSString *)param Sign:(NSString *)sign;
 
 @end

@@ -41,6 +41,15 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright &#169; 2014 AutoNavi. All Rights Reserved.
+</string>
+			<key>Title</key>
+			<string>AMap2DMap</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>&#25903;&#20184;&#23453;(&#20013;&#22269;)&#32593;&#32476;&#25216;&#26415;&#26377;&#38480;&#20844;&#21496;  &#29256;&#26435;&#25152;&#26377;.</string>
 			<key>Title</key>
 			<string>AliPay</string>

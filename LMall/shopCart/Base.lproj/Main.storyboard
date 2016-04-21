@@ -198,44 +198,36 @@
             </objects>
             <point key="canvasLocation" x="-1629" y="2357"/>
         </scene>
-        <!--Lw FindVC-->
-        <scene sceneID="SNm-nT-mnb">
+        <!--Lw Find BaseVC-->
+        <scene sceneID="dFX-74-UCg">
             <objects>
-                <tableViewController id="9Tm-rk-BBf" customClass="lwFindVC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bas-Im-Dh1">
+                <viewController id="W8d-3e-7E9" customClass="lwFindBaseVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qEc-Tc-fmA"/>
+                        <viewControllerLayoutGuide type="bottom" id="vic-P9-QMa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WIK-h2-P3P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uq9-Ww-yS3">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uq9-Ww-yS3" id="KwD-Kd-Lo7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="9Tm-rk-BBf" id="mos-Dr-lED"/>
-                            <outlet property="delegate" destination="9Tm-rk-BBf" id="imK-M8-ngT"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="fms-qW-80A">
+                    </view>
+                    <navigationItem key="navigationItem" id="rEJ-x3-LIV">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="qNg-Y9-qDl">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="TVx-YW-BJn">
                             <rect key="frame" x="96" y="7" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="列表"/>
                                 <segment title="地图"/>
                             </segments>
-                            <color key="tintColor" red="0.1176470588" green="0.12549019610000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="chanedVC:" destination="W8d-3e-7E9" eventType="valueChanged" id="olq-bA-Nbf"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YRb-38-kys" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dx0-8X-LWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1252" y="1726"/>
         </scene>
@@ -250,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="9Tm-rk-BBf" kind="relationship" relationship="rootViewController" id="4r8-FK-xkP"/>
+                        <segue destination="W8d-3e-7E9" kind="relationship" relationship="rootViewController" id="ziq-8E-ii2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJa-ij-Hpi" userLabel="First Responder" sceneMemberID="firstResponder"/>

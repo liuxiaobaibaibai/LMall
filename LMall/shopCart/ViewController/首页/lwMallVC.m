@@ -25,6 +25,21 @@
 #import "lwMallModel.h"
 #import "lwCommodityModel.h"
 
+struct rowStruct{
+    CGFloat row;
+    CGFloat width;
+};
+typedef struct rowStruct lwRow;
+
+CG_INLINE lwRow
+rowStructMake(CGFloat row, CGFloat width)
+{
+    lwRow lworw;
+    lworw.width = width;
+    lworw.row = row;
+    return lworw;
+}
+
 @interface lwMallVC ()
 <
     UICollectionViewDataSource,
@@ -47,6 +62,8 @@
     /**尾部数组*/
     NSMutableArray *footerArray;
 }
+
+
 @end
 
 @implementation lwMallVC
@@ -55,6 +72,7 @@
     [super viewDidLoad];
     [self setupView];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -116,51 +134,6 @@
             });
         }
     }];
-    /*
-     
-    dispatch_queue_t queue = dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-     
-    dispatch_sync(queue, ^{
-        [lwMallModel getTopData:^(id result, NSError *error) {
-            if (!error) {
-                for (int i = 0; i<[result count]; i++) {
-                    [flashArray addObject:result[i][@"img"]];
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [myCollectionView reloadData];
-                });
-            }
-        }];
-        
-        [lwMallModel getMallData:^(id result, NSError *error) {
-            if (!error) {
-                menuArray = result[@"menu"];
-                titleArray = result[@"title"];
-                floorArray = result[@"channel"];
-                footerArray = result[@"AD"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [myCollectionView reloadData];
-                });
-            }
-        }];
-        
-        [lwMallModel getProducts:^(id result, NSError *error) {
-            if (!error) {
-                for (int i = 0; i<[result count]; i++) {
-                    lwCommodityModel *cModel = [lwCommodityModel new];
-                    cModel.pid = result[i][@"pid"];
-                    cModel.commodityName = result[i][@"name"];
-                    cModel.logoUrl = result[i][@"logourl"];
-                    cModel.price = result[i][@"price"];
-                    [commodityArray addObject:cModel];
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [myCollectionView reloadData];
-                });
-            }
-        }];
-    });
-    */
 }
 
 

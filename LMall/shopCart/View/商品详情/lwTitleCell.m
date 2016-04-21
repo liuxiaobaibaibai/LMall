@@ -57,13 +57,15 @@
     // 价格标签
     priceLabel = [[UILabel alloc] init];
     priceLabel.text = @"￥ 19.00";
-    priceLabel.font = [UIFont systemFontOfSize:17.0];
+    priceLabel.font = [UIFont systemFontOfSize:19.0];
     priceLabel.textColor = [lwStyleTool colorInstance].JDColor;
     [self.contentView addSubview:priceLabel];
     
     // 原价标签
     originalPriceLabel = [[UILabel alloc] init];
-    originalPriceLabel.text = @"￥ 29.00";
+    
+    NSAttributedString *at = [[NSAttributedString alloc] initWithString:@"原价：￥ 29.00" attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],NSStrikethroughStyleAttributeName:@(NSUnderlineStyleSingle|NSUnderlinePatternSolid),NSStrikethroughColorAttributeName:[UIColor lightGrayColor]}];
+    originalPriceLabel.attributedText = at;
     originalPriceLabel.font = [UIFont systemFontOfSize:14.0];
     originalPriceLabel.textColor = [UIColor lightGrayColor];
     [self.contentView addSubview:originalPriceLabel];

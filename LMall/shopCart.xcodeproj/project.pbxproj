@@ -51,10 +51,14 @@
 		C90C40A91CB7A4B40090E3A1 /* lwCompletedOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C40641CB7772A0090E3A1 /* lwCompletedOrderVC.m */; };
 		C90C40AC1CB7AAFD0090E3A1 /* lwAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C40AB1CB7AAFD0090E3A1 /* lwAddressCell.m */; };
 		C913A1AA1CC6098100A44496 /* lwPayCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = C913A1A91CC6098100A44496 /* lwPayCommon.m */; };
-		C91DD7F51CC74C4600250E77 /* lwFindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DD7F41CC74C4600250E77 /* lwFindVC.m */; };
+		C916BB981CC87786001B4400 /* lwSelectWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BB971CC87786001B4400 /* lwSelectWindow.m */; };
+		C916BB9B1CC879C7001B4400 /* lwSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BB9A1CC879C7001B4400 /* lwSelectCell.m */; };
+		C916BBA01CC8C356001B4400 /* lwFind_ListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BB9F1CC8C356001B4400 /* lwFind_ListVC.m */; };
+		C916BBA31CC8C377001B4400 /* lwFindBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BBA21CC8C377001B4400 /* lwFindBaseVC.m */; };
+		C916BBA61CC8C433001B4400 /* lwFind_MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BBA51CC8C433001B4400 /* lwFind_MapVC.m */; };
+		C916BBA91CC8D383001B4400 /* lwLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BBA81CC8D383001B4400 /* lwLocation.m */; };
 		C91DD7FB1CC74CD400250E77 /* lwFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DD7F91CC74CD400250E77 /* lwFindCell.m */; };
 		C91DD7FC1CC74CD400250E77 /* lwFindCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91DD7FA1CC74CD400250E77 /* lwFindCell.xib */; };
-		C922F89B1CC07C26009E0E39 /* lwSelectWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F89A1CC07C26009E0E39 /* lwSelectWindow.m */; };
 		C922F89E1CC0AD7A009E0E39 /* lwMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */; };
 		C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F8A01CC0B6B9009E0E39 /* lwCommodityModel.m */; };
 		C922F8A51CC0C238009E0E39 /* lwHedaerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F8A31CC0C238009E0E39 /* lwHedaerCell.m */; };
@@ -176,13 +180,21 @@
 		C90C40AB1CB7AAFD0090E3A1 /* lwAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwAddressCell.m; sourceTree = "<group>"; };
 		C913A1A81CC6098100A44496 /* lwPayCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPayCommon.h; sourceTree = "<group>"; };
 		C913A1A91CC6098100A44496 /* lwPayCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPayCommon.m; sourceTree = "<group>"; };
-		C91DD7F31CC74C4600250E77 /* lwFindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindVC.h; sourceTree = "<group>"; };
-		C91DD7F41CC74C4600250E77 /* lwFindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindVC.m; sourceTree = "<group>"; };
+		C916BB961CC87786001B4400 /* lwSelectWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwSelectWindow.h; sourceTree = "<group>"; };
+		C916BB971CC87786001B4400 /* lwSelectWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwSelectWindow.m; sourceTree = "<group>"; };
+		C916BB991CC879C7001B4400 /* lwSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwSelectCell.h; sourceTree = "<group>"; };
+		C916BB9A1CC879C7001B4400 /* lwSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwSelectCell.m; sourceTree = "<group>"; };
+		C916BB9E1CC8C356001B4400 /* lwFind_ListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFind_ListVC.h; sourceTree = "<group>"; };
+		C916BB9F1CC8C356001B4400 /* lwFind_ListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFind_ListVC.m; sourceTree = "<group>"; };
+		C916BBA11CC8C377001B4400 /* lwFindBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindBaseVC.h; sourceTree = "<group>"; };
+		C916BBA21CC8C377001B4400 /* lwFindBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindBaseVC.m; sourceTree = "<group>"; };
+		C916BBA41CC8C433001B4400 /* lwFind_MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFind_MapVC.h; sourceTree = "<group>"; };
+		C916BBA51CC8C433001B4400 /* lwFind_MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFind_MapVC.m; sourceTree = "<group>"; };
+		C916BBA71CC8D383001B4400 /* lwLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwLocation.h; sourceTree = "<group>"; };
+		C916BBA81CC8D383001B4400 /* lwLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwLocation.m; sourceTree = "<group>"; };
 		C91DD7F81CC74CD400250E77 /* lwFindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindCell.h; sourceTree = "<group>"; };
 		C91DD7F91CC74CD400250E77 /* lwFindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindCell.m; sourceTree = "<group>"; };
 		C91DD7FA1CC74CD400250E77 /* lwFindCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwFindCell.xib; sourceTree = "<group>"; };
-		C922F8991CC07C26009E0E39 /* lwSelectWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwSelectWindow.h; sourceTree = "<group>"; };
-		C922F89A1CC07C26009E0E39 /* lwSelectWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwSelectWindow.m; sourceTree = "<group>"; };
 		C922F89C1CC0AD7A009E0E39 /* lwMallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwMallModel.h; sourceTree = "<group>"; };
 		C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwMallModel.m; sourceTree = "<group>"; };
 		C922F89F1CC0B6B9009E0E39 /* lwCommodityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCommodityModel.h; sourceTree = "<group>"; };
@@ -242,6 +254,8 @@
 		01156B6A1CB255CC0015C602 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				C916BBA71CC8D383001B4400 /* lwLocation.h */,
+				C916BBA81CC8D383001B4400 /* lwLocation.m */,
 				01156B6B1CB255EC0015C602 /* lwEntity.h */,
 				01156B6C1CB255EC0015C602 /* lwEntity.m */,
 			);
@@ -419,14 +433,13 @@
 		C90C40731CB777D10090E3A1 /* 公共 */ = {
 			isa = PBXGroup;
 			children = (
+				C916BB951CC87786001B4400 /* 商城选择框 */,
 				C96439121CBCBCAD0031B6F3 /* lwPersonalFooterView.h */,
 				C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */,
 				C90C40A61CB7A3890090E3A1 /* lwNoContentView.h */,
 				C90C40A71CB7A3890090E3A1 /* lwNoContentView.m */,
 				C90C40741CB777D10090E3A1 /* lwStepper.h */,
 				C90C40751CB777D10090E3A1 /* lwStepper.m */,
-				C922F8991CC07C26009E0E39 /* lwSelectWindow.h */,
-				C922F89A1CC07C26009E0E39 /* lwSelectWindow.m */,
 			);
 			path = "公共";
 			sourceTree = "<group>";
@@ -536,11 +549,42 @@
 			path = "订单";
 			sourceTree = "<group>";
 		};
+		C916BB951CC87786001B4400 /* 商城选择框 */ = {
+			isa = PBXGroup;
+			children = (
+				C916BB961CC87786001B4400 /* lwSelectWindow.h */,
+				C916BB971CC87786001B4400 /* lwSelectWindow.m */,
+				C916BB991CC879C7001B4400 /* lwSelectCell.h */,
+				C916BB9A1CC879C7001B4400 /* lwSelectCell.m */,
+			);
+			path = "商城选择框";
+			sourceTree = "<group>";
+		};
+		C916BB9C1CC8C356001B4400 /* 地图 */ = {
+			isa = PBXGroup;
+			children = (
+				C916BBA41CC8C433001B4400 /* lwFind_MapVC.h */,
+				C916BBA51CC8C433001B4400 /* lwFind_MapVC.m */,
+			);
+			path = "地图";
+			sourceTree = "<group>";
+		};
+		C916BB9D1CC8C356001B4400 /* 列表 */ = {
+			isa = PBXGroup;
+			children = (
+				C916BB9E1CC8C356001B4400 /* lwFind_ListVC.h */,
+				C916BB9F1CC8C356001B4400 /* lwFind_ListVC.m */,
+			);
+			path = "列表";
+			sourceTree = "<group>";
+		};
 		C91DD7F21CC74C0C00250E77 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				C91DD7F31CC74C4600250E77 /* lwFindVC.h */,
-				C91DD7F41CC74C4600250E77 /* lwFindVC.m */,
+				C916BB9C1CC8C356001B4400 /* 地图 */,
+				C916BB9D1CC8C356001B4400 /* 列表 */,
+				C916BBA11CC8C377001B4400 /* lwFindBaseVC.h */,
+				C916BBA21CC8C377001B4400 /* lwFindBaseVC.m */,
 			);
 			path = "发现";
 			sourceTree = "<group>";
@@ -829,14 +873,15 @@
 				0116A9E21CB8E5BF0080B07F /* UIKeyboardViewController.m in Sources */,
 				01156BA21CB275CC0015C602 /* View+MASAdditions.m in Sources */,
 				01156B9E1CB275CC0015C602 /* MASViewAttribute.m in Sources */,
-				C922F89B1CC07C26009E0E39 /* lwSelectWindow.m in Sources */,
 				01156B9C1CB275CC0015C602 /* MASConstraintMaker.m in Sources */,
 				C99587F61C8D460800A540B0 /* shopCart.xcdatamodeld in Sources */,
 				C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */,
 				C99587ED1C8D460800A540B0 /* AppDelegate.m in Sources */,
+				C916BBA91CC8D383001B4400 /* lwLocation.m in Sources */,
 				C90C40871CB777D10090E3A1 /* lwTitleCell.m in Sources */,
 				C922F89E1CC0AD7A009E0E39 /* lwMallModel.m in Sources */,
 				01156BA31CB275CC0015C602 /* ViewController+MASAdditions.m in Sources */,
+				C916BB981CC87786001B4400 /* lwSelectWindow.m in Sources */,
 				0116A9E91CB8E81A0080B07F /* UITableView+lwTableView.m in Sources */,
 				C90C40861CB777D10090E3A1 /* lwCustomCellContentView.m in Sources */,
 				C91DD7FB1CC74CD400250E77 /* lwFindCell.m in Sources */,
@@ -850,16 +895,18 @@
 				C9240E021CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.m in Sources */,
 				C922F8A51CC0C238009E0E39 /* lwHedaerCell.m in Sources */,
 				C90C40711CB7772A0090E3A1 /* lwMallVC.m in Sources */,
+				C916BBA61CC8C433001B4400 /* lwFind_MapVC.m in Sources */,
+				C916BBA01CC8C356001B4400 /* lwFind_ListVC.m in Sources */,
 				C90C40851CB777D10090E3A1 /* lwCustomCell.m in Sources */,
 				C99587EA1C8D460800A540B0 /* main.m in Sources */,
 				01156BA01CB275CC0015C602 /* NSArray+MASAdditions.m in Sources */,
 				0116A9DA1CB8A9040080B07F /* lwCommodityCell.m in Sources */,
 				C90C409F1CB77FD80090E3A1 /* lwMall_OrderModel.m in Sources */,
 				C9240DEE1CBF225400B5B5E9 /* lwHomeCommonCell.m in Sources */,
+				C916BBA31CC8C377001B4400 /* lwFindBaseVC.m in Sources */,
 				01156B9D1CB275CC0015C602 /* MASLayoutConstraint.m in Sources */,
 				C9240DFD1CBF2EEE00B5B5E9 /* lwHomeFooterView.m in Sources */,
 				C9240E071CBF60B600B5B5E9 /* lwSearchVC.m in Sources */,
-				C91DD7F51CC74C4600250E77 /* lwFindVC.m in Sources */,
 				C90C40A81CB7A3890090E3A1 /* lwNoContentView.m in Sources */,
 				C90C40941CB778870090E3A1 /* lwShopcartModel.m in Sources */,
 				C90C40971CB778870090E3A1 /* lwCustomModel.m in Sources */,
@@ -870,6 +917,7 @@
 				C94FEEA31CC4DB5400D1D54D /* lwPartnerVC.m in Sources */,
 				C96C70F41CB4E65500C3B68D /* UIWebView+lwWebView.m in Sources */,
 				C9F1240D1CC7673C00310FAA /* lwFindModel.m in Sources */,
+				C916BB9B1CC879C7001B4400 /* lwSelectCell.m in Sources */,
 				C9C50B2F1CB4BA3C00BB90B6 /* NSString+lwString.m in Sources */,
 				01156B6D1CB255EC0015C602 /* lwEntity.m in Sources */,
 				01156B9B1CB275CC0015C602 /* MASConstraint.m in Sources */,
@@ -985,6 +1033,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1000,6 +1049,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

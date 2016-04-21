@@ -7,7 +7,7 @@
 //
 
 // VC
-#import "lwFindVC.h"
+#import "lwFind_ListVC.h"
 
 // Model
 #import "lwFindModel.h"
@@ -15,7 +15,7 @@
 // View
 #import "lwFindCell.h"
 
-@interface lwFindVC ()
+@interface lwFind_ListVC ()
 
 <
     MBProgressHUDDelegate
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation lwFindVC
+@implementation lwFind_ListVC
 
 
 - (void)viewDidLoad {
@@ -44,7 +44,7 @@
         oneModel.sid = [NSString stringWithFormat:@"%d",i];
         oneModel.shopName = [NSString stringWithFormat:@"聚赢宝商城%d号",i];
         oneModel.address = [NSString stringWithFormat:@"江苏省无锡市崇安区上马墩路%d",i*(arc4random()%15)];
-        oneModel.distance = [NSString stringWithFormat:@"%.2fkm",0.3*(arc4random()%5)];
+        oneModel.distance = [NSString stringWithFormat:@"%.2fkm",0.3*(arc4random()%6+1)];
         oneModel.telephoneNo = @"10086";
         oneModel.latitude = 24.3526461;
         oneModel.longtitude = 121.132647;

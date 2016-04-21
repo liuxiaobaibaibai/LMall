@@ -18,6 +18,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [lwStyleTool setStyleColor:[UIColor whiteColor] TitleColor:[UIColor blackColor]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    // 地图
+    [[lwLocation sharedInstance] startLocation];
+    [[MAMapServices sharedServices] setApiKey:gaodeMapKey];
+    
+    
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

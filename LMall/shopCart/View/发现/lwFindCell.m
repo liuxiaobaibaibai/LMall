@@ -7,7 +7,7 @@
 //
 
 #import "lwFindCell.h"
-#import "lwFindVC.h"
+#import "lwFind_ListVC.h"
 #import "lwFindModel.h"
 
 @implementation lwFindCell
@@ -24,8 +24,8 @@
 }
 
 - (void)buttonClick:(UIButton *)btn{
-    [(lwFindVC *)_source findCellButtonClick:btn Model:_findModel Completion:^(id result, BOOL success) {
-        NSLog(@"完毕");
+    [(lwFind_ListVC *)_source findCellButtonClick:btn Model:_findModel Completion:^(id result, BOOL success) {
+        NSLog(@"完毕%@",[self superview].class);
     }];
 }
 

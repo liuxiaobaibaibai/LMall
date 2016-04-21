@@ -12,7 +12,7 @@ typedef void(^userOperatonBlock)(id result, BOOL success);
 
 @class lwFindModel;
 
-@interface lwFindVC : UITableViewController
+@interface lwFind_ListVC : UITableViewController
 
 
 
