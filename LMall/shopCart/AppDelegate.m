@@ -20,7 +20,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     // 地图
-    [[lwLocation sharedInstance] startLocation];
+    [lwLocation sharedInstance];
     [[MAMapServices sharedServices] setApiKey:gaodeMapKey];
     
     

@@ -30,6 +30,9 @@
 		01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B701481CB919AC007110A9 /* lwCompletedCustomCell.m */; };
 		01B7014B1CB919AC007110A9 /* lwCompletedCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */; };
 		01B7014E1CB93413007110A9 /* lwCompletdOrderCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B7014D1CB93413007110A9 /* lwCompletdOrderCommonCell.m */; };
+		01DC40391CC8EF1F0068AE0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DC40381CC8EF1F0068AE0A /* MapKit.framework */; };
+		01DC403F1CC916370068AE0A /* lwFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DC403D1CC916370068AE0A /* lwFindCell.m */; };
+		01DC40401CC916370068AE0A /* lwFindCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DC403E1CC916370068AE0A /* lwFindCell.xib */; };
 		1B3992C068CFA197AF2A2CB0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B64C03647F3B0017AC9A5634 /* libPods.a */; };
 		C90C406F1CB7772A0090E3A1 /* lwShopcartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C40671CB7772A0090E3A1 /* lwShopcartVC.m */; };
 		C90C40701CB7772A0090E3A1 /* lwCommodityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C406A1CB7772A0090E3A1 /* lwCommodityDetailVC.m */; };
@@ -57,8 +60,6 @@
 		C916BBA31CC8C377001B4400 /* lwFindBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BBA21CC8C377001B4400 /* lwFindBaseVC.m */; };
 		C916BBA61CC8C433001B4400 /* lwFind_MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BBA51CC8C433001B4400 /* lwFind_MapVC.m */; };
 		C916BBA91CC8D383001B4400 /* lwLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C916BBA81CC8D383001B4400 /* lwLocation.m */; };
-		C91DD7FB1CC74CD400250E77 /* lwFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C91DD7F91CC74CD400250E77 /* lwFindCell.m */; };
-		C91DD7FC1CC74CD400250E77 /* lwFindCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91DD7FA1CC74CD400250E77 /* lwFindCell.xib */; };
 		C922F89E1CC0AD7A009E0E39 /* lwMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */; };
 		C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F8A01CC0B6B9009E0E39 /* lwCommodityModel.m */; };
 		C922F8A51CC0C238009E0E39 /* lwHedaerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C922F8A31CC0C238009E0E39 /* lwHedaerCell.m */; };
@@ -138,6 +139,10 @@
 		01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwCompletedCustomCell.xib; sourceTree = "<group>"; };
 		01B7014C1CB93413007110A9 /* lwCompletdOrderCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCompletdOrderCommonCell.h; sourceTree = "<group>"; };
 		01B7014D1CB93413007110A9 /* lwCompletdOrderCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCompletdOrderCommonCell.m; sourceTree = "<group>"; };
+		01DC40381CC8EF1F0068AE0A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		01DC403C1CC916370068AE0A /* lwFindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindCell.h; sourceTree = "<group>"; };
+		01DC403D1CC916370068AE0A /* lwFindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindCell.m; sourceTree = "<group>"; };
+		01DC403E1CC916370068AE0A /* lwFindCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwFindCell.xib; sourceTree = "<group>"; };
 		B64C03647F3B0017AC9A5634 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCBAF480FB092686114B96EC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BE20B34C277A6C96CDE26281 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,9 +197,6 @@
 		C916BBA51CC8C433001B4400 /* lwFind_MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFind_MapVC.m; sourceTree = "<group>"; };
 		C916BBA71CC8D383001B4400 /* lwLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwLocation.h; sourceTree = "<group>"; };
 		C916BBA81CC8D383001B4400 /* lwLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwLocation.m; sourceTree = "<group>"; };
-		C91DD7F81CC74CD400250E77 /* lwFindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindCell.h; sourceTree = "<group>"; };
-		C91DD7F91CC74CD400250E77 /* lwFindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindCell.m; sourceTree = "<group>"; };
-		C91DD7FA1CC74CD400250E77 /* lwFindCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwFindCell.xib; sourceTree = "<group>"; };
 		C922F89C1CC0AD7A009E0E39 /* lwMallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwMallModel.h; sourceTree = "<group>"; };
 		C922F89D1CC0AD7A009E0E39 /* lwMallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwMallModel.m; sourceTree = "<group>"; };
 		C922F89F1CC0B6B9009E0E39 /* lwCommodityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCommodityModel.h; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DC40391CC8EF1F0068AE0A /* MapKit.framework in Frameworks */,
 				1B3992C068CFA197AF2A2CB0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +362,23 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		01DC403A1CC916370068AE0A /* 地图 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "地图";
+			sourceTree = "<group>";
+		};
+		01DC403B1CC916370068AE0A /* 列表 */ = {
+			isa = PBXGroup;
+			children = (
+				01DC403C1CC916370068AE0A /* lwFindCell.h */,
+				01DC403D1CC916370068AE0A /* lwFindCell.m */,
+				01DC403E1CC916370068AE0A /* lwFindCell.xib */,
+			);
+			path = "列表";
+			sourceTree = "<group>";
+		};
 		86F20FDCA9CD07BD51FBE074 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +391,7 @@
 		C2603BB63BEAB4DC3BFDD81A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01DC40381CC8EF1F0068AE0A /* MapKit.framework */,
 				B64C03647F3B0017AC9A5634 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -592,9 +613,8 @@
 		C91DD7F61CC74CAB00250E77 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				C91DD7F81CC74CD400250E77 /* lwFindCell.h */,
-				C91DD7F91CC74CD400250E77 /* lwFindCell.m */,
-				C91DD7FA1CC74CD400250E77 /* lwFindCell.xib */,
+				01DC403A1CC916370068AE0A /* 地图 */,
+				01DC403B1CC916370068AE0A /* 列表 */,
 			);
 			path = "发现";
 			sourceTree = "<group>";
@@ -761,6 +781,14 @@
 					C99587E41C8D460800A540B0 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 7KCVP2NQG4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -787,7 +815,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C91DD7FC1CC74CD400250E77 /* lwFindCell.xib in Resources */,
+				01DC40401CC916370068AE0A /* lwFindCell.xib in Resources */,
 				C94FEEA51CC4DC9200D1D54D /* partner in Resources */,
 				C9240DF41CBF226500B5B5E9 /* lwHomeCustomCell.xib in Resources */,
 				C90C40841CB777D10090E3A1 /* lwShopcartCell.xib in Resources */,
@@ -884,7 +912,6 @@
 				C916BB981CC87786001B4400 /* lwSelectWindow.m in Sources */,
 				0116A9E91CB8E81A0080B07F /* UITableView+lwTableView.m in Sources */,
 				C90C40861CB777D10090E3A1 /* lwCustomCellContentView.m in Sources */,
-				C91DD7FB1CC74CD400250E77 /* lwFindCell.m in Sources */,
 				C90C40951CB778870090E3A1 /* lwCommodityDetailModel.m in Sources */,
 				01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */,
 				C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */,
@@ -904,6 +931,7 @@
 				C90C409F1CB77FD80090E3A1 /* lwMall_OrderModel.m in Sources */,
 				C9240DEE1CBF225400B5B5E9 /* lwHomeCommonCell.m in Sources */,
 				C916BBA31CC8C377001B4400 /* lwFindBaseVC.m in Sources */,
+				01DC403F1CC916370068AE0A /* lwFindCell.m in Sources */,
 				01156B9D1CB275CC0015C602 /* MASLayoutConstraint.m in Sources */,
 				C9240DFD1CBF2EEE00B5B5E9 /* lwHomeFooterView.m in Sources */,
 				C9240E071CBF60B600B5B5E9 /* lwSearchVC.m in Sources */,
@@ -1033,6 +1061,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
@@ -1040,6 +1069,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.shopCart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1049,6 +1079,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
@@ -1056,6 +1087,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.shopCart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -9,11 +9,11 @@
 #import "lwLocation.h"
 #import <MapKit/MapKit.h>
 
+static lwLocation *location = nil;
 @implementation lwLocation
 @synthesize lwLatitude,lwLongitude;
 
 + (lwLocation *)sharedInstance{
-    static lwLocation *location = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         location = [[self alloc] init];

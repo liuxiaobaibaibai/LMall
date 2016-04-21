@@ -8,6 +8,13 @@
 
 #import "lwFind_MapVC.h"
 
+enum {
+    AnnotationViewControllerAnnotationTypeRed = 0,
+    AnnotationViewControllerAnnotationTypeGreen,
+    AnnotationViewControllerAnnotationTypePurple
+};
+
+
 @interface lwFind_MapVC ()
 
 <
@@ -17,6 +24,7 @@
 {
     MAMapView *_mapView;
 }
+@property (nonatomic, strong) NSMutableArray *annotations;
 
 @end
 
@@ -24,28 +32,89 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initMapView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [lwLocation sharedInstance];
+    [[lwLocation sharedInstance] startLocation];
+    [self initMapView];
+    [self initAnnotations];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [_mapView addAnnotations:self.annotations];
+    [_mapView showAnnotations:self.annotations edgePadding:UIEdgeInsetsMake(20, 20, 20, 80) animated:YES];
 }
 
 
 - (void)initMapView{
-    _mapView = [[MAMapView alloc]init];
+    _mapView = [[MAMapView alloc]initWithFrame:CGRectMake(0, 0, lW, self.view.frame.size.height)];
     _mapView.delegate = self;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    _mapView.showsUserLocation = YES;
+    _mapView.zoomEnabled = YES;
+    _mapView.zoomLevel = 13.0;
+    [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(31.5844729142,120.3313552955) animated:YES];
     [self.view addSubview:_mapView];
-    NSLog(@"%.2f%.2f",[lwLocation sharedInstance].lwLatitude,[lwLocation sharedInstance].lwLongitude);
-    [_mapView setCenterCoordinate:[lwLocation sharedInstance].coordinate];
-    
-    [_mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
-        make.left.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
-        make.right.mas_equalTo(0);
-    }];
 }
+
+- (void)initAnnotations
+{
+    self.annotations = [NSMutableArray array];
+    
+    CLLocationCoordinate2D coordinates[10] = {
+        {31.5844729142,120.3313552955},
+        {31.52447,120.3213},
+        {31.54447,120.3313},
+        {31.55447,120.3413},
+        {31.56447,120.3513},
+        {31.57447,120.3613},
+        {31.58447,120.3713},
+        {31.59447,120.3813},
+        {31.50447,120.3913},
+        {31.51447,120.3013}};
+    
+    for (int i = 0; i < 10; ++i)
+    {
+        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
+        a1.coordinate = coordinates[i];
+        a1.title      = [NSString stringWithFormat:@"anno: %d", i];
+        [self.annotations addObject:a1];
+    }
+}
+
+#pragma mark - MAMapViewDelegate
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
+        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+        if (annotationView == nil)
+        {
+            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:pointReuseIndetifier];
+            
+        }
+        annotationView.image = [UIImage imageNamed:@"find_map"];
+        annotationView.canShowCallout               = YES;
+        annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
+    [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
+}
+
+
 
 
 

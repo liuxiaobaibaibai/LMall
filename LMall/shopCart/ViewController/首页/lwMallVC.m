@@ -31,14 +31,6 @@ struct rowStruct{
 };
 typedef struct rowStruct lwRow;
 
-CG_INLINE lwRow
-rowStructMake(CGFloat row, CGFloat width)
-{
-    lwRow lworw;
-    lworw.width = width;
-    lworw.row = row;
-    return lworw;
-}
 
 @interface lwMallVC ()
 <
