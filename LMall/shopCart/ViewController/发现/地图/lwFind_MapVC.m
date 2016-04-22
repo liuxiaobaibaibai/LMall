@@ -7,6 +7,7 @@
 //
 
 #import "lwFind_MapVC.h"
+#import "lwCustomAnnotationView.h"
 
 enum {
     AnnotationViewControllerAnnotationTypeRed = 0,
@@ -33,12 +34,12 @@ enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self initMapView];
+    [self initAnnotations];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [[lwLocation sharedInstance] startLocation];
-    [self initMapView];
-    [self initAnnotations];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,6 +57,7 @@ enum {
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
     _mapView.showsUserLocation = YES;
     _mapView.zoomEnabled = YES;
+    _mapView.showsCompass = YES;
     _mapView.zoomLevel = 13.0;
     [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(31.5844729142,120.3313552955) animated:YES];
     [self.view addSubview:_mapView];
@@ -82,6 +84,7 @@ enum {
         MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
         a1.coordinate = coordinates[i];
         a1.title      = [NSString stringWithFormat:@"anno: %d", i];
+        a1.subtitle   = @"不变啊是哦啊华盛顿";
         [self.annotations addObject:a1];
     }
 }
@@ -92,21 +95,21 @@ enum {
 {
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
-        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+        static NSString *reuseIndetifier = @"annotationReuseIndetifier";
+        lwCustomAnnotationView *annotationView = (lwCustomAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
         if (annotationView == nil)
         {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation
-                                                             reuseIdentifier:pointReuseIndetifier];
-            
+            annotationView = [[lwCustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
         }
         annotationView.image = [UIImage imageNamed:@"find_map"];
-        annotationView.canShowCallout               = YES;
-        annotationView.rightCalloutAccessoryView    = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-
+        
+        // 设置为NO，用以调用自定义的calloutView
+        annotationView.canShowCallout = NO;
+        
+        // 设置中心点偏移，使得标注底部中间点成为经纬度对应点
+        annotationView.centerOffset = CGPointMake(0, -18);
         return annotationView;
     }
-    
     return nil;
 }
 
@@ -114,7 +117,10 @@ enum {
     [mapView setCenterCoordinate:view.annotation.coordinate animated:YES];
 }
 
-
+- (void)dealloc{
+    _mapView = nil;
+    [_mapView removeFromSuperview];
+}
 
 
 

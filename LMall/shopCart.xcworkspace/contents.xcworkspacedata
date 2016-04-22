@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:shopCart/Source/Location.gpx">
+   </FileRef>
+   <FileRef
       location = "group:shopCart.xcodeproj">
    </FileRef>
    <FileRef

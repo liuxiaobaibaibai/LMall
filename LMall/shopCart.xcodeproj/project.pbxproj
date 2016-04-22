@@ -30,7 +30,6 @@
 		01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B701481CB919AC007110A9 /* lwCompletedCustomCell.m */; };
 		01B7014B1CB919AC007110A9 /* lwCompletedCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */; };
 		01B7014E1CB93413007110A9 /* lwCompletdOrderCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B7014D1CB93413007110A9 /* lwCompletdOrderCommonCell.m */; };
-		01DC40391CC8EF1F0068AE0A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DC40381CC8EF1F0068AE0A /* MapKit.framework */; };
 		01DC403F1CC916370068AE0A /* lwFindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DC403D1CC916370068AE0A /* lwFindCell.m */; };
 		01DC40401CC916370068AE0A /* lwFindCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DC403E1CC916370068AE0A /* lwFindCell.xib */; };
 		1B3992C068CFA197AF2A2CB0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B64C03647F3B0017AC9A5634 /* libPods.a */; };
@@ -77,6 +76,8 @@
 		C94FEEA51CC4DC9200D1D54D /* partner in Resources */ = {isa = PBXBuildFile; fileRef = C94FEEA41CC4DC9200D1D54D /* partner */; };
 		C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */; };
 		C96C70F41CB4E65500C3B68D /* UIWebView+lwWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C70F31CB4E65500C3B68D /* UIWebView+lwWebView.m */; };
+		C98C3CC11CC9AFC200213B22 /* lwCustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */; };
+		C98C3CC41CC9B1CB00213B22 /* lwCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC31CC9B1CB00213B22 /* lwCustomAnnotationView.m */; };
 		C99587EA1C8D460800A540B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C99587E91C8D460800A540B0 /* main.m */; };
 		C99587ED1C8D460800A540B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C99587EC1C8D460800A540B0 /* AppDelegate.m */; };
 		C99587F31C8D460800A540B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99587F11C8D460800A540B0 /* Main.storyboard */; };
@@ -139,7 +140,6 @@
 		01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwCompletedCustomCell.xib; sourceTree = "<group>"; };
 		01B7014C1CB93413007110A9 /* lwCompletdOrderCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCompletdOrderCommonCell.h; sourceTree = "<group>"; };
 		01B7014D1CB93413007110A9 /* lwCompletdOrderCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCompletdOrderCommonCell.m; sourceTree = "<group>"; };
-		01DC40381CC8EF1F0068AE0A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		01DC403C1CC916370068AE0A /* lwFindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindCell.h; sourceTree = "<group>"; };
 		01DC403D1CC916370068AE0A /* lwFindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindCell.m; sourceTree = "<group>"; };
 		01DC403E1CC916370068AE0A /* lwFindCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwFindCell.xib; sourceTree = "<group>"; };
@@ -225,6 +225,12 @@
 		C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalFooterView.m; sourceTree = "<group>"; };
 		C96C70F21CB4E65500C3B68D /* UIWebView+lwWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+lwWebView.h"; sourceTree = "<group>"; };
 		C96C70F31CB4E65500C3B68D /* UIWebView+lwWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+lwWebView.m"; sourceTree = "<group>"; };
+		C98C3CB71CC9AD3F00213B22 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		C98C3CBA1CC9AF3E00213B22 /* shopCart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = shopCart.entitlements; sourceTree = "<group>"; };
+		C98C3CBF1CC9AFC200213B22 /* lwCustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCustomCalloutView.h; sourceTree = "<group>"; };
+		C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCustomCalloutView.m; sourceTree = "<group>"; };
+		C98C3CC21CC9B1CB00213B22 /* lwCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCustomAnnotationView.h; sourceTree = "<group>"; };
+		C98C3CC31CC9B1CB00213B22 /* lwCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCustomAnnotationView.m; sourceTree = "<group>"; };
 		C99587E51C8D460800A540B0 /* shopCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shopCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99587E91C8D460800A540B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C99587EB1C8D460800A540B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -246,7 +252,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01DC40391CC8EF1F0068AE0A /* MapKit.framework in Frameworks */,
 				1B3992C068CFA197AF2A2CB0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,13 +367,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		01DC403A1CC916370068AE0A /* 地图 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "地图";
-			sourceTree = "<group>";
-		};
 		01DC403B1CC916370068AE0A /* 列表 */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,7 +389,6 @@
 		C2603BB63BEAB4DC3BFDD81A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				01DC40381CC8EF1F0068AE0A /* MapKit.framework */,
 				B64C03647F3B0017AC9A5634 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -613,7 +610,7 @@
 		C91DD7F61CC74CAB00250E77 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				01DC403A1CC916370068AE0A /* 地图 */,
+				C98C3CBE1CC9AFC200213B22 /* 地图 */,
 				01DC403B1CC916370068AE0A /* 列表 */,
 			);
 			path = "发现";
@@ -647,6 +644,17 @@
 			path = "合伙人";
 			sourceTree = "<group>";
 		};
+		C98C3CBE1CC9AFC200213B22 /* 地图 */ = {
+			isa = PBXGroup;
+			children = (
+				C98C3CBF1CC9AFC200213B22 /* lwCustomCalloutView.h */,
+				C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */,
+				C98C3CC21CC9B1CB00213B22 /* lwCustomAnnotationView.h */,
+				C98C3CC31CC9B1CB00213B22 /* lwCustomAnnotationView.m */,
+			);
+			path = "地图";
+			sourceTree = "<group>";
+		};
 		C99587DC1C8D460800A540B0 = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +676,7 @@
 		C99587E71C8D460800A540B0 /* shopCart */ = {
 			isa = PBXGroup;
 			children = (
+				C98C3CBA1CC9AF3E00213B22 /* shopCart.entitlements */,
 				C99587EB1C8D460800A540B0 /* AppDelegate.h */,
 				C99587EC1C8D460800A540B0 /* AppDelegate.m */,
 				01156B731CB25F760015C602 /* Category */,
@@ -715,6 +724,7 @@
 			children = (
 				C99588061C8D468D00A540B0 /* lwShopcart.plist */,
 				01156B6E1CB2591E0015C602 /* pchFile.pch */,
+				C98C3CB71CC9AD3F00213B22 /* Location.gpx */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -785,8 +795,11 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -895,6 +908,7 @@
 				C913A1AA1CC6098100A44496 /* lwPayCommon.m in Sources */,
 				0116A9E61CB8E61A0080B07F /* lwBaseVC.m in Sources */,
 				01156B9F1CB275CC0015C602 /* MASViewConstraint.m in Sources */,
+				C98C3CC41CC9B1CB00213B22 /* lwCustomAnnotationView.m in Sources */,
 				C90C40A21CB780D20090E3A1 /* lwMall_CommmodityModel.m in Sources */,
 				C90C406F1CB7772A0090E3A1 /* lwShopcartVC.m in Sources */,
 				01B7014E1CB93413007110A9 /* lwCompletdOrderCommonCell.m in Sources */,
@@ -904,6 +918,7 @@
 				01156B9C1CB275CC0015C602 /* MASConstraintMaker.m in Sources */,
 				C99587F61C8D460800A540B0 /* shopCart.xcdatamodeld in Sources */,
 				C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */,
+				C98C3CC11CC9AFC200213B22 /* lwCustomCalloutView.m in Sources */,
 				C99587ED1C8D460800A540B0 /* AppDelegate.m in Sources */,
 				C916BBA91CC8D383001B4400 /* lwLocation.m in Sources */,
 				C90C40871CB777D10090E3A1 /* lwTitleCell.m in Sources */,

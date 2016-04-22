@@ -45,6 +45,7 @@
 	<string>快速推荐周围商家</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
