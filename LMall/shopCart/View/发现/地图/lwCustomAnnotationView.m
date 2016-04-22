@@ -19,7 +19,7 @@
 @implementation lwCustomAnnotationView
 
 #define kCalloutWidth       300.0
-#define kCalloutHeight      100.0
+#define kCalloutHeight      70.0
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -37,7 +37,7 @@
                                                   -CGRectGetHeight(self.calloutView.bounds) / 2.f + self.calloutOffset.y);
         }
         
-        self.calloutView.image = [UIImage imageNamed:@"cry"];
+        self.calloutView.image = [UIImage imageNamed:@"j_02"];
         self.calloutView.title = self.annotation.title;
         self.calloutView.subtitle = self.annotation.subtitle;
         

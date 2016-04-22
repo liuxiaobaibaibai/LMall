@@ -16,5 +16,7 @@
 
 @property (copy, nonatomic) NSString *subtitle;
 
+@property (assign, nonatomic) CLLocationCoordinate2D coordinate;
+
 
 @end

@@ -333,6 +333,10 @@
 }
 
 static NSMutableArray *info;
+/**
+ *  选择规格，修改头部标签
+ *
+ */
 - (void)updateInfo:(NSString *)param Sign:(NSString *)sign{
     
     if ([sign isEqualToString:@"尺寸"]) {

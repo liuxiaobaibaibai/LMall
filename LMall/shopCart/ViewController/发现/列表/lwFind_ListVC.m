@@ -14,6 +14,8 @@
 
 // View
 #import "lwFindCell.h"
+#import "lwSortHeaderView.h"
+#import "lwFind_ListHeaderView.h"
 
 @interface lwFind_ListVC ()
 
@@ -35,6 +37,18 @@
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"lwFindCell" bundle:nil] forCellReuseIdentifier:[lwEntity entitySingleton].lwFindVCellID];
     [self initDataSource];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self tableHeaderView];
+}
+
+
+- (void)tableHeaderView{
+    lwFind_ListHeaderView *headerView = [[lwFind_ListHeaderView alloc] initWithFrame:CGRectMake(0, 0, lW, 150)];
+    [headerView setMenuArray:[NSMutableArray arrayWithObjects:@"21",@"32",@"43",@"56",@"78",@"21",@"32",@"43",@"56",@"78",@"21",@"32",@"43",@"56",@"78",@"21",@"32",@"43",@"56",@"78", nil]];
+    [self.tableView setTableHeaderView:headerView];
 }
 
 - (void)initDataSource{
@@ -90,6 +104,16 @@
 
 #pragma mark - Table view data source
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    lwSortHeaderView *chView = [[lwSortHeaderView alloc] initWithFrame:CGRectMake(0, 0, lW, 30)];
+    [chView setDataArray:[NSMutableArray arrayWithObjects:@"时间",@"价格",@"销量", nil]];
+    return chView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -104,7 +128,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     lwFindCell *cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].lwFindVCellID];
-    
     
     cell.source = self;
     

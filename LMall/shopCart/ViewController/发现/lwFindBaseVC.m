@@ -39,10 +39,10 @@
     
     _find_MapVC = [[lwFind_MapVC alloc] init];
     _find_MapVC.view.frame = CGRectMake(0, 64, lW, h-108);
-    [self.view addSubview:_find_MapVC.view];
+//    [self.view addSubview:_find_MapVC.view];
     
     [self addChildViewController:_find_ListVC];
-    [self addChildViewController:_find_MapVC];
+//    [self addChildViewController:_find_MapVC];
     
     [self.view addSubview:_find_ListVC.tableView];
     self.currentVC = _find_ListVC;
