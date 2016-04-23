@@ -27,6 +27,8 @@
 		0116A9E21CB8E5BF0080B07F /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A9E01CB8E5BF0080B07F /* UIKeyboardViewController.m */; };
 		0116A9E61CB8E61A0080B07F /* lwBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A9E51CB8E61A0080B07F /* lwBaseVC.m */; };
 		0116A9E91CB8E81A0080B07F /* UITableView+lwTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A9E81CB8E81A0080B07F /* UITableView+lwTableView.m */; };
+		013D370E1CCB1698003D87B1 /* lwPersonalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D370D1CCB1698003D87B1 /* lwPersonalVC.m */; };
+		013D37121CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */; };
 		01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B701481CB919AC007110A9 /* lwCompletedCustomCell.m */; };
 		01B7014B1CB919AC007110A9 /* lwCompletedCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */; };
 		01B7014E1CB93413007110A9 /* lwCompletdOrderCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B7014D1CB93413007110A9 /* lwCompletdOrderCommonCell.m */; };
@@ -138,6 +140,10 @@
 		0116A9E51CB8E61A0080B07F /* lwBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwBaseVC.m; sourceTree = "<group>"; };
 		0116A9E71CB8E81A0080B07F /* UITableView+lwTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+lwTableView.h"; sourceTree = "<group>"; };
 		0116A9E81CB8E81A0080B07F /* UITableView+lwTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+lwTableView.m"; sourceTree = "<group>"; };
+		013D370C1CCB1698003D87B1 /* lwPersonalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonalVC.h; sourceTree = "<group>"; };
+		013D370D1CCB1698003D87B1 /* lwPersonalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalVC.m; sourceTree = "<group>"; };
+		013D37101CCB2513003D87B1 /* lwPersonal_ShopManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonal_ShopManagerVC.h; sourceTree = "<group>"; };
+		013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonal_ShopManagerVC.m; sourceTree = "<group>"; };
 		01B701471CB919AC007110A9 /* lwCompletedCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCompletedCustomCell.h; sourceTree = "<group>"; };
 		01B701481CB919AC007110A9 /* lwCompletedCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCompletedCustomCell.m; sourceTree = "<group>"; };
 		01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwCompletedCustomCell.xib; sourceTree = "<group>"; };
@@ -373,6 +379,39 @@
 				0116A9E51CB8E61A0080B07F /* lwBaseVC.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		013D37091CCB1345003D87B1 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				013D370F1CCB24E5003D87B1 /* 商家后台 */,
+				013D370C1CCB1698003D87B1 /* lwPersonalVC.h */,
+				013D370D1CCB1698003D87B1 /* lwPersonalVC.m */,
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		013D370A1CCB134D003D87B1 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		013D370B1CCB1354003D87B1 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		013D370F1CCB24E5003D87B1 /* 商家后台 */ = {
+			isa = PBXGroup;
+			children = (
+				013D37101CCB2513003D87B1 /* lwPersonal_ShopManagerVC.h */,
+				013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */,
+			);
+			path = "商家后台";
 			sourceTree = "<group>";
 		};
 		01DC403B1CC916370068AE0A /* 列表 */ = {
@@ -729,6 +768,7 @@
 		C99588021C8D468D00A540B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				013D370B1CCB1354003D87B1 /* 个人中心 */,
 				C91DD7F71CC74CC300250E77 /* 发现 */,
 				C90C409C1CB77FC50090E3A1 /* 订单 */,
 				C90C40981CB77DC30090E3A1 /* 地址信息 */,
@@ -753,6 +793,7 @@
 		C99588071C8D468D00A540B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				013D370A1CCB134D003D87B1 /* 个人中心 */,
 				C91DD7F61CC74CAB00250E77 /* 发现 */,
 				C90C40721CB777D10090E3A1 /* 订单完成 */,
 				C90C40731CB777D10090E3A1 /* 公共 */,
@@ -766,6 +807,7 @@
 		C995880D1C8D468D00A540B0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				013D37091CCB1345003D87B1 /* 个人中心 */,
 				C91DD7F21CC74C0C00250E77 /* 发现 */,
 				C94FEEA01CC4DB2F00D1D54D /* 合伙人 */,
 				0116A9E31CB8E6000080B07F /* Base */,
@@ -965,6 +1007,7 @@
 				C99587EA1C8D460800A540B0 /* main.m in Sources */,
 				01156BA01CB275CC0015C602 /* NSArray+MASAdditions.m in Sources */,
 				0116A9DA1CB8A9040080B07F /* lwCommodityCell.m in Sources */,
+				013D37121CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m in Sources */,
 				C90C409F1CB77FD80090E3A1 /* lwMall_OrderModel.m in Sources */,
 				C9240DEE1CBF225400B5B5E9 /* lwHomeCommonCell.m in Sources */,
 				C916BBA31CC8C377001B4400 /* lwFindBaseVC.m in Sources */,
@@ -987,6 +1030,7 @@
 				C9C50B2F1CB4BA3C00BB90B6 /* NSString+lwString.m in Sources */,
 				01156B6D1CB255EC0015C602 /* lwEntity.m in Sources */,
 				01156B9B1CB275CC0015C602 /* MASConstraint.m in Sources */,
+				013D370E1CCB1698003D87B1 /* lwPersonalVC.m in Sources */,
 				C90C40AC1CB7AAFD0090E3A1 /* lwAddressCell.m in Sources */,
 				C98C3CCE1CC9F11500213B22 /* lwSortHeaderView.m in Sources */,
 			);

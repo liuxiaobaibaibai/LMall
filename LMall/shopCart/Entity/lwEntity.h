@@ -7,7 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <objc/runtime.h>
 
+
+NSString *const cellID = @"wocao";
+NSString *const CompletedOrderCellID = @"CompletedOrderCellID";
+NSString *const CompletedOrderAddressCellID = @"CompletedOrderAddressCellID";
+NSString *const CompletedOrderCommodityCellID = @"CompletedOrderCommodityCellID";
+NSString *const CompletedOrderCommonCellID = @"CompletedOrderCommonCellID";
+NSString *const CommodityCellCustomID = @"CommodityCellCustomID";
+NSString *const CommodityCellTitleID = @"CommodityCellTitleID";
+NSString *const CommodityCellOtherID = @"CommodityCellOtherID";
+NSString *const homeHeaderCellID = @"homeHeaderCellID";
+NSString *const homeCommonCellID = @"homeCommonCellID";
+NSString *const homeCustomCellID = @"homeCustomCellID";
+NSString *const homeHeaderFirstViewID = @"homeHeaderFirstViewID";
+NSString *const homeHeaderOtherViewID = @"homeHeaderOtherViewID";
+NSString *const homeFooterCommonViewID = @"homeFooterCommonViewID";
+NSString *const homeFooterViewID = @"homeFooterViewID";
+NSString *const lwFindVCellID = @"lwFindVCellID";
+NSString *const lwPersonalCellID = @"lwPersonalCellID";
 
 @interface lwEntity : NSObject
 
@@ -37,12 +56,15 @@
 @property (copy, nonatomic, readonly) NSString *homeHeaderOtherViewID;
 @property (copy, nonatomic, readonly) NSString *homeFooterCommonViewID;
 @property (copy, nonatomic, readonly) NSString *homeFooterViewID;
-
 // 商城首页结束
 
 // 发现页面开始
 @property (copy, nonatomic, readonly) NSString *lwFindVCellID;
 // 发现页面结束
+
+// 个人中心页面开始
+@property (copy, nonatomic, readonly) NSString *lwPersonalCellID;
+// 个人中心页面结束
 
 + (instancetype)entitySingleton;
 

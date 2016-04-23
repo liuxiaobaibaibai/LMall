@@ -273,13 +273,13 @@ static lwMall_PriceModel *newPrice;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    lwCompletedCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CompletedOrderCellID];
-    lwAddressCell *addressCell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CompletedOrderAddressCellID];
-    lwCommodityCell *commodityCell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CompletedOrderCommodityCellID];
-    lwCompletdOrderCommonCell *commonCell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CompletedOrderCommonCellID];
+    lwCompletedCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CompletedOrderCellID];
+    lwAddressCell *addressCell = [tableView dequeueReusableCellWithIdentifier:CompletedOrderAddressCellID];
+    lwCommodityCell *commodityCell = [tableView dequeueReusableCellWithIdentifier:CompletedOrderCommodityCellID];
+    lwCompletdOrderCommonCell *commonCell = [tableView dequeueReusableCellWithIdentifier:CompletedOrderCommonCellID];
     
     if (!addressCell) {
-        addressCell = [[lwAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[lwEntity entitySingleton].CompletedOrderAddressCellID];
+        addressCell = [[lwAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CompletedOrderAddressCellID];
         addressCell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -295,7 +295,7 @@ static lwMall_PriceModel *newPrice;
     }
     
     if (!commonCell) {
-        commonCell = [[lwCompletdOrderCommonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[lwEntity entitySingleton].CompletedOrderCommonCellID];
+        commonCell = [[lwCompletdOrderCommonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CompletedOrderCommonCellID];
         commonCell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

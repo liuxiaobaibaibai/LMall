@@ -7,6 +7,7 @@
 //
 
 #import "lwEntity.h"
+#import <objc/runtime.h>
 
 
 static lwEntity *entity = nil;
@@ -25,40 +26,25 @@ static lwEntity *entity = nil;
 - (id)init{
     self = [super init];
     if (self) {
-        [self initEntity];
+        [self setValueProperty];
     }
     return self;
 }
 
-/**
- *  自动初始化目标数据
- */
-- (void)initEntity{
-    
-    /*** 订单完成开始 ***/
-    _CompletedOrderCellID = @"cell1";
-    _CompletedOrderAddressCellID = @"cell2";
-    _CompletedOrderCommodityCellID = @"cell3";
-    _CompletedOrderCommonCellID = @"cell4";
-    /*** 订单完成结束 ***/
-    
-    /*** 商品详情开始 ***/
-    _CommodityCellCustomID = @"cell5";
-    _CommodityCellTitleID = @"cell6";
-    /*** 商品详情结束 ***/
-    
-    /*** 商城首页开始 ***/
-    _homeHeaderCellID = @"asdaisfhi";
-    _homeCommonCellID = @"celasd";
-    _homeCustomCellID = @"cejs";
-    _homeHeaderFirstViewID = @"homecell1";
-    _homeHeaderOtherViewID = @"homecell2";
-    _homeFooterViewID = @"homecell3";
-    _homeFooterCommonViewID = @"homeheaderviewCellID";
-    /*** 商城首页结束 ***/
-    /*** 发现页面开始 ***/
-    _lwFindVCellID = @"finasld";
-    /*** 发现页面结束 ***/
+// 运行时动态给所有变量赋值
+- (void)setValueProperty{
+    unsigned int numIvars; //成员变量个数
+    Ivar *vars = class_copyIvarList(NSClassFromString(@"lwEntity"), &numIvars);
+    NSString *key = nil;
+    NSString *type = nil;
+    for(int i = 0; i < numIvars; i++) {
+        Ivar thisIvar = vars[i];
+        key = [NSString stringWithUTF8String:ivar_getName(thisIvar)];  //获取成员变量的名字
+        object_setIvar(self, thisIvar, key); // 运行时动态给变量赋值
+        type = [NSString stringWithUTF8String:ivar_getTypeEncoding(thisIvar)]; //获取成员变量的数据类型
+    }
+    // 释放内存
+    free(vars);
 }
 
 

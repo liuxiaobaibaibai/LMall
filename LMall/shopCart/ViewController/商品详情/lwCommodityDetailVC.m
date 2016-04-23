@@ -242,15 +242,15 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    lwTitleCell  *cellOne = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CommodityCellTitleID];
-    lwCustomCell *cellTwo = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CommodityCellCustomID];
+    lwTitleCell  *cellOne = [tableView dequeueReusableCellWithIdentifier:CommodityCellTitleID];
+    lwCustomCell *cellTwo = [tableView dequeueReusableCellWithIdentifier:CommodityCellCustomID];
     if (!cellOne) {
-        cellOne = [[lwTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[lwEntity entitySingleton].CommodityCellTitleID];
+        cellOne = [[lwTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CommodityCellTitleID];
         cellOne.selectionStyle = UITableViewCellSelectionStyleNone;
     }
         
     if (!cellTwo) {
-        cellTwo = [[lwCustomCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[lwEntity entitySingleton].CommodityCellCustomID];
+        cellTwo = [[lwCustomCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CommodityCellCustomID];
         cellTwo.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

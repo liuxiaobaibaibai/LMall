@@ -19,6 +19,8 @@
     [lwStyleTool setStyleColor:[UIColor whiteColor] TitleColor:[UIColor blackColor]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [lwEntity entitySingleton];
+    
     // 地图
     [lwLocation sharedInstance];
     [[MAMapServices sharedServices] setApiKey:gaodeMapKey];
