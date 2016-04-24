@@ -9,24 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-
-NSString *const cellID = @"wocao";
-NSString *const CompletedOrderCellID = @"CompletedOrderCellID";
-NSString *const CompletedOrderAddressCellID = @"CompletedOrderAddressCellID";
-NSString *const CompletedOrderCommodityCellID = @"CompletedOrderCommodityCellID";
-NSString *const CompletedOrderCommonCellID = @"CompletedOrderCommonCellID";
-NSString *const CommodityCellCustomID = @"CommodityCellCustomID";
-NSString *const CommodityCellTitleID = @"CommodityCellTitleID";
-NSString *const CommodityCellOtherID = @"CommodityCellOtherID";
-NSString *const homeHeaderCellID = @"homeHeaderCellID";
-NSString *const homeCommonCellID = @"homeCommonCellID";
-NSString *const homeCustomCellID = @"homeCustomCellID";
-NSString *const homeHeaderFirstViewID = @"homeHeaderFirstViewID";
-NSString *const homeHeaderOtherViewID = @"homeHeaderOtherViewID";
-NSString *const homeFooterCommonViewID = @"homeFooterCommonViewID";
-NSString *const homeFooterViewID = @"homeFooterViewID";
-NSString *const lwFindVCellID = @"lwFindVCellID";
-NSString *const lwPersonalCellID = @"lwPersonalCellID";
+//NSString *const CompletedOrderCellID = @"CompletedOrderCellID";
+//const NSString * CompletedOrderAddressCellID = @"CompletedOrderAddressCellID";
+//const NSString * CompletedOrderCommodityCellID = @"CompletedOrderCommodityCellID";
+//const NSString * CompletedOrderCommonCellID = @"CompletedOrderCommonCellID";
+//const NSString * CommodityCellCustomID = @"CommodityCellCustomID";
+//const NSString * CommodityCellTitleID = @"CommodityCellTitleID";
+//const NSString * CommodityCellOtherID = @"CommodityCellOtherID";
+//const NSString * homeHeaderCellID = @"homeHeaderCellID";
+//const NSString * homeCommonCellID = @"homeCommonCellID";
+//const NSString * homeCustomCellID = @"homeCustomCellID";
+//const NSString * homeHeaderFirstViewID = @"homeHeaderFirstViewID";
+//const NSString * homeHeaderOtherViewID = @"homeHeaderOtherViewID";
+//const NSString * homeFooterCommonViewID = @"homeFooterCommonViewID";
+//const NSString * homeFooterViewID = @"homeFooterViewID";
+//const NSString * lwFindVCellID = @"lwFindVCellID";
+//const NSString * lwPersonalCellID = @"lwPersonalCellID";
+//const NSString * lwShopCartCellID = @"lwShopCartCellID";
 
 @interface lwEntity : NSObject
 
@@ -46,6 +45,10 @@ NSString *const lwPersonalCellID = @"lwPersonalCellID";
 /**其他ID*/
 @property (copy, nonatomic, readonly) NSString *CommodityCellOtherID;
 // 商品详情结束 //
+
+// 购物车开始
+@property (copy, nonatomic, readonly) NSString * lwShopCartCellID;
+// 购物车结束
 
 // 商城首页开始
 @property (copy, nonatomic, readonly) NSString *homeHeaderCellID;

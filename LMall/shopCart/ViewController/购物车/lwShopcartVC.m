@@ -18,7 +18,6 @@
 
 #import "lwNoContentView.h"
 
-static NSString *cellID = @"cell";
 @interface lwShopcartVC ()
 
 
@@ -211,7 +210,7 @@ static NSString *cellID = @"cell";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].lwShopCartCellID];
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"lwShopcartCell" owner:self options:nil].firstObject;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

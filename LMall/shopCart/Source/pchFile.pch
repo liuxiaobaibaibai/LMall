@@ -21,6 +21,8 @@
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "lwPayCommon.h"
 
+#import "JPEngine.h"
+
 #import "lwLocation.h"
 #import "lwCommon.h"
 

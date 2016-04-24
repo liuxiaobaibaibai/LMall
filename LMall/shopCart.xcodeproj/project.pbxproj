@@ -29,6 +29,9 @@
 		0116A9E91CB8E81A0080B07F /* UITableView+lwTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A9E81CB8E81A0080B07F /* UITableView+lwTableView.m */; };
 		013D370E1CCB1698003D87B1 /* lwPersonalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D370D1CCB1698003D87B1 /* lwPersonalVC.m */; };
 		013D37121CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */; };
+		013D37161CCB4AF8003D87B1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D37151CCB4AF8003D87B1 /* libz.tbd */; };
+		013D37181CCB4B03003D87B1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D37171CCB4B03003D87B1 /* JavaScriptCore.framework */; };
+		013D371B1CCB6486003D87B1 /* lwPatchTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D371A1CCB6486003D87B1 /* lwPatchTool.m */; };
 		01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B701481CB919AC007110A9 /* lwCompletedCustomCell.m */; };
 		01B7014B1CB919AC007110A9 /* lwCompletedCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */; };
 		01B7014E1CB93413007110A9 /* lwCompletdOrderCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B7014D1CB93413007110A9 /* lwCompletdOrderCommonCell.m */; };
@@ -144,6 +147,10 @@
 		013D370D1CCB1698003D87B1 /* lwPersonalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalVC.m; sourceTree = "<group>"; };
 		013D37101CCB2513003D87B1 /* lwPersonal_ShopManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonal_ShopManagerVC.h; sourceTree = "<group>"; };
 		013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonal_ShopManagerVC.m; sourceTree = "<group>"; };
+		013D37151CCB4AF8003D87B1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		013D37171CCB4B03003D87B1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		013D37191CCB6486003D87B1 /* lwPatchTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPatchTool.h; sourceTree = "<group>"; };
+		013D371A1CCB6486003D87B1 /* lwPatchTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPatchTool.m; sourceTree = "<group>"; };
 		01B701471CB919AC007110A9 /* lwCompletedCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCompletedCustomCell.h; sourceTree = "<group>"; };
 		01B701481CB919AC007110A9 /* lwCompletedCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCompletedCustomCell.m; sourceTree = "<group>"; };
 		01B701491CB919AC007110A9 /* lwCompletedCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = lwCompletedCustomCell.xib; sourceTree = "<group>"; };
@@ -266,6 +273,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013D37181CCB4B03003D87B1 /* JavaScriptCore.framework in Frameworks */,
+				013D37161CCB4AF8003D87B1 /* libz.tbd in Frameworks */,
 				1B3992C068CFA197AF2A2CB0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +301,8 @@
 				01156B711CB25D050015C602 /* lwStyleTool.m */,
 				C913A1A81CC6098100A44496 /* lwPayCommon.h */,
 				C913A1A91CC6098100A44496 /* lwPayCommon.m */,
+				013D37191CCB6486003D87B1 /* lwPatchTool.h */,
+				013D371A1CCB6486003D87B1 /* lwPatchTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -440,6 +451,8 @@
 		C2603BB63BEAB4DC3BFDD81A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				013D37171CCB4B03003D87B1 /* JavaScriptCore.framework */,
+				013D37151CCB4AF8003D87B1 /* libz.tbd */,
 				B64C03647F3B0017AC9A5634 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -973,6 +986,7 @@
 				01156B9F1CB275CC0015C602 /* MASViewConstraint.m in Sources */,
 				C98C3CC41CC9B1CB00213B22 /* lwCustomAnnotationView.m in Sources */,
 				C90C40A21CB780D20090E3A1 /* lwMall_CommmodityModel.m in Sources */,
+				013D371B1CCB6486003D87B1 /* lwPatchTool.m in Sources */,
 				C90C406F1CB7772A0090E3A1 /* lwShopcartVC.m in Sources */,
 				01B7014E1CB93413007110A9 /* lwCompletdOrderCommonCell.m in Sources */,
 				0116A9E21CB8E5BF0080B07F /* UIKeyboardViewController.m in Sources */,
@@ -1146,6 +1160,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1164,6 +1182,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

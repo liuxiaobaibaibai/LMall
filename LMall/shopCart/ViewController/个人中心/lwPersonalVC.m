@@ -37,7 +37,7 @@
 
 - (void)initDataSource{
     dataArray = [NSMutableArray new];
-    dataArray = [NSMutableArray arrayWithObjects:@"商家后台", nil];
+    dataArray = [NSMutableArray arrayWithObjects:@"商家后台",@"用户后台", nil];
 }
 
 - (void)setupView{
@@ -60,9 +60,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:lwPersonalCellID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].lwPersonalCellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[lwEntity entitySingleton].lwPersonalCellID];
     }
     
     cell.textLabel.text = dataArray[indexPath.row];
@@ -72,6 +72,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+
 }
 
 @end

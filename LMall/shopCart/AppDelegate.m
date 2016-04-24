@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "lwPatchTool.h"
 
 @interface AppDelegate ()
 
@@ -19,8 +20,8 @@
     [lwStyleTool setStyleColor:[UIColor whiteColor] TitleColor:[UIColor blackColor]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [lwEntity entitySingleton];
-    
+    [lwPatchTool createdLocalPatch:@"http://192.168.1.175/lw/testPatch.js"];
+
     // 地图
     [lwLocation sharedInstance];
     [[MAMapServices sharedServices] setApiKey:gaodeMapKey];

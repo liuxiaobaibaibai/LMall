@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"lwFindCell" bundle:nil] forCellReuseIdentifier:lwFindVCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"lwFindCell" bundle:nil] forCellReuseIdentifier:[lwEntity entitySingleton].lwFindVCellID];
     [self initDataSource];
     
 }
@@ -127,7 +127,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    lwFindCell *cell = [tableView dequeueReusableCellWithIdentifier:lwFindVCellID];
+    lwFindCell *cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].lwFindVCellID];
     
     cell.source = self;
     

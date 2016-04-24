@@ -187,13 +187,13 @@ typedef struct rowStruct lwRow;
     myCollectionView.dataSource = self;
     myCollectionView.backgroundColor = RGB(240, 240, 240);
 
-    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHedaerCell" bundle:nil] forCellWithReuseIdentifier:homeHeaderCellID];
-    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeCommonCell" bundle:nil] forCellWithReuseIdentifier:homeCommonCellID];
-    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeCustomCell" bundle:nil] forCellWithReuseIdentifier:homeCustomCellID];
-    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:homeHeaderFirstViewID];
-    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeHeaderOtherView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:homeHeaderOtherViewID];
-    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeFooterView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:homeFooterViewID];
-    [myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:homeFooterCommonViewID];
+    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHedaerCell" bundle:nil] forCellWithReuseIdentifier:[lwEntity entitySingleton].homeHeaderCellID];
+    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeCommonCell" bundle:nil] forCellWithReuseIdentifier:[lwEntity entitySingleton].homeCommonCellID];
+    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeCustomCell" bundle:nil] forCellWithReuseIdentifier:[lwEntity entitySingleton].homeCustomCellID];
+    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[lwEntity entitySingleton].homeHeaderFirstViewID];
+    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeHeaderOtherView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID];
+    [myCollectionView registerNib:[UINib nibWithNibName:@"lwHomeFooterView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID];
+    [myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:[lwEntity entitySingleton].homeFooterCommonViewID];
     
     [self.view addSubview:myCollectionView];
 }
@@ -269,26 +269,26 @@ typedef struct rowStruct lwRow;
     }else if(indexPath.section == 2 || indexPath.section == 3){
 
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:homeHeaderOtherViewID forIndexPath:indexPath];
+            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
             homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
             return homeOtherView;
         }else{
-            lwHomeFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:homeFooterViewID forIndexPath:indexPath];
+            lwHomeFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterViewID forIndexPath:indexPath];
             footerView.footerArray = footerArray.count == 0 ? [NSMutableArray new] : footerArray[indexPath.section-2];
             return footerView;
         }
     }else if(indexPath.section == 1){
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:homeHeaderOtherViewID forIndexPath:indexPath];
+            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
             homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
             return homeOtherView;
         }else{
-            UICollectionReusableView *commonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:homeFooterCommonViewID forIndexPath:indexPath];
+            UICollectionReusableView *commonView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeFooterCommonViewID forIndexPath:indexPath];
             return commonView;
         }
     }else{
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:homeHeaderOtherViewID forIndexPath:indexPath];
+            lwHomeHeaderOtherView *homeOtherView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[lwEntity entitySingleton].homeHeaderOtherViewID forIndexPath:indexPath];
             homeOtherView.headerImgUrlPath = titleArray.count == 0 ? @"" : titleArray[indexPath.section-1];
             return homeOtherView;
         }else{
@@ -301,9 +301,9 @@ typedef struct rowStruct lwRow;
  *  设置每个item
  */
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    lwHomeCommonCell *commonCell = [collectionView dequeueReusableCellWithReuseIdentifier:homeCommonCellID forIndexPath:indexPath];
-    lwHomeCustomCell *customCell = [collectionView dequeueReusableCellWithReuseIdentifier:homeCustomCellID forIndexPath:indexPath];
-    lwHedaerCell *headerCell = [collectionView dequeueReusableCellWithReuseIdentifier:homeHeaderCellID forIndexPath:indexPath];
+    lwHomeCommonCell *commonCell = [collectionView dequeueReusableCellWithReuseIdentifier:[lwEntity entitySingleton].homeCommonCellID forIndexPath:indexPath];
+    lwHomeCustomCell *customCell = [collectionView dequeueReusableCellWithReuseIdentifier:[lwEntity entitySingleton].homeCustomCellID forIndexPath:indexPath];
+    lwHedaerCell *headerCell = [collectionView dequeueReusableCellWithReuseIdentifier:[lwEntity entitySingleton].homeHeaderCellID forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
         [headerCell setFlashArray:flashArray];
