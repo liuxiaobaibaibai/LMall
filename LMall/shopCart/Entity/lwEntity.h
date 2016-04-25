@@ -9,26 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-//NSString *const CompletedOrderCellID = @"CompletedOrderCellID";
-//const NSString * CompletedOrderAddressCellID = @"CompletedOrderAddressCellID";
-//const NSString * CompletedOrderCommodityCellID = @"CompletedOrderCommodityCellID";
-//const NSString * CompletedOrderCommonCellID = @"CompletedOrderCommonCellID";
-//const NSString * CommodityCellCustomID = @"CommodityCellCustomID";
-//const NSString * CommodityCellTitleID = @"CommodityCellTitleID";
-//const NSString * CommodityCellOtherID = @"CommodityCellOtherID";
-//const NSString * homeHeaderCellID = @"homeHeaderCellID";
-//const NSString * homeCommonCellID = @"homeCommonCellID";
-//const NSString * homeCustomCellID = @"homeCustomCellID";
-//const NSString * homeHeaderFirstViewID = @"homeHeaderFirstViewID";
-//const NSString * homeHeaderOtherViewID = @"homeHeaderOtherViewID";
-//const NSString * homeFooterCommonViewID = @"homeFooterCommonViewID";
-//const NSString * homeFooterViewID = @"homeFooterViewID";
-//const NSString * lwFindVCellID = @"lwFindVCellID";
-//const NSString * lwPersonalCellID = @"lwPersonalCellID";
-//const NSString * lwShopCartCellID = @"lwShopCartCellID";
-
-static NSString *cellIDOfTest = @"123";
-
 @interface lwEntity : NSObject
 
 // 订单完成开始 //
