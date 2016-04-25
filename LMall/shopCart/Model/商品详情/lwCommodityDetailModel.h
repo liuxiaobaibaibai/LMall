@@ -16,4 +16,9 @@
 
 @property (copy, nonatomic) NSString *ZX;
 
+@property (copy, nonatomic) NSString *price;
+
+@property (copy, nonatomic) NSString *KC;
+
+
 @end

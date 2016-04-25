@@ -26,7 +26,6 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    NSLog(@"%@",cellIDOfTest);
     [self initChildVC];
 }
 

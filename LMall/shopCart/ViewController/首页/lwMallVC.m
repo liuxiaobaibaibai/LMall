@@ -335,18 +335,17 @@ typedef struct rowStruct lwRow;
  *  设置选中
  */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        return;
-    }else{
-        [self goCommodityDetailVC];
+    if (indexPath.section == 4){
+        [self goCommodityDetailVC:((lwCommodityModel *)commodityArray[indexPath.row]).pid];
     }
 }
 
 #pragma mark - 用户操作事件
 
-- (void)goCommodityDetailVC{
+- (void)goCommodityDetailVC:(NSString *)gid{
     lwCommodityDetailVC *commodityDetailVC = [[lwCommodityDetailVC alloc] init];
     commodityDetailVC.hidesBottomBarWhenPushed = YES;
+    commodityDetailVC.gid = gid;
     [self.navigationController pushViewController:commodityDetailVC animated:YES];
 }
 

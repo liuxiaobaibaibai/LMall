@@ -7,7 +7,8 @@
 //
 
 #import "lwSelectWindow.h"
-
+#import "lwCommodityNormModel.h"
+#import "lwCommodityDetailModel.h"
 #import "lwSelectCell.h"
 
 #define padding 8
@@ -34,7 +35,6 @@
         self.frame = CGRectMake(0, 0, lW, lH);
         self.windowLevel = UIWindowLevelAlert + 1;
         self.delegate = delegate;
-        _normArray = [NSMutableArray arrayWithObjects:@[@"27",@"28",@"29",@"30",@"31"],@[@"青色",@"藏青",@"红色"], nil];
         [self setupView];
     }
     
@@ -46,7 +46,6 @@
 }
 
 - (void)showInView:(UIView *)aView{
-    
     [self makeKeyWindow];
     [self makeKeyAndVisible];
     backView.frame = CGRectMake(0, lH, lW, lH);
@@ -105,8 +104,7 @@
     otherView.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer *bTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
     [otherView addGestureRecognizer:bTap];
-    [self addSubview:otherView];
-    
+    [backView addSubview:otherView];
     
     // 头部视图
     headerView = [[UIView alloc] init];
@@ -155,7 +153,7 @@
     [headerView addSubview:lineView];
     
     // 列表视图
-    myTbaleView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, lW, lW) style:UITableViewStyleGrouped];
+    myTbaleView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     myTbaleView.delegate = self;
     myTbaleView.dataSource = self;
     myTbaleView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -273,20 +271,28 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static lwSelectCell *cell = nil;
-    
-    if (cell ==nil) {
-        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    static NSString *cellID = @"cell";
+    lwSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+    
     [cell setLabelArray:_normArray[indexPath.section]];
     
-    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    [cell updateConstraints];
     return 1 + size.height;
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @[@"尺寸",@"颜色"][section];
+    
+    if (section<_titleArray.count) {
+        return _titleArray[section];
+    }else{
+        return @"";
+    }
+
 }
 
 
@@ -302,8 +308,15 @@
         info = [NSMutableArray arrayWithObjects:@"尺寸",@"颜色", nil];
     }
     
-    [cell setLabelArray:_normArray[indexPath.section]];
-    [cell setSign:@[@"尺寸",@"颜色"][indexPath.section]];
+    if (indexPath.section < _normArray.count) {
+        [cell setLabelArray:_normArray[indexPath.section]];
+    }
+    
+    if (indexPath.section < _titleArray.count) {
+        [cell setSign:_titleArray[indexPath.section]];
+    }
+    
+    
     
     return cell;
 }
@@ -315,29 +328,64 @@ static NSMutableArray *info;
  */
 - (void)updateInfo:(NSString *)param Sign:(NSString *)sign{
     
-    if ([sign isEqualToString:@"尺寸"]) {
+    if ([sign isEqualToString:[_titleArray firstObject]]) {
         for (int i = 0; i<[[_normArray firstObject] count]; i++) {
             NSString *str = [_normArray firstObject][i];
             if ([str isEqualToString:param]) {
-                [info replaceObjectAtIndex:0 withObject:str];
+                [_titleArray replaceObjectAtIndex:0 withObject:str];
             }
         }
     }else{
         for (int i = 0; i<[[_normArray lastObject] count]; i++) {
             NSString *str = [_normArray lastObject][i];
             if ([str isEqualToString:param]) {
-                [info replaceObjectAtIndex:info.count-1 withObject:str];
+                [_titleArray replaceObjectAtIndex:_titleArray.count-1 withObject:str];
             }
         }
     }
-    if (info.count != 2) {
-        normLabel.text = @"请选择规格";
-    }else
     
-    normLabel.text = [NSString stringWithFormat:@"%@ | %@",[info firstObject],[info lastObject]];
+    for (int i = 0; i<_normModelArray.count; i++) {
+        lwCommodityNormModel *normModel = _normModelArray[i];
+        if ([_titleArray.firstObject isEqualToString:normModel.formatName] && [_titleArray.lastObject isEqualToString:normModel.colorName]) {
+            priceLabel.text = [NSString stringWithFormat:@"￥ %@",normModel.price];
+            inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",normModel.num];
+        }
+    }
+    
+    if (_titleArray.count != 2) {
+        normLabel.text = param;
+    }else
+    normLabel.text = [NSString stringWithFormat:@"%@ | %@",[_titleArray firstObject],[_titleArray lastObject]];
+}
+
+- (void)setNormArray:(NSMutableArray *)normArray{
+    if ([[normArray firstObject] count] == 0) {
+        normArray = [NSMutableArray new];
+        [normArray addObject:@[@"标准款"]];
+        _normArray = normArray;
+    }else{
+        _normArray = normArray;
+    }
+    [myTbaleView reloadData];
+}
+
+- (void)setTitleArray:(NSMutableArray *)titleArray{
+
+    if ([[titleArray firstObject] isNull]) {
+        titleArray = [NSMutableArray new];
+        [titleArray addObject:@"规格"];
+        _titleArray = titleArray;
+    }else{
+        _titleArray = titleArray;
+    }
+    [myTbaleView reloadData];
 }
 
 
+- (void)setDetailModel:(lwCommodityDetailModel *)detailModel{
+    priceLabel.text = [NSString stringWithFormat:@"￥ %@",detailModel.price];
+    inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",detailModel.KC];
+}
 
 @end
 

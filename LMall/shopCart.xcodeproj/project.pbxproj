@@ -95,6 +95,7 @@
 		C99587FB1C8D460800A540B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99587F91C8D460800A540B0 /* LaunchScreen.storyboard */; };
 		C99588111C8D468D00A540B0 /* lwShopcart.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99588061C8D468D00A540B0 /* lwShopcart.plist */; };
 		C9C50B2F1CB4BA3C00BB90B6 /* NSString+lwString.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C50B2E1CB4BA3C00BB90B6 /* NSString+lwString.m */; };
+		C9CDD4791CCDDB8900F0939F /* lwCommodityNormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CDD4781CCDDB8900F0939F /* lwCommodityNormModel.m */; };
 		C9F1240D1CC7673C00310FAA /* lwFindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1240C1CC7673C00310FAA /* lwFindModel.m */; };
 /* End PBXBuildFile section */
 
@@ -266,6 +267,8 @@
 		C99588061C8D468D00A540B0 /* lwShopcart.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lwShopcart.plist; sourceTree = "<group>"; };
 		C9C50B2D1CB4BA3C00BB90B6 /* NSString+lwString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+lwString.h"; sourceTree = "<group>"; };
 		C9C50B2E1CB4BA3C00BB90B6 /* NSString+lwString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+lwString.m"; sourceTree = "<group>"; };
+		C9CDD4771CCDDB8900F0939F /* lwCommodityNormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCommodityNormModel.h; sourceTree = "<group>"; };
+		C9CDD4781CCDDB8900F0939F /* lwCommodityNormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCommodityNormModel.m; sourceTree = "<group>"; };
 		C9F1240B1CC7673C00310FAA /* lwFindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindModel.h; sourceTree = "<group>"; };
 		C9F1240C1CC7673C00310FAA /* lwFindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFindModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -600,6 +603,8 @@
 				C90C40901CB778870090E3A1 /* lwCustomCellContentFrameModel.m */,
 				C90C40911CB778870090E3A1 /* lwCustomModel.h */,
 				C90C40921CB778870090E3A1 /* lwCustomModel.m */,
+				C9CDD4771CCDDB8900F0939F /* lwCommodityNormModel.h */,
+				C9CDD4781CCDDB8900F0939F /* lwCommodityNormModel.m */,
 			);
 			path = "商品详情";
 			sourceTree = "<group>";
@@ -869,7 +874,7 @@
 				TargetAttributes = {
 					C99587E41C8D460800A540B0 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 7KCVP2NQG4;
+						DevelopmentTeam = GZQ2T87W4Y;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -985,6 +990,7 @@
 				01156B721CB25D050015C602 /* lwStyleTool.m in Sources */,
 				01156BA11CB275CC0015C602 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				01156B761CB25F920015C602 /* UIColor+lwColor.m in Sources */,
+				C9CDD4791CCDDB8900F0939F /* lwCommodityNormModel.m in Sources */,
 				C913A1AA1CC6098100A44496 /* lwPayCommon.m in Sources */,
 				0116A9E61CB8E61A0080B07F /* lwBaseVC.m in Sources */,
 				01156B9F1CB275CC0015C602 /* MASViewConstraint.m in Sources */,
@@ -1172,9 +1178,9 @@
 				INFOPLIST_FILE = shopCart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.shopCart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.LifeCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eceed919-636a-4d59-ad77-65c7d796426e";
 			};
 			name = Debug;
 		};
@@ -1194,9 +1200,9 @@
 				INFOPLIST_FILE = shopCart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.shopCart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.LifeCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eceed919-636a-4d59-ad77-65c7d796426e";
 			};
 			name = Release;
 		};

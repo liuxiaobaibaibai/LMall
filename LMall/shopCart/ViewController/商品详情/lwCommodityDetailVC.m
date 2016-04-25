@@ -17,6 +17,8 @@
 /******/
 #import "lwCustomCellContentFrameModel.h"
 #import "lwCustomModel.h"
+#import "lwCommodityNormModel.h"
+#import "lwCommodityDetailModel.h"
 /******/
 
 
@@ -33,6 +35,8 @@
     
     UIWindow *toolView;
     lwSelectWindow *selectWindow;
+    
+    NSMutableDictionary *normDict;
 }
 
 @end
@@ -59,6 +63,36 @@
 {
     [super viewWillDisappear:animated];
     [self releaseToolView];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self getNormArray];
+}
+
+
+- (void)getNormArray{
+    
+    normDict = [NSMutableDictionary new];
+    
+    __block NSMutableArray *normArray = [NSMutableArray new];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer new];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:_gid forKey:@"id"];
+    [manager GET:@"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getproduct" parameters:dict progress:^(NSProgress * _Nonnull downloadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        for (int i = 0; i<[responseObject[@"detail"] count]; i++) {
+            lwCommodityNormModel *model = [[lwCommodityNormModel alloc] initWithDict:[responseObject[@"detail"] objectAtIndex:i]];
+            [normArray addObject:model];
+        }
+        
+        [normDict setObject:normArray forKey:@"detail"];
+        [normDict setObject:responseObject[@"cat_nors"] forKey:@"cat_nors"];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    }];
 }
 
 - (void)initDataSource{
@@ -172,6 +206,44 @@
         case 5:
         {
             selectWindow = [[lwSelectWindow alloc] initWithFrame:self.view.frame Delegate:self];
+            NSMutableArray *n_array = [NSMutableArray new];
+            NSMutableArray *a_array = [NSMutableArray new];
+            for (int i = 0; i<[normDict[@"detail"] count]; i++) {
+                lwCommodityNormModel *norm = normDict[@"detail"][i];
+                [n_array addObject:norm.formatName];
+                [a_array addObject:norm.colorName];
+            }
+
+            NSMutableDictionary *dict = [NSMutableDictionary new];
+            for (NSString *str in n_array) {
+                [dict setObject:str forKey:str];
+            }
+            
+            NSMutableDictionary *dict1 = [NSMutableDictionary new];
+            for (NSString *str in a_array) {
+                [dict1 setObject:str forKey:str];
+            }
+            
+            for (int i = 0; i<a_array.count; i++) {
+                int b = i == a_array.count-1 ? i : i + 1;
+                if ([a_array[i] isEqualToString:a_array[b]]) {
+                    [a_array removeObject:a_array[i]];
+                }
+            }
+
+            
+            NSMutableArray *t_array = [NSMutableArray new];
+            for (int i = 0; i<[[normDict[@"cat_nors"] allKeys] count]; i++) {
+                NSString *name = [normDict[@"cat_nors"] allValues][i];
+                [t_array addObject:name];
+            }
+            lwCommodityDetailModel *detailModel = [lwCommodityDetailModel new];
+            detailModel.price = @"41.00";
+            detailModel.KC = @"9100";
+            selectWindow.detailModel = detailModel;
+            selectWindow.normArray = [NSMutableArray arrayWithObjects:[dict allKeys],[dict1 allKeys], nil];
+            selectWindow.normModelArray = normDict[@"detail"];
+            selectWindow.titleArray = t_array;
             [selectWindow showInView:self.tableView];
         }
             break;

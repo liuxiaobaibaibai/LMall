@@ -20,13 +20,12 @@
     [lwStyleTool setStyleColor:[UIColor whiteColor] TitleColor:[UIColor blackColor]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [lwPatchTool createdLocalPatch:@"http://192.168.1.84/lw/testPatch.js"];
+//    [lwPatchTool createdLocalPatch:@"http://192.168.1.146/lw/testPatch.js"];
 
     // 地图
     [lwLocation sharedInstance];
     [[MAMapServices sharedServices] setApiKey:gaodeMapKey];
-    
-    
+
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

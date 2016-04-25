@@ -21,4 +21,6 @@ typedef enum : NSUInteger {
     lwCommodityDetailBottomType bottomType;
 }
 
+@property (copy, nonatomic) NSString *gid;
+
 @end

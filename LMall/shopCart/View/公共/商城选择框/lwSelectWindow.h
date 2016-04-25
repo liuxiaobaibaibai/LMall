@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class lwCommodityDetailModel;
+@class lwCommodityNormModel;
+
 @protocol lwSelectNormViewDelegate <NSObject>
 
 @required
@@ -28,7 +31,11 @@
 
 - (void)showInView:(UIView *)aView;
 
+@property (retain, nonatomic) lwCommodityDetailModel *detailModel;
+
+@property (retain, nonatomic) NSMutableArray * normModelArray;
 @property (retain, nonatomic) NSMutableArray *normArray;
+@property (retain, nonatomic) NSMutableArray *titleArray;
 
 - (void)updateInfo:(NSString *)param Sign:(NSString *)sign;
 
