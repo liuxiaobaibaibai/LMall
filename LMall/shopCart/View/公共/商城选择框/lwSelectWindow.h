@@ -33,7 +33,6 @@
 
 @property (retain, nonatomic) lwCommodityDetailModel *detailModel;
 
-@property (retain, nonatomic) NSMutableArray * normModelArray;
 @property (retain, nonatomic) NSMutableArray *normArray;
 @property (retain, nonatomic) NSMutableArray *titleArray;
 

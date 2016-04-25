@@ -62,7 +62,9 @@ typedef struct rowStruct lwRow;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initDataSource];
     [self setupView];
+    
 }
 
 
@@ -70,7 +72,7 @@ typedef struct rowStruct lwRow;
     [super viewWillAppear:animated];
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationController.navigationBarHidden = YES;
-    [self initDataSource];
+    
 }
 
 - (void)initDataSource{

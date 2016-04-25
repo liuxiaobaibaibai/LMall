@@ -208,42 +208,79 @@
             selectWindow = [[lwSelectWindow alloc] initWithFrame:self.view.frame Delegate:self];
             NSMutableArray *n_array = [NSMutableArray new];
             NSMutableArray *a_array = [NSMutableArray new];
+            NSMutableArray *t_array = [NSMutableArray new];
+            
+            NSMutableArray *r_NormArray = [NSMutableArray new];
+            
+            if ([normDict[@"detail"] count] == 0) {
+                [r_NormArray addObject:@[@"标准款"]];
+            }
+            
             for (int i = 0; i<[normDict[@"detail"] count]; i++) {
                 lwCommodityNormModel *norm = normDict[@"detail"][i];
+                if ([norm.colorName isNull]) {
+                    [n_array addObject:@"标准款"];
+                }
+                if ([norm.format isNull]) {
+                    [a_array addObject:@"标准款"];
+                }
                 [n_array addObject:norm.formatName];
                 [a_array addObject:norm.colorName];
             }
 
-            NSMutableDictionary *dict = [NSMutableDictionary new];
-            for (NSString *str in n_array) {
-                [dict setObject:str forKey:str];
-            }
             
-            NSMutableDictionary *dict1 = [NSMutableDictionary new];
-            for (NSString *str in a_array) {
-                [dict1 setObject:str forKey:str];
-            }
-            
-            for (int i = 0; i<a_array.count; i++) {
-                int b = i == a_array.count-1 ? i : i + 1;
-                if ([a_array[i] isEqualToString:a_array[b]]) {
-                    [a_array removeObject:a_array[i]];
-                }
-            }
-
-            
-            NSMutableArray *t_array = [NSMutableArray new];
-            for (int i = 0; i<[[normDict[@"cat_nors"] allKeys] count]; i++) {
+            for (int i = 0; i<[[normDict[@"cat_nors"] allObjects] count]; i++) {
                 NSString *name = [normDict[@"cat_nors"] allValues][i];
-                [t_array addObject:name];
+                if ([name isNull]) {
+                    [t_array addObject:@"规格"];
+                }else{
+                    [t_array addObject:name];
+                }
+                
             }
+            
+            
+            NSMutableDictionary *formatDict = [NSMutableDictionary new];
+            for (NSString *str in n_array) {
+                [formatDict setObject:str forKey:str];
+            }
+            NSMutableArray *rn_array = [NSMutableArray new];
+            for (int i = 0; i<[[formatDict allKeys] count]; i++) {
+                [rn_array addObject:[formatDict allKeys][i]];
+            }
+            if (rn_array.count != 0) {
+                [r_NormArray addObject:rn_array];
+            }
+            
+            
+            NSMutableDictionary *colorDict= [NSMutableDictionary new];
+            for (NSString *str in a_array) {
+                [colorDict setObject:str forKey:str];
+            }
+            NSMutableArray *ra_array = [NSMutableArray new];
+            for (int i = 0; i<[[colorDict allKeys] count]; i++) {
+                [ra_array addObject:[colorDict allKeys][i]];
+            }
+            if (ra_array.count != 0) {
+                [r_NormArray addObject:ra_array];
+            }
+            
+            NSMutableDictionary *t_dict = [NSMutableDictionary new];
+            for (NSString *str in t_array) {
+                [t_dict setObject:str forKey:str];
+            }
+            NSMutableArray *rt_array = [NSMutableArray new];
+            for (int i = 0; i<[[t_dict allKeys] count]; i++) {
+                [rt_array addObject:[t_dict allKeys][i]];
+            }
+            
+            
             lwCommodityDetailModel *detailModel = [lwCommodityDetailModel new];
             detailModel.price = @"41.00";
             detailModel.KC = @"9100";
             selectWindow.detailModel = detailModel;
-            selectWindow.normArray = [NSMutableArray arrayWithObjects:[dict allKeys],[dict1 allKeys], nil];
-            selectWindow.normModelArray = normDict[@"detail"];
-            selectWindow.titleArray = t_array;
+            selectWindow.normArray = r_NormArray;
+            selectWindow.titleArray = rt_array;
             [selectWindow showInView:self.tableView];
         }
             break;

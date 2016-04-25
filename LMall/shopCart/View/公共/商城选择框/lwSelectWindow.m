@@ -286,13 +286,12 @@
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
     if (section<_titleArray.count) {
         return _titleArray[section];
     }else{
         return @"";
     }
-
+    
 }
 
 
@@ -305,7 +304,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = myTbaleView.backgroundColor;
         cell.lwSelectWindow = self;
-        info = [NSMutableArray arrayWithObjects:@"尺寸",@"颜色", nil];
     }
     
     if (indexPath.section < _normArray.count) {
@@ -315,72 +313,45 @@
     if (indexPath.section < _titleArray.count) {
         [cell setSign:_titleArray[indexPath.section]];
     }
-    
-    
-    
     return cell;
 }
 
 static NSMutableArray *info;
+static NSString *label;
 /**
  *  选择规格，修改头部标签
  *
  */
 - (void)updateInfo:(NSString *)param Sign:(NSString *)sign{
-    
-    if ([sign isEqualToString:[_titleArray firstObject]]) {
-        for (int i = 0; i<[[_normArray firstObject] count]; i++) {
+    if ([sign isEqualToString:label]) {
+        for (int i = 0; i<[[_normArray firstObject]count]; i++) {
             NSString *str = [_normArray firstObject][i];
             if ([str isEqualToString:param]) {
-                [_titleArray replaceObjectAtIndex:0 withObject:str];
+                [info replaceObjectAtIndex:0 withObject:param];
             }
         }
     }else{
-        for (int i = 0; i<[[_normArray lastObject] count]; i++) {
+        for (int i = 0; i<[[_normArray lastObject]count]; i++) {
             NSString *str = [_normArray lastObject][i];
             if ([str isEqualToString:param]) {
-                [_titleArray replaceObjectAtIndex:_titleArray.count-1 withObject:str];
+                [info replaceObjectAtIndex:info.count-1 withObject:param];
             }
-        }
-    }
-    
-    for (int i = 0; i<_normModelArray.count; i++) {
-        lwCommodityNormModel *normModel = _normModelArray[i];
-        if ([_titleArray.firstObject isEqualToString:normModel.formatName] && [_titleArray.lastObject isEqualToString:normModel.colorName]) {
-            priceLabel.text = [NSString stringWithFormat:@"￥ %@",normModel.price];
-            inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",normModel.num];
         }
     }
     
     if (_titleArray.count != 2) {
         normLabel.text = param;
-    }else
-    normLabel.text = [NSString stringWithFormat:@"%@ | %@",[_titleArray firstObject],[_titleArray lastObject]];
+    }else{
+        normLabel.text = [NSString stringWithFormat:@"%@ | %@",[info firstObject],[info lastObject]];
+    }
 }
 
-- (void)setNormArray:(NSMutableArray *)normArray{
-    if ([[normArray firstObject] count] == 0) {
-        normArray = [NSMutableArray new];
-        [normArray addObject:@[@"标准款"]];
-        _normArray = normArray;
-    }else{
-        _normArray = normArray;
-    }
-    [myTbaleView reloadData];
-}
 
 - (void)setTitleArray:(NSMutableArray *)titleArray{
-
-    if ([[titleArray firstObject] isNull]) {
-        titleArray = [NSMutableArray new];
-        [titleArray addObject:@"规格"];
-        _titleArray = titleArray;
-    }else{
-        _titleArray = titleArray;
-    }
-    [myTbaleView reloadData];
+    _titleArray = titleArray;
+    info = titleArray;
+    label = [titleArray firstObject];
 }
-
 
 - (void)setDetailModel:(lwCommodityDetailModel *)detailModel{
     priceLabel.text = [NSString stringWithFormat:@"￥ %@",detailModel.price];
