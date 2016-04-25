@@ -48,7 +48,7 @@ static lwPatchTool *patchTool = nil;
     NSString *patchPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Patch.js"];
     
     //判断服务端是否有补丁
-    if ([remotePatch isNull]) {
+    if ([remotePatch isNull] || remotePatch == nil) {
         return;
     }
     

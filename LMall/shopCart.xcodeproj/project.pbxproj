@@ -81,6 +81,7 @@
 		C94FEEA51CC4DC9200D1D54D /* partner in Resources */ = {isa = PBXBuildFile; fileRef = C94FEEA41CC4DC9200D1D54D /* partner */; };
 		C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */; };
 		C96C70F41CB4E65500C3B68D /* UIWebView+lwWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C70F31CB4E65500C3B68D /* UIWebView+lwWebView.m */; };
+		C98328D81CCD9C61005AA6C7 /* testPatch.js in Resources */ = {isa = PBXBuildFile; fileRef = C98328D71CCD9C61005AA6C7 /* testPatch.js */; };
 		C98C3CC11CC9AFC200213B22 /* lwCustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */; };
 		C98C3CC41CC9B1CB00213B22 /* lwCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC31CC9B1CB00213B22 /* lwCustomAnnotationView.m */; };
 		C98C3CC81CC9C1B100213B22 /* lwCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC71CC9C1B100213B22 /* lwCommon.m */; };
@@ -241,6 +242,7 @@
 		C96439131CBCBCAD0031B6F3 /* lwPersonalFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalFooterView.m; sourceTree = "<group>"; };
 		C96C70F21CB4E65500C3B68D /* UIWebView+lwWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+lwWebView.h"; sourceTree = "<group>"; };
 		C96C70F31CB4E65500C3B68D /* UIWebView+lwWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+lwWebView.m"; sourceTree = "<group>"; };
+		C98328D71CCD9C61005AA6C7 /* testPatch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = testPatch.js; sourceTree = "<group>"; };
 		C98C3CB71CC9AD3F00213B22 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		C98C3CBF1CC9AFC200213B22 /* lwCustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCustomCalloutView.h; sourceTree = "<group>"; };
 		C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCustomCalloutView.m; sourceTree = "<group>"; };
@@ -796,6 +798,7 @@
 		C99588051C8D468D00A540B0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C98328D71CCD9C61005AA6C7 /* testPatch.js */,
 				C99588061C8D468D00A540B0 /* lwShopcart.plist */,
 				01156B6E1CB2591E0015C602 /* pchFile.pch */,
 				C98C3CB71CC9AD3F00213B22 /* Location.gpx */,
@@ -911,6 +914,7 @@
 				01156B991CB275CC0015C602 /* LICENSE in Resources */,
 				C99587FB1C8D460800A540B0 /* LaunchScreen.storyboard in Resources */,
 				C9240E031CBF2F0500B5B5E9 /* lwHomeHeaderOtherView.xib in Resources */,
+				C98328D81CCD9C61005AA6C7 /* testPatch.js in Resources */,
 				C99588111C8D468D00A540B0 /* lwShopcart.plist in Resources */,
 				C99587F81C8D460800A540B0 /* Assets.xcassets in Resources */,
 				C9240DEF1CBF225400B5B5E9 /* lwHomeCommonCell.xib in Resources */,

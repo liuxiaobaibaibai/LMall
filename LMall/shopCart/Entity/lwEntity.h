@@ -27,6 +27,8 @@
 //const NSString * lwPersonalCellID = @"lwPersonalCellID";
 //const NSString * lwShopCartCellID = @"lwShopCartCellID";
 
+static NSString *cellIDOfTest = @"123";
+
 @interface lwEntity : NSObject
 
 // 订单完成开始 //

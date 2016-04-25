@@ -70,36 +70,6 @@
 }
 
 
-- (CGFloat )height:(NSArray *)arr{
-    NSArray *titleArr = arr;
-    int width = 0;
-    int height = 0;
-    int column = 0;
-    int row = 0;
-    
-    //创建button
-    for (int i = 0; i < titleArr.count; i++) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.tag = i;
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        CGSize titleSize = [self getSizeByString:titleArr[i] AndFontSize:14];
-        row = row +titleSize.width;
-        if (row > [[UIScreen mainScreen]bounds].size.width) {
-            row = 0;
-            row = row + titleSize.width;
-            height++;
-            width = 0;
-            width = width+titleSize.width;
-            column = 0;
-        }else{
-            width = width+titleSize.width;
-        }
-        column++;
-    }
-    
-    return 40 * row + 8 * row;
-}
 
 - (CGSize)getSizeByString:(NSString*)string AndFontSize:(CGFloat)font
 {
@@ -290,8 +260,6 @@
         make.bottom.mas_equalTo(0);
         make.height.mas_equalTo(50);
     }];
-    
-    
 }
 
 
@@ -305,7 +273,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    static lwSelectCell *cell = nil;
+    
+    if (cell ==nil) {
+        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    [cell setLabelArray:_normArray[indexPath.section]];
+    
+    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return 1 + size.height;
 }
 
 
