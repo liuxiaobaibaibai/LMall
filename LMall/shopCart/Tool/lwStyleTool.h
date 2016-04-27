@@ -14,7 +14,7 @@
 @property (copy, nonatomic, readonly) UIColor *JDColor;
 
 /**定制蓝*/
-@property (copy, nonatomic, readonly) UIColor *DZClolor;
+@property (copy, nonatomic, readonly) UIColor *DZColor;
 
 /**单例*/
 + (instancetype)colorInstance;

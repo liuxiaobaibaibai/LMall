@@ -101,6 +101,11 @@
 
 /**设置当前控件的UI*/
 - (void)setupUI{
+    
+    for (UIView *view in [self subviews]) {
+        [view removeFromSuperview];
+    }
+    
     subBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, h)];
     [subBtn setTitle:@"-" forState:UIControlStateNormal];
     [subBtn setTitleColor:RGBA(32, 68, 209, 1.0) forState:UIControlStateNormal];
@@ -132,9 +137,6 @@
     
     line2 = [[UIView alloc] initWithFrame:CGRectMake(w-btnWidth, 0, 1, h)];
     line2.backgroundColor = _tintColor;
-    
-//    [self addSubview:line1];
-//    [self addSubview:line2];
     
     [self addSubview:addBtn];
     [self addSubview:subBtn];
@@ -195,7 +197,6 @@
 
 /**添加监听*/
 - (void)addObserver{
-//    NSLog(@"1");
     [self addObserver:self forKeyPath:@"value" options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"tintColor" options:NSKeyValueObservingOptionNew context:nil];
 }

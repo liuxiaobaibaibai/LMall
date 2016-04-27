@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15E65" minimumToolsVersion="Automatic">
+    <entity name="StoreInfo" representedClassName="StoreInfo" syncable="YES">
+        <attribute name="account" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bankName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bankNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bankUsername" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="businessLicense" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cityID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coordinates" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creditCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="district" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="districtID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="headaerpic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idCardBack" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idCardFont" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mainIndustry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mainIndustryID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="province" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="provinceID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="storeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subIndustry" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subIndustryID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="StoreInfo" positionX="-3339" positionY="-459" width="108" height="463"/>
+    </elements>
 </model>

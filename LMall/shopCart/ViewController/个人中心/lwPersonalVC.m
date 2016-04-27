@@ -8,6 +8,8 @@
 
 #import "lwPersonalVC.h"
 
+#import "lwStoreManagerVC.h"
+
 @interface lwPersonalVC ()
 <
     UITableViewDataSource,UITableViewDelegate
@@ -37,7 +39,7 @@
 
 - (void)initDataSource{
     dataArray = [NSMutableArray new];
-    dataArray = [NSMutableArray arrayWithObjects:@"商家后台",@"用户后台", nil];
+    dataArray = [NSMutableArray arrayWithObjects:@"商家后台",@"用户后台",@"商家入驻", nil];
 }
 
 - (void)setupView{
@@ -50,7 +52,12 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    if (indexPath.row == 2) {
+        lwStoreManagerVC *managerVC = [[lwStoreManagerVC alloc] init];
+        managerVC.title = @"商家入驻";
+        managerVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:managerVC animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource

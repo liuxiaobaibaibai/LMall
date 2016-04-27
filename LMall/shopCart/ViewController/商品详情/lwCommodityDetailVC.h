@@ -16,6 +16,7 @@ typedef enum : NSUInteger {
 } lwCommodityDetailBottomType;
 
 @interface lwCommodityDetailVC : UITableViewController
+
 {
     /**工具栏 按钮类型*/
     lwCommodityDetailBottomType bottomType;

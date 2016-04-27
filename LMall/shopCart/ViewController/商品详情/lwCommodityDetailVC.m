@@ -117,21 +117,21 @@
     lwCustomModel *yxModel = [lwCustomModel new];
     yxModel.title = @"已选";
     yxModel.subArray = @[@"2个白色装，1个黑色装"];
-    yxModel.currentColor = [lwStyleTool colorInstance].DZClolor;
+    yxModel.currentColor = [lwStyleTool colorInstance].DZColor;
     lwCustomCellContentFrameModel *yxFModel = [lwCustomCellContentFrameModel new];
     yxFModel.customModel = yxModel;
     
     lwCustomModel *szModel = [lwCustomModel new];
     szModel.title = @"送至";
     szModel.subArray = @[@"江苏省无锡市崇安区上马墩路18号A座112楼"];
-    szModel.currentColor = [lwStyleTool colorInstance].DZClolor;
+    szModel.currentColor = [lwStyleTool colorInstance].DZColor;
     lwCustomCellContentFrameModel *szFModel = [lwCustomCellContentFrameModel new];
     szFModel.customModel = szModel;
     
     lwCustomModel *yfModel = [lwCustomModel new];
     yfModel.title = @"运费";
     yfModel.subArray = @[@"在线支付免运费"];
-    yfModel.currentColor = [lwStyleTool colorInstance].DZClolor;
+    yfModel.currentColor = [lwStyleTool colorInstance].DZColor;
     lwCustomCellContentFrameModel *yfFModel = [lwCustomCellContentFrameModel new];
     yfFModel.customModel = yfModel;
     
@@ -161,7 +161,7 @@
     NSArray *imgArray = @[@"pd_dongdong_bottom",@"pd_shop_bottom",@"pd_unfavorite_bottom",@"pd_shopcart_bottom"];
     for (int i = 0; i<array.count; i++) {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*(lW/6), 0, lW/6, 60)];
-        [btn setTitleColor:[lwStyleTool colorInstance].DZClolor forState:UIControlStateNormal];
+        [btn setTitleColor:[lwStyleTool colorInstance].DZColor forState:UIControlStateNormal];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
         [btn setTitle:array[i] forState:UIControlStateNormal];
         [btn.layer setBorderWidth:0.5];
@@ -281,6 +281,7 @@
             selectWindow.detailModel = detailModel;
             selectWindow.normArray = r_NormArray;
             selectWindow.titleArray = rt_array;
+            selectWindow.normModelArray = normDict[@"detail"];
             [selectWindow showInView:self.tableView];
         }
             break;

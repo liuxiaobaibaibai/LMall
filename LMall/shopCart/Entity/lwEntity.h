@@ -26,6 +26,9 @@
 @property (copy, nonatomic, readonly) NSString *CommodityCellTitleID;
 /**其他ID*/
 @property (copy, nonatomic, readonly) NSString *CommodityCellOtherID;
+// 选择规格
+@property (copy, nonatomic, readonly) NSString *CommoditySelectNormCellID;
+@property (copy, nonatomic, readonly) NSString *CommoditySelectNormSelectCellID;
 // 商品详情结束 //
 
 // 购物车开始

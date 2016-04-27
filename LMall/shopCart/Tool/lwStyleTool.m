@@ -41,7 +41,7 @@ static lwStyleTool *style = nil;
 /**初始化预设值*/
 - (void)initDatasource{
     _JDColor = RGB(239, 42, 47);
-    _DZClolor = RGB(30, 34, 55);
+    _DZColor = RGB(30, 34, 55);
 }
 
 @end

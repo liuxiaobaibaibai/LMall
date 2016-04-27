@@ -10,6 +10,7 @@
 
 @class lwCommodityDetailModel;
 @class lwCommodityNormModel;
+@class UIKeyboardViewController;
 
 @protocol lwSelectNormViewDelegate <NSObject>
 
@@ -35,6 +36,8 @@
 
 @property (retain, nonatomic) NSMutableArray *normArray;
 @property (retain, nonatomic) NSMutableArray *titleArray;
+
+@property (retain, nonatomic) NSMutableArray *normModelArray;
 
 - (void)updateInfo:(NSString *)param Sign:(NSString *)sign;
 

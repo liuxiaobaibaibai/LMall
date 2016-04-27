@@ -11,7 +11,13 @@
 #import "lwCommodityDetailModel.h"
 #import "lwSelectCell.h"
 
+#import "lwStepper.h"
+#import "UITableView+lwTableView.h"
+
+
 #define padding 8
+#define txtWidth 120
+#define txtHeight 30
 
 @implementation lwSelectWindow
 {
@@ -27,6 +33,14 @@
     UILabel *inventoryLabel;
     UILabel *normLabel;
     UIView *lineView;
+    
+    UIKeyboardViewController *keyBoard;
+    
+    /**控制数量加减*/
+    UITextField *numberTextFiled;
+    /**积分输入框*/
+    UITextField *scoreTextFiled;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame Delegate:(id)delegate{
@@ -40,6 +54,7 @@
     
     return self;
 }
+
 
 - (void)calculate:(NSMutableArray *)arr{
     
@@ -56,18 +71,6 @@
     }];
 }
 
-- (void)tapClick:(UITapGestureRecognizer *)tap{
-    if ([_delegate respondsToSelector:@selector(removeWindow)]) {
-        [UIView animateWithDuration:0.3 animations:^{
-            backView.frame = CGRectMake(0, lH, lW, lH);
-        }completion:^(BOOL finished) {
-            if (finished) {
-                [_delegate removeWindow];
-            }
-        }];
-    }
-}
-
 
 
 - (CGSize)getSizeByString:(NSString*)string AndFontSize:(CGFloat)font
@@ -77,17 +80,6 @@
     return size;
 }
 
-- (void)selectWindowButtonClick:(UIButton *)btn{
-    if ([_delegate respondsToSelector:@selector(removeWindow)]) {
-        [UIView animateWithDuration:0.3 animations:^{
-            backView.frame = CGRectMake(0, lH, lW, lH);
-        }completion:^(BOOL finished) {
-            if (finished) {
-                [_delegate removeWindow];
-            }
-        }];
-    }
-}
 
 - (void)setupView{
     // 背景图
@@ -109,6 +101,9 @@
     // 头部视图
     headerView = [[UIView alloc] init];
     headerView.backgroundColor = [UIColor whiteColor];
+    UITapGestureRecognizer *Tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+    headerView.tag = 10;
+    [headerView addGestureRecognizer:Tap];
     [backView addSubview:headerView];
     
     // 头部图片
@@ -145,7 +140,7 @@
     normLabel = [[UILabel alloc] init];
     normLabel.text = @"选择规格";
     normLabel.font = [UIFont systemFontOfSize:14.0];
-    normLabel.textColor = [lwStyleTool colorInstance].DZClolor;
+    normLabel.textColor = [lwStyleTool colorInstance].DZColor;
     [headerView addSubview:normLabel];
     
     lineView = [[UIView alloc] init];
@@ -156,8 +151,9 @@
     myTbaleView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     myTbaleView.delegate = self;
     myTbaleView.dataSource = self;
+    [myTbaleView hideKeyBoard:YES];
     myTbaleView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [myTbaleView setTableFooterView:[[UIView alloc] init]];
+    [myTbaleView setTableFooterView:[self tableFooterView]];
     [backView addSubview:myTbaleView];
 
     
@@ -260,7 +256,35 @@
     }];
 }
 
-
+- (UIView *)tableFooterView{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, lW, 100)];
+    
+    UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, padding, lW-padding*3-txtWidth, txtHeight)];
+    scoreLabel.text = @"可用97412快消品分抵￥97412.00";
+    scoreLabel.font = [UIFont systemFontOfSize:14.0];
+    [footerView addSubview:scoreLabel];
+    
+    UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, txtHeight+padding*2, lW-txtWidth-padding*3, txtHeight)];
+    numberLabel.text = @"数量";
+    numberLabel.font = [UIFont systemFontOfSize:14.0];
+    [footerView addSubview:numberLabel];
+    
+    scoreTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(lW-txtWidth-padding, padding, txtWidth, txtHeight)];
+    scoreTextFiled.placeholder = @"请输入抵扣积分";
+    scoreTextFiled.font = [UIFont systemFontOfSize:14.0];
+    scoreTextFiled.textAlignment = NSTextAlignmentCenter;
+    scoreTextFiled.borderStyle = UITextBorderStyleRoundedRect;
+    [footerView addSubview:scoreTextFiled];
+    
+    numberTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(lW-txtWidth-padding, txtHeight+padding*2, txtWidth, 30)];
+    numberTextFiled.text = @"1";
+    numberTextFiled.font = [UIFont systemFontOfSize:14.0];
+    numberTextFiled.textAlignment = NSTextAlignmentCenter;
+    numberTextFiled.borderStyle = UITextBorderStyleRoundedRect;
+    [footerView addSubview:numberTextFiled];
+    
+    return footerView;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _normArray.count;
@@ -284,7 +308,6 @@
     return 1 + size.height;
 }
 
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section<_titleArray.count) {
         return _titleArray[section];
@@ -297,15 +320,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellID = @"cell";
-    lwSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    lwSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].CommoditySelectNormSelectCellID];
+
     if (!cell) {
-        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[lwEntity entitySingleton].CommoditySelectNormSelectCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = myTbaleView.backgroundColor;
         cell.lwSelectWindow = self;
     }
-    
+
     if (indexPath.section < _normArray.count) {
         [cell setLabelArray:_normArray[indexPath.section]];
     }
@@ -339,11 +362,22 @@ static NSString *label;
         }
     }
     
+    
     if (_titleArray.count != 2) {
         normLabel.text = param;
     }else{
         normLabel.text = [NSString stringWithFormat:@"%@ | %@",[info firstObject],[info lastObject]];
     }
+    
+    for (int i = 0; i<_normModelArray.count; i++) {
+        lwCommodityNormModel *model = [_normModelArray objectAtIndex:i];
+        if ([[info firstObject] isEqualToString:model.formatName] && [[info lastObject] isEqualToString:model.colorName]) {
+            priceLabel.text = [NSString stringWithFormat:@"￥ %@",model.price];
+            inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",model.num];
+        }
+    }
+    
+    
 }
 
 
@@ -353,9 +387,74 @@ static NSString *label;
     label = [titleArray firstObject];
 }
 
+
 - (void)setDetailModel:(lwCommodityDetailModel *)detailModel{
     priceLabel.text = [NSString stringWithFormat:@"￥ %@",detailModel.price];
     inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",detailModel.KC];
+}
+
+
+- (void)tapClick:(UITapGestureRecognizer *)tap{
+    
+    if (tap.view.tag == 10) {
+        [self endEditing:YES];
+    }else{
+        if ([_delegate respondsToSelector:@selector(removeWindow)]) {
+            [UIView animateWithDuration:0.3 animations:^{
+                backView.frame = CGRectMake(0, lH, lW, lH);
+            }completion:^(BOOL finished) {
+                if (finished) {
+                    [self hidden];
+                }
+            }];
+        }
+    }
+}
+
+- (void)selectWindowButtonClick:(UIButton *)btn{
+    if ([_delegate respondsToSelector:@selector(removeWindow)]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            backView.frame = CGRectMake(0, lH, lW, lH);
+        }completion:^(BOOL finished) {
+            if (finished) {
+                [self hidden];
+            }
+        }];
+    }
+    
+    NSString *price = [priceLabel.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+    NSString *inventory = [inventoryLabel.text stringByReplacingOccurrencesOfString:@"库存：" withString:@""];
+//    NSString *norm = [NSString new];
+    for (int i = 0; i<_normModelArray.count; i++) {
+        lwCommodityNormModel *model = _normModelArray[i];
+        if ([[info firstObject] isEqualToString:model.formatName] && [[info lastObject] isEqualToString:model.colorName]) {
+            NSLog(@"\n颜色：%@ 颜色ID：%@\n规格：%@ 规格ID：%@",model.colorName,model.color,model.formatName,model.format);
+        }else{
+            NSLog(@"标准款");
+        }
+    }
+    
+    if (_normModelArray.count == 0) {
+        NSLog(@"标准款");
+    }
+    
+    
+    NSLog(@"\n\n\n -----表单提交开始-----\n\n\n价格：%@\n库存：%@\n规格:%@\n颜色：%@\n积分：%@\n数量：%@\n\n\n -----表单提交开始-----\n\n\n",price,inventory,normLabel.text,normLabel.text,scoreTextFiled.text,numberTextFiled.text);
+    
+    
+//    NSMutableDictionary *commodity = [NSMutableDictionary new];
+//    [commodity setObject:price forKey:@"price"];
+//    [commodity setObject:inventory forKey:@"inventory"];
+//    [commodity setObject:<#(nonnull id)#> forKey:<#(nonnull id<NSCopying>)#>]
+    
+}
+
+
+#pragma mark - hidden
+- (void)hidden{
+    [self endEditing:YES];
+    [_delegate removeWindow];
+    [self removeFromSuperview];
 }
 
 @end
