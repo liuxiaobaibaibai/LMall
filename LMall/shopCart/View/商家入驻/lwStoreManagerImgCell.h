@@ -12,6 +12,8 @@
 
 @interface lwStoreManagerImgCell : UITableViewCell
 
+@property (retain, nonatomic) UIImage *img;
+
 @property (retain, nonatomic) lwStoreManagerModel *model;
 
 @end

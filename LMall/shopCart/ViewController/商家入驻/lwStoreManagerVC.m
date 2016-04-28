@@ -9,6 +9,8 @@
 
 #define nextBtnTag 10
 #define previousBtnTag 20
+#define URL @"http://192.168.1.73/lw/storeManager.json"
+
 #import "lwStoreManagerVC.h"
 
 //view
@@ -18,10 +20,16 @@
 #import "lwStoreManagerModel.h"
 #import "StoreInfo.h"
 static NSString *imgCellId = @"cellImg";
+static lwStoreManagerModel *staticModel;
+static CGRect contentRect;
 @interface lwStoreManagerVC ()
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UIActionSheetDelegate,
+    UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate,
+    MBProgressHUDDelegate
 >
 {
     UITableView *myTableView;
@@ -29,6 +37,7 @@ static NSString *imgCellId = @"cellImg";
     UIScrollView *myScrollView;
     NSMutableArray *setupArray;
     NSMutableArray *dataArray;
+    MBProgressHUD *HUD;
     
 }
 @property (assign, nonatomic) int selectIndex;
@@ -39,19 +48,27 @@ static NSString *imgCellId = @"cellImg";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _selectIndex = 0;
-//    setupArray = @[@{@"setup":@"商家资料",@"content":@[@{@"商家名称":@"测试商家"},@{@"商家简称":@"测试"},@{@"管理员平台账号":@"18812345678"},@{@"地区":@"江苏省无锡市北塘区"},@{@"详细地址":@"锡澄路274-17"},@{@"坐标":@"21.12,121.235"},@{@"门头照片":@"header"},@{@"商城LOGO":@"cry"},@{@"商家邮箱":@"123456789@qq.com"}]},@{@"setup":@"店主信息",@"content":@[@{@"店主电话":@"4000510408"},@{@"身份证号":@"360430199912345678"},@{@"身份证正面":@"header"},@{@"身份证反面":@"header"}]},@{@"setup":@"营业执照",@"content":@[@{@"统一社会信用代码":@"2016032516"},@{@"营业执照":@"header"},@{@"主行业":@"IT,软件"},@{@"副行业":@"IT,金融"}]},@{@"setup":@"银行信息",@"content":@[@{@"银行名称":@"中国建设银行"},@{@"户名":@"测试账号"},@{@"银行账号":@"6221 4008 2653 196532"}]}];
-    [self getData];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self setupView];
+    [self showToast:@selector(getData)];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    [self setupView];
+    [super viewDidAppear:animated];
+}
+
+- (void)showToast:(SEL)sel{
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.dimBackground = YES;
+    HUD.delegate = self;
+    [HUD showWhileExecuting:sel onTarget:self withObject:nil animated:YES];
 }
 
 
 - (void)getData{
     setupArray = [NSMutableArray new];
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.73/lw/storeManager.json"];
+    NSURL *url = [NSURL URLWithString:URL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSError *error = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
@@ -59,31 +76,29 @@ static NSString *imgCellId = @"cellImg";
         return;
     }else{
         NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-        if (responseObject != nil) {
-            if (responseObject) {
-                if (responseObject != nil) {
-                    NSArray *array = responseObject[@"root"];
-                    
-                    for (int i = 0; i<array.count; i++) {
-                        NSArray *contentArray = array[i][@"content"];
-                        NSMutableArray *setupArr = [NSMutableArray new];
-                        for (int i = 0; i<contentArray.count; i++) {
-                            lwStoreManagerModel *managerModel = [[lwStoreManagerModel alloc] initWithDict:contentArray[i]];
-                            [setupArr addObject:managerModel];
-                        }
-                        
-                        NSMutableDictionary *dict = [NSMutableDictionary new];
-                        [dict setObject:array[i][@"setup"] forKey:@"setup"];
-                        [dict setObject:setupArr forKey:@"content"];
-                        
-                        [setupArray addObject:dict];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [myTableView reloadData];
-                    });
-                }
-            }
+        if (responseObject == nil) {
+            return;
         }
+        NSArray *array = responseObject[@"root"];
+        
+        for (int i = 0; i<array.count; i++) {
+            NSArray *contentArray = array[i][@"content"];
+            NSMutableArray *setupArr = [NSMutableArray new];
+            for (int i = 0; i<contentArray.count; i++) {
+                lwStoreManagerModel *managerModel = [[lwStoreManagerModel alloc] initWithDict:contentArray[i]];
+                [setupArr addObject:managerModel];
+            }
+            
+            NSMutableDictionary *dict = [NSMutableDictionary new];
+            [dict setObject:array[i][@"setup"] forKey:@"setup"];
+            [dict setObject:setupArr forKey:@"content"];
+            
+            [setupArray addObject:dict];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+    
+            [myTableView reloadData];
+        });
     }
     
 }
@@ -97,7 +112,7 @@ static NSString *imgCellId = @"cellImg";
     
     [myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
-        make.top.mas_equalTo(0);
+        make.top.mas_equalTo(64);
         make.right.mas_equalTo(0);
         make.bottom.mas_equalTo(0);
     }];
@@ -134,16 +149,21 @@ static NSString *imgCellId = @"cellImg";
     [footerView addSubview:nextBtn];
     
     [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(200);
+        make.width.mas_equalTo(lW-30);
         make.centerX.mas_equalTo(footerView.mas_centerX);
         make.top.mas_equalTo(0);
-        make.bottom.mas_equalTo(-20);
+        make.bottom.mas_equalTo(-10);
     }];
     
     return footerView;
 }
 
 - (void)nextSetUp:(UIButton *)sender{
+    NSLog(@"%@",setupArray);
+    
+    for (int i = 0; i<setupArray.count; i++) {
+        lwStoreModel *model = [[lwStoreModel alloc] init];
+    }
     
 }
 
@@ -163,7 +183,7 @@ static NSString *imgCellId = @"cellImg";
     lwStoreManagerModel *model = (lwStoreManagerModel *)setupArray[indexPath.section][@"content"][indexPath.row];
     switch (model.type) {
         case lwStoreManagerModelTypeImg:
-            return 60;
+            return 80;
             break;
         default:
             return 44;
@@ -179,10 +199,12 @@ static NSString *imgCellId = @"cellImg";
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     if (!imgCell) {
         imgCell = [[lwStoreManagerImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:imgCellId];
+        imgCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     lwStoreManagerModel *model = (lwStoreManagerModel *)setupArray[indexPath.section][@"content"][indexPath.row];
@@ -208,31 +230,140 @@ static NSString *imgCellId = @"cellImg";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     lwStoreManagerModel *model = (lwStoreManagerModel *)setupArray[indexPath.section][@"content"][indexPath.row];
+    staticModel = model;
     switch (model.type) {
         case lwStoreManagerModelTypeImg:
         {
+            contentRect = CGRectMake(myTableView.contentOffset.x, myTableView.contentOffset.y, myTableView.contentSize.width, myTableView.contentSize.height);
             // 打开照片
+            [self showActionSheet:@"提示"];
         }
             break;
         case lwStoreManagerModelTypeSelect:
         {
             // 打开选择器
+            
         }
             break;
         case lwStoreManagerModelTypeText:
         {
             // 弹出文本框
+            NSString *msg = [NSString stringWithFormat:@"请输入%@",model.title];
+            [self showAlert:msg];
         }
+        case lwStoreManagerModelTypeMap:
+        {
+            // 打开地图
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)showAlert:(NSString *)msg{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [alert setTag:10];
+    [alert show];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case 10:
+        {
+            [self.view.window endEditing:YES];
+            if (buttonIndex == 0) {
+            }else{
+                [self update:[alertView textFieldAtIndex:0].text];
+            }
+        }
+            break;
             
         default:
             break;
     }
 }
 
-- (void)selectImagePickerView{
-    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+- (void)update:(NSString *)subtitle{
+    NSLog(@"%@",staticModel.title);
+    for (int i = 0; i<[setupArray count]; i++) {
+        for (lwStoreManagerModel *model in setupArray[i][@"content"]) {
+            if ([staticModel.title isEqualToString:model.title]) {
+                model.subtitle = subtitle;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [myTableView reloadData];
+                });
+            }
+        }
+    }
 }
 
+#pragma mark - 照片选择
+- (void)showActionSheet:(NSString *)title{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择", nil];
+    actionSheet.tag = 10;
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (actionSheet.tag) {
+        case 10:
+        {
+            if (buttonIndex == 0) {
+                // 拍照
+                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                    [self cameraOperation:YES];
+                }else{
+                    NSLog(@"当前没有权限");
+                }
+            }else if (buttonIndex == 1){
+                // 相册
+                [self cameraOperation:NO];
+            }else{
+                // 取消
+            }
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)cameraOperation:(BOOL)isCamera{
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    imgPicker.delegate = self;
+    if (isCamera) {
+        imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imgPicker.showsCameraControls = YES;
+    }else{
+        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imgPicker.allowsEditing = YES;
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    UIImage *img = info[@"UIImagePickerControllerOriginalImage"];
+    for (int i = 0; i<[setupArray count]; i++) {
+        for (lwStoreManagerModel *model in setupArray[i][@"content"]) {
+            if ([staticModel.title isEqualToString:model.title]) {
+                model.img = img;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [myTableView reloadData];
+                });
+            }
+        }
+    }
+    
+}
 
 
 

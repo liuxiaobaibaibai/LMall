@@ -21,6 +21,14 @@
             self.type = lwStoreManagerModelTypeSelect;
         }else if ([dict[@"type"] isEqualToString:@"img"]) {
             self.type = lwStoreManagerModelTypeImg;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:dict[@"content"]]];
+                if (data) {
+                    self.img = [UIImage imageWithData:data];
+                }
+            });
+        }else if ([dict[@"type"] isEqualToString:@"map"]){
+            self.type = lwStoreManagerModelTypeMap;
         }
     }
     return self;

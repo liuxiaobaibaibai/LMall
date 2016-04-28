@@ -13,8 +13,14 @@
 typedef enum : NSUInteger {
     lwStoreManagerModelTypeText = 0,
     lwStoreManagerModelTypeImg,
-    lwStoreManagerModelTypeSelect
+    lwStoreManagerModelTypeSelect,
+    lwStoreManagerModelTypeMap
 } lwStoreManagerModelType;
+
+typedef enum : NSUInteger {
+    lwStoreModelInputTypeNumber = 0,
+    lwStoreModelInputTypeString
+} lwStoreModelInputType;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) lwStoreManagerModelType type;
 /**副标题*/
 @property (copy, nonatomic) NSString *subtitle;
+/**副标题的输入类型*/
+
+
+/**只有在类型为图片的时候才用到*/
+@property (retain, nonatomic) UIImage *img;
 
 - (id)initWithDict:(NSDictionary *)dict;
 
