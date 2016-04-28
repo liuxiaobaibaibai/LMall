@@ -48,4 +48,5 @@ defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>
         var alert = UIAlertView.alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles("提示", self.dataSource().objectAtIndex(indexPath.row()), self, "确定", "取消", null);
         alert.show();
     },
+    
 })

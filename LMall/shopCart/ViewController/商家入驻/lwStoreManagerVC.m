@@ -11,8 +11,13 @@
 #define previousBtnTag 20
 #import "lwStoreManagerVC.h"
 
-#import "StoreInfo.h"
+//view
+#import "lwStoreManagerImgCell.h"
 
+// model
+#import "lwStoreManagerModel.h"
+#import "StoreInfo.h"
+static NSString *imgCellId = @"cellImg";
 @interface lwStoreManagerVC ()
 <
     UITableViewDataSource,
@@ -22,7 +27,7 @@
     UITableView *myTableView;
     UILabel *titleLabel;
     UIScrollView *myScrollView;
-    NSArray *setupArray;
+    NSMutableArray *setupArray;
     NSMutableArray *dataArray;
     
 }
@@ -35,9 +40,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _selectIndex = 0;
-    setupArray = @[@{@"setup":@"商家资料",@"content":@[@"商家名称",@"商家简称",@"管理员平台账号",@"省份",@"城市",@"区域",@"详细地址",@"坐标",@"门头照片",@"商城LOGO",@"商家邮箱"]},@{@"setup":@"店主信息",@"content":@[@"店主电话",@"身份证号",@"身份证正面",@"身份证反面"]},@{@"setup":@"营业执照",@"content":@[@"统一社会信用代码",@"营业执照",@"主行业",@"副行业"]},@{@"setup":@"银行信息",@"content":@[@"银行名称",@"户名",@"银行账号"]},@{@"setup":@"等待审核",@"content":@[@"提示信息"]}];
-    dataArray = [setupArray[_selectIndex] objectForKey:@"content"];
+//    setupArray = @[@{@"setup":@"商家资料",@"content":@[@{@"商家名称":@"测试商家"},@{@"商家简称":@"测试"},@{@"管理员平台账号":@"18812345678"},@{@"地区":@"江苏省无锡市北塘区"},@{@"详细地址":@"锡澄路274-17"},@{@"坐标":@"21.12,121.235"},@{@"门头照片":@"header"},@{@"商城LOGO":@"cry"},@{@"商家邮箱":@"123456789@qq.com"}]},@{@"setup":@"店主信息",@"content":@[@{@"店主电话":@"4000510408"},@{@"身份证号":@"360430199912345678"},@{@"身份证正面":@"header"},@{@"身份证反面":@"header"}]},@{@"setup":@"营业执照",@"content":@[@{@"统一社会信用代码":@"2016032516"},@{@"营业执照":@"header"},@{@"主行业":@"IT,软件"},@{@"副行业":@"IT,金融"}]},@{@"setup":@"银行信息",@"content":@[@{@"银行名称":@"中国建设银行"},@{@"户名":@"测试账号"},@{@"银行账号":@"6221 4008 2653 196532"}]}];
+    [self getData];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
     [self setupView];
+}
+
+
+- (void)getData{
+    setupArray = [NSMutableArray new];
+    NSURL *url = [NSURL URLWithString:@"http://192.168.1.73/lw/storeManager.json"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSError *error = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if (data == nil) {
+        return;
+    }else{
+        NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        if (responseObject != nil) {
+            if (responseObject) {
+                if (responseObject != nil) {
+                    NSArray *array = responseObject[@"root"];
+                    
+                    for (int i = 0; i<array.count; i++) {
+                        NSArray *contentArray = array[i][@"content"];
+                        NSMutableArray *setupArr = [NSMutableArray new];
+                        for (int i = 0; i<contentArray.count; i++) {
+                            lwStoreManagerModel *managerModel = [[lwStoreManagerModel alloc] initWithDict:contentArray[i]];
+                            [setupArr addObject:managerModel];
+                        }
+                        
+                        NSMutableDictionary *dict = [NSMutableDictionary new];
+                        [dict setObject:array[i][@"setup"] forKey:@"setup"];
+                        [dict setObject:setupArr forKey:@"content"];
+                        
+                        [setupArray addObject:dict];
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [myTableView reloadData];
+                    });
+                }
+            }
+        }
+    }
+    
 }
 
 - (void)setupView{
@@ -45,7 +93,6 @@
     myTableView.delegate = self;
     myTableView.dataSource = self;
     [myTableView setTableFooterView:[self tableFooterView]];
-    [myTableView setTableHeaderView:[self tableHeaderView]];
     [self.view addSubview:myTableView];
     
     [myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,136 +119,118 @@
 }
 
 - (UIView *)tableFooterView{
-    NSString *btnTitle = [NSString new];
-    if (_selectIndex == 0) {
-        btnTitle = @"下一步";
-    }
-    if (_selectIndex == setupArray.count -1) {
-        btnTitle = @"修改信息";
-    }
-    
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, lW, 50)];
     
-    if (_selectIndex == 0 || _selectIndex == setupArray.count -1) {
-        UIButton *nextBtn = [[UIButton alloc] init];
-        [nextBtn setTitle:btnTitle forState:UIControlStateNormal];
-        [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [nextBtn setBackgroundColor:[lwStyleTool colorInstance].JDColor];
-        [nextBtn addTarget:self
-                    action:@selector(nextSetUp:)
-          forControlEvents:UIControlEventTouchUpInside];
-        nextBtn.layer.cornerRadius = 5.0;
-        [nextBtn setTag:nextBtnTag];
-        nextBtn.layer.masksToBounds = YES;
-        [footerView addSubview:nextBtn];
-        
-        [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(200);
-            make.centerX.mas_equalTo(footerView.mas_centerX);
-            make.top.mas_equalTo(0);
-            make.bottom.mas_equalTo(-20);
-        }];
-    }else{
-        
-        UIButton *previousBtn = [[UIButton alloc] init];
-        [previousBtn setTitle:@"上一步" forState:UIControlStateNormal];
-        [previousBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [previousBtn setBackgroundColor:[lwStyleTool colorInstance].JDColor];
-        [previousBtn addTarget:self
-                    action:@selector(nextSetUp:)
-          forControlEvents:UIControlEventTouchUpInside];
-        previousBtn.layer.cornerRadius = 5.0;
-        previousBtn.layer.masksToBounds = YES;
-        [previousBtn setTag:previousBtnTag];
-        [footerView addSubview:previousBtn];
-        
-        
-        UIButton *nextBtn = [[UIButton alloc] init];
-        [nextBtn setTitle:_selectIndex == 3 ? @"提交审核" : @"下一步" forState:UIControlStateNormal];
-        [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [nextBtn setBackgroundColor:[lwStyleTool colorInstance].JDColor];
-        [nextBtn addTarget:self
-                    action:@selector(nextSetUp:)
-          forControlEvents:UIControlEventTouchUpInside];
-        nextBtn.layer.cornerRadius = 5.0;
-        nextBtn.layer.masksToBounds = YES;
-        [nextBtn setTag:nextBtnTag];
-        [footerView addSubview:nextBtn];
-        
-        [previousBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(padding);
-            make.right.mas_equalTo(nextBtn.mas_left).with.offset(-padding);
-            make.top.mas_equalTo(0);
-            make.width.mas_equalTo(nextBtn.mas_width);
-        }];
-        
-        [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(previousBtn.mas_right).with.offset(padding);
-            make.right.mas_equalTo(-padding);
-            make.top.mas_equalTo(0);
-            make.width.mas_equalTo(previousBtn.mas_width);
-        }];
-    }
+    UIButton *nextBtn = [[UIButton alloc] init];
+    [nextBtn setTitle:@"提交审核" forState:UIControlStateNormal];
+    [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nextBtn setBackgroundColor:[lwStyleTool colorInstance].JDColor];
+    [nextBtn addTarget:self
+                action:@selector(nextSetUp:)
+      forControlEvents:UIControlEventTouchUpInside];
+    nextBtn.layer.cornerRadius = 5.0;
+    [nextBtn setTag:nextBtnTag];
+    nextBtn.layer.masksToBounds = YES;
+    [footerView addSubview:nextBtn];
+    
+    [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(200);
+        make.centerX.mas_equalTo(footerView.mas_centerX);
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(-20);
+    }];
     
     return footerView;
 }
 
 - (void)nextSetUp:(UIButton *)sender{
     
-
-    StoreInfo *store = [StoreInfo new];
-    store.cityID = @"326";
-    [StoreInfo insertStoreInfo:store Completion:nil];
-    
-    switch (sender.tag) {
-        case previousBtnTag:
-        {
-            if (_selectIndex>0) {
-                self.selectIndex--;
-                [myTableView setTableFooterView:[self tableFooterView]];
-                [myTableView reloadData];
-            }
-        }
-            break;
-        default:
-        {
-            if (_selectIndex<setupArray.count-1) {
-                self.selectIndex++;
-                [myTableView setTableFooterView:[self tableFooterView]];
-                [myTableView reloadData];
-            }
-        }
-            break;
-    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[setupArray[_selectIndex] objectForKey:@"content"] count];
+    return [setupArray[section][@"content"] count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return [setupArray count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return [setupArray[_selectIndex] objectForKey:@"setup"];
+    return [setupArray[section] objectForKey:@"setup"];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    lwStoreManagerModel *model = (lwStoreManagerModel *)setupArray[indexPath.section][@"content"][indexPath.row];
+    switch (model.type) {
+        case lwStoreManagerModelTypeImg:
+            return 60;
+            break;
+        default:
+            return 44;
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    lwStoreManagerImgCell *imgCell = [tableView dequeueReusableCellWithIdentifier:imgCellId];
+    
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
     
-    [cell.textLabel setText:setupArray[_selectIndex][@"content"][indexPath.row]];
+    if (!imgCell) {
+        imgCell = [[lwStoreManagerImgCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:imgCellId];
+    }
     
-    return cell;
+    lwStoreManagerModel *model = (lwStoreManagerModel *)setupArray[indexPath.section][@"content"][indexPath.row];
+    
+    switch (model.type) {
+        case lwStoreManagerModelTypeImg:
+        {
+            [imgCell setModel:model];
+            return imgCell;
+        }
+            break;
+        default:
+        {
+            [cell.textLabel setText:model.title];
+            [cell.detailTextLabel setText:model.subtitle];
+            return cell;
+        }
+            break;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    lwStoreManagerModel *model = (lwStoreManagerModel *)setupArray[indexPath.section][@"content"][indexPath.row];
+    switch (model.type) {
+        case lwStoreManagerModelTypeImg:
+        {
+            // 打开照片
+        }
+            break;
+        case lwStoreManagerModelTypeSelect:
+        {
+            // 打开选择器
+        }
+            break;
+        case lwStoreManagerModelTypeText:
+        {
+            // 弹出文本框
+        }
+            
+        default:
+            break;
+    }
+}
+
+- (void)selectImagePickerView{
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
 }
 
 

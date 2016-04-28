@@ -24,6 +24,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="province" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="provinceID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="setup" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="storeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subIndustry" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,6 +32,6 @@
         <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="StoreInfo" positionX="-3339" positionY="-459" width="108" height="463"/>
+        <element name="StoreInfo" positionX="-3339" positionY="-459" width="108" height="480"/>
     </elements>
 </model>
