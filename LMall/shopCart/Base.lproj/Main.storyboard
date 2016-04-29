@@ -236,6 +236,44 @@
             </objects>
             <point key="canvasLocation" x="-1261" y="2368"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="haX-dz-l71">
+            <objects>
+                <navigationController id="Piv-qV-Qg3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="SEb-gM-agj"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R4C-d9-v0O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hhG-tQ-7XG" kind="relationship" relationship="rootViewController" id="BsT-iZ-86o"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AB7-EE-Yru" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1629" y="3001"/>
+        </scene>
+        <!--Lw OtherVC-->
+        <scene sceneID="0pK-77-Qom">
+            <objects>
+                <viewController id="hhG-tQ-7XG" customClass="lwOtherVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TGV-bD-mzT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ui1-qU-JyF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BLQ-iz-yQs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RM3-at-ifd"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRy-rA-XoA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1261" y="3001"/>
+        </scene>
         <!--Lw Find BaseVC-->
         <scene sceneID="dFX-74-UCg">
             <objects>
@@ -336,6 +374,7 @@
                         <segue destination="L1N-kl-hzn" kind="relationship" relationship="viewControllers" id="rnm-SN-loN"/>
                         <segue destination="Lr7-gV-7hG" kind="relationship" relationship="viewControllers" id="OSK-jU-PIf"/>
                         <segue destination="II8-CK-buT" kind="relationship" relationship="viewControllers" id="2qa-mh-HjT"/>
+                        <segue destination="Piv-qV-Qg3" kind="relationship" relationship="viewControllers" id="69X-NN-qLK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3z-TN-gAg" userLabel="First Responder" sceneMemberID="firstResponder"/>

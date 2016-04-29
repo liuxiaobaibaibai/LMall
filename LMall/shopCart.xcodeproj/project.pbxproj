@@ -100,6 +100,8 @@
 		C99587FB1C8D460800A540B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99587F91C8D460800A540B0 /* LaunchScreen.storyboard */; };
 		C99588111C8D468D00A540B0 /* lwShopcart.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99588061C8D468D00A540B0 /* lwShopcart.plist */; };
 		C9C50B2F1CB4BA3C00BB90B6 /* NSString+lwString.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C50B2E1CB4BA3C00BB90B6 /* NSString+lwString.m */; };
+		C9CCBFDC1CD2FF4900302B7B /* lwSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CCBFDB1CD2FF4900302B7B /* lwSliderView.m */; };
+		C9CCBFE01CD302FA00302B7B /* lwOtherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CCBFDF1CD302FA00302B7B /* lwOtherVC.m */; };
 		C9CDD4791CCDDB8900F0939F /* lwCommodityNormModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CDD4781CCDDB8900F0939F /* lwCommodityNormModel.m */; };
 		C9F1240D1CC7673C00310FAA /* lwFindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1240C1CC7673C00310FAA /* lwFindModel.m */; };
 /* End PBXBuildFile section */
@@ -282,6 +284,10 @@
 		C99588061C8D468D00A540B0 /* lwShopcart.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lwShopcart.plist; sourceTree = "<group>"; };
 		C9C50B2D1CB4BA3C00BB90B6 /* NSString+lwString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+lwString.h"; sourceTree = "<group>"; };
 		C9C50B2E1CB4BA3C00BB90B6 /* NSString+lwString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+lwString.m"; sourceTree = "<group>"; };
+		C9CCBFDA1CD2FF4900302B7B /* lwSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwSliderView.h; sourceTree = "<group>"; };
+		C9CCBFDB1CD2FF4900302B7B /* lwSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwSliderView.m; sourceTree = "<group>"; };
+		C9CCBFDE1CD302FA00302B7B /* lwOtherVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwOtherVC.h; sourceTree = "<group>"; };
+		C9CCBFDF1CD302FA00302B7B /* lwOtherVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwOtherVC.m; sourceTree = "<group>"; };
 		C9CDD4771CCDDB8900F0939F /* lwCommodityNormModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCommodityNormModel.h; sourceTree = "<group>"; };
 		C9CDD4781CCDDB8900F0939F /* lwCommodityNormModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCommodityNormModel.m; sourceTree = "<group>"; };
 		C9F1240B1CC7673C00310FAA /* lwFindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFindModel.h; sourceTree = "<group>"; };
@@ -542,6 +548,8 @@
 				C90C40A71CB7A3890090E3A1 /* lwNoContentView.m */,
 				C90C40741CB777D10090E3A1 /* lwStepper.h */,
 				C90C40751CB777D10090E3A1 /* lwStepper.m */,
+				C9CCBFDA1CD2FF4900302B7B /* lwSliderView.h */,
+				C9CCBFDB1CD2FF4900302B7B /* lwSliderView.m */,
 			);
 			path = "公共";
 			sourceTree = "<group>";
@@ -884,6 +892,7 @@
 		C995880D1C8D468D00A540B0 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C9CCBFDD1CD302EB00302B7B /* 其他 */,
 				C98C6AB01CD059AE006A202A /* 商家入驻 */,
 				013D37091CCB1345003D87B1 /* 个人中心 */,
 				C91DD7F21CC74C0C00250E77 /* 发现 */,
@@ -895,6 +904,15 @@
 				C90C406B1CB7772A0090E3A1 /* 首页 */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C9CCBFDD1CD302EB00302B7B /* 其他 */ = {
+			isa = PBXGroup;
+			children = (
+				C9CCBFDE1CD302FA00302B7B /* lwOtherVC.h */,
+				C9CCBFDF1CD302FA00302B7B /* lwOtherVC.m */,
+			);
+			path = "其他";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1089,6 +1107,7 @@
 				C916BBA01CC8C356001B4400 /* lwFind_ListVC.m in Sources */,
 				C90C40851CB777D10090E3A1 /* lwCustomCell.m in Sources */,
 				C99587EA1C8D460800A540B0 /* main.m in Sources */,
+				C9CCBFE01CD302FA00302B7B /* lwOtherVC.m in Sources */,
 				01156BA01CB275CC0015C602 /* NSArray+MASAdditions.m in Sources */,
 				0116A9DA1CB8A9040080B07F /* lwCommodityCell.m in Sources */,
 				013D37121CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m in Sources */,
@@ -1109,6 +1128,7 @@
 				C90C409B1CB77DE80090E3A1 /* lwMall_AddressModel.m in Sources */,
 				01156B9A1CB275CC0015C602 /* MASCompositeConstraint.m in Sources */,
 				C9240DF31CBF226500B5B5E9 /* lwHomeCustomCell.m in Sources */,
+				C9CCBFDC1CD2FF4900302B7B /* lwSliderView.m in Sources */,
 				C94FEEA31CC4DB5400D1D54D /* lwPartnerVC.m in Sources */,
 				C96C70F41CB4E65500C3B68D /* UIWebView+lwWebView.m in Sources */,
 				C9F1240D1CC7673C00310FAA /* lwFindModel.m in Sources */,

@@ -1,0 +1,19 @@
+//
+//  lwSliderView.h
+//  shopCart
+//
+//  Created by lw on 16/4/29.
+//  Copyright © 2016年 lw. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface lwSliderView : UIView
+
+@property (assign, nonatomic) int nodeCount;
+
+@property (retain, nonatomic) NSArray *titleArray;
+
+@property (assign, nonatomic) int nodeIndex;
+
+@end
