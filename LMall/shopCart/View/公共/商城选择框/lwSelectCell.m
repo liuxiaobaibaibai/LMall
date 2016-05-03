@@ -117,7 +117,6 @@
     }
     else
     {
-        
         [nowBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(lastBtn.mas_top);
             make.left.mas_equalTo(lastMaxX +padding);

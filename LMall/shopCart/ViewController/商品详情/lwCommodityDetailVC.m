@@ -47,16 +47,12 @@
     [super viewDidLoad];
     [self.tableView setTableHeaderView:[self setTableHeaderView]];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 60)]];
-    
-
-    [self initDataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
-    [self setToolView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -90,6 +86,11 @@
         
         [normDict setObject:normArray forKey:@"detail"];
         [normDict setObject:responseObject[@"cat_nors"] forKey:@"cat_nors"];
+        [normDict setObject:responseObject[@"num"] forKey:@"KC"];
+        [normDict setObject:responseObject[@"oprice"] forKey:@"oPrice"];
+        [normDict setObject:responseObject[@"price"] forKey:@"price"];
+        [self initDataSource];
+        [self setToolView];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
@@ -121,6 +122,13 @@
     lwCustomCellContentFrameModel *yxFModel = [lwCustomCellContentFrameModel new];
     yxFModel.customModel = yxModel;
     
+    lwCustomModel *jfModel = [lwCustomModel new];
+    jfModel.title = @"积分";
+    jfModel.subArray = @[[NSString stringWithFormat:@"【 返%@积分 】",normDict[@"price"]]];
+    jfModel.currentColor = [lwStyleTool colorInstance].JDColor;
+    lwCustomCellContentFrameModel *jfFModel = [lwCustomCellContentFrameModel new];
+    jfFModel.customModel = jfModel;
+    
     lwCustomModel *szModel = [lwCustomModel new];
     szModel.title = @"送至";
     szModel.subArray = @[@"江苏省无锡市崇安区上马墩路18号A座112楼"];
@@ -136,7 +144,7 @@
     yfFModel.customModel = yfModel;
     
     secondArray = [NSMutableArray new];
-    secondArray = [NSMutableArray arrayWithObjects:lqFModel,cxFModel,szFModel,yxFModel,yfFModel, nil];
+    secondArray = [NSMutableArray arrayWithObjects:jfFModel,lqFModel,cxFModel,szFModel,yxFModel,yfFModel, nil];
     
     [self.tableView reloadData];
 }
@@ -276,8 +284,8 @@
             
             
             lwCommodityDetailModel *detailModel = [lwCommodityDetailModel new];
-            detailModel.price = @"41.00";
-            detailModel.KC = @"9100";
+            detailModel.price = normDict[@"price"];
+            detailModel.KC = normDict[@"KC"];
             selectWindow.detailModel = detailModel;
             selectWindow.normArray = r_NormArray;
             selectWindow.titleArray = rt_array;

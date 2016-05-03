@@ -16,7 +16,7 @@
 
 
 #define padding 8
-#define txtWidth 120
+#define txtWidth 80
 #define txtHeight 30
 
 @implementation lwSelectWindow
@@ -50,9 +50,35 @@
         self.windowLevel = UIWindowLevelAlert + 1;
         self.delegate = delegate;
         [self setupView];
+        
     }
     
     return self;
+}
+
+- (void) removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+- (void)dealloc{
+    [self removeNotification];
+}
+
+- (void)addNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardNotification:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+- (void)keyboardNotification:(NSNotification *)noti{
+    NSDictionary *userInfo = noti.userInfo;
+    
+    NSTimeInterval duration = [userInfo[@"UIKeyboardAnimationDurationUserInfoKey"] doubleValue];
+    
+    CGRect rect = [userInfo[@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        backView.transform = CGAffineTransformMakeTranslation(0, rect.origin.y-lH);
+    }];
+    
 }
 
 
@@ -61,6 +87,7 @@
 }
 
 - (void)showInView:(UIView *)aView{
+    [self addNotification];
     [self makeKeyWindow];
     [self makeKeyAndVisible];
     backView.frame = CGRectMake(0, lH, lW, lH);
@@ -261,24 +288,26 @@
     
     UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, padding, lW-padding*3-txtWidth, txtHeight)];
     scoreLabel.text = @"可用97412快消品分抵￥97412.00";
-    scoreLabel.font = [UIFont systemFontOfSize:14.0];
+    scoreLabel.font = [UIFont systemFontOfSize:12.0];
     [footerView addSubview:scoreLabel];
     
     UILabel *numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(padding, txtHeight+padding*2, lW-txtWidth-padding*3, txtHeight)];
     numberLabel.text = @"数量";
-    numberLabel.font = [UIFont systemFontOfSize:14.0];
+    numberLabel.font = [UIFont systemFontOfSize:12.0];
     [footerView addSubview:numberLabel];
     
     scoreTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(lW-txtWidth-padding, padding, txtWidth, txtHeight)];
-    scoreTextFiled.placeholder = @"请输入抵扣积分";
-    scoreTextFiled.font = [UIFont systemFontOfSize:14.0];
+    scoreTextFiled.placeholder = @"抵扣积分";
+    scoreTextFiled.font = [UIFont systemFontOfSize:12.0];
     scoreTextFiled.textAlignment = NSTextAlignmentCenter;
     scoreTextFiled.borderStyle = UITextBorderStyleRoundedRect;
+    scoreTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     [footerView addSubview:scoreTextFiled];
     
     numberTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(lW-txtWidth-padding, txtHeight+padding*2, txtWidth, 30)];
     numberTextFiled.text = @"1";
-    numberTextFiled.font = [UIFont systemFontOfSize:14.0];
+    numberTextFiled.keyboardType = UIKeyboardTypeNumberPad;
+    numberTextFiled.font = [UIFont systemFontOfSize:12.0];
     numberTextFiled.textAlignment = NSTextAlignmentCenter;
     numberTextFiled.borderStyle = UITextBorderStyleRoundedRect;
     [footerView addSubview:numberTextFiled];
@@ -346,6 +375,10 @@ static NSString *label;
  *
  */
 - (void)updateInfo:(NSString *)param Sign:(NSString *)sign{
+    if (info.count == 0) {
+        return;
+    }
+    
     if ([sign isEqualToString:label]) {
         for (int i = 0; i<[[_normArray firstObject]count]; i++) {
             NSString *str = [_normArray firstObject][i];
