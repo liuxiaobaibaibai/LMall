@@ -28,29 +28,34 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        titleLabel = [[UILabel alloc] init];
-        titleLabel.font = [UIFont systemFontOfSize:14.0];
-        titleLabel.textColor = RGB(120, 120, 120);
-        titleLabel.textAlignment = NSTextAlignmentLeft;
-        [self addSubview:titleLabel];
+        
     }
     return self;
 }
 
 - (void)setFrameModel:(lwCustomCellContentFrameModel *)frameModel{
+    
     lwCustomModel *model = frameModel.customModel;
+    
+    _frameModel = frameModel;
+    
+    
+    for (UIView *view in [self subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    
     titleLabel.text = model.title;
     titleLabel.frame = frameModel.titleRect;
     
     
-    
-    for (int i = 0 ; i<[[self subviews] count]; i++) {
-        UIView *btn = [[self subviews] objectAtIndex:i];
-        
-        if ([btn isKindOfClass:[UIButton class]]) {
-            [btn removeFromSuperview];
-        }
-    }
+    titleLabel = [[UILabel alloc] init];
+    titleLabel.font = [UIFont systemFontOfSize:14.0];
+    titleLabel.textColor = RGB(120, 120, 120);
+    titleLabel.text = model.title;
+    titleLabel.frame = frameModel.titleRect;
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    [self addSubview:titleLabel];
     
     for (int i = 0; i<model.subArray.count; i++) {
         NSString *content = model.subArray[i];
