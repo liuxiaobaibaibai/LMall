@@ -179,6 +179,8 @@
     myTbaleView.delegate = self;
     myTbaleView.dataSource = self;
     [myTbaleView hideKeyBoard:YES];
+    myTbaleView.estimatedRowHeight = 44.0f;
+    myTbaleView.rowHeight = UITableViewAutomaticDimension;
     myTbaleView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [myTbaleView setTableFooterView:[self tableFooterView]];
     [backView addSubview:myTbaleView];
@@ -321,20 +323,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellID = @"cell";
-    lwSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[lwSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    
-    [cell setLabelArray:_normArray[indexPath.section]];
-    
-    CGSize size = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    [cell updateConstraints];
-    return 1 + size.height;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

@@ -1258,7 +1258,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.LifeCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1280,7 +1280,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/shopCart/Source/pchFile.pch";
 				INFOPLIST_FILE = shopCart/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EastSiliconValley.LifeCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";

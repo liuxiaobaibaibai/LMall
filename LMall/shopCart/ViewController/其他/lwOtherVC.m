@@ -19,16 +19,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
-    [self createdView];
 }
 
-- (void)createdView{
-    NSArray *itemArray = @[@"标签二三四",@"比钱",@"标签四五六",@"撒大大",@"我爱",@"撒",@"我爱",@"标签二三四",@"比钱",@"标签四五六",@"撒大大",@"标签二三四",@"比钱",@"标签四五六",@"撒大大",@"我爱上的",@"撒大大",@"我爱",@"标签二三四",@"比钱",@"标签四五六",@"撒我搜到生到死的考试大咖",];
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    for (UIView *view in [self.view subviews]) {
+        [view removeFromSuperview];
+    }
+    NSArray *itemArray = @[@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",@"标",@"标签",@"标签七",@"标签二三",@"标签四五六",@"标一个萨比是",@"标签",@"标签七",@"标签二啥都会的三",];
     
-    __block UIButton *lastButton = nil;
-    
-    CGFloat sumWidth = 0;
+    [self createdView:itemArray];
+}
 
+
+- (void)createdView:(NSArray *)itemArray{
+    UIButton *lastButton = nil;
+    
+    CGFloat sumWidth = 0.0;
+    int itemCount = 0;
+    int row = 1;
+    int lastRow = 1;
+    
     for (int i = 0; i<itemArray.count; i++) {
         UIButton *button = [[UIButton alloc] init];
         [button setTitle:itemArray[i] forState:UIControlStateNormal];
@@ -40,32 +51,25 @@
         button.layer.borderWidth = 1.0;
         button.layer.cornerRadius = 5.0;
         button.layer.masksToBounds = YES;
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     
-        sumWidth += [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width+10;
+        sumWidth += [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width +10;
         
-        CGFloat nowWidth = [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width+10;
-        
-        static int row = 1;
-        static int lastRow = 1;
-        static int itemCount;
-        
-        itemCount = i;
-
-        
-        NSLog(@"%d---->row:%d  lRow:%d  宽和：%.2f  当前宽：%.2f",i,row,lastRow,sumWidth,nowWidth);
-        
-        if (lW - (sumWidth+(marign*(itemCount + 1))) < nowWidth) {
+        CGFloat nowWidth = [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width +10;
+    
+        if (lW - ((sumWidth - nowWidth)+(marign*(itemCount+1))) <= nowWidth) {
+            // 不在同一行
             row++;
-            itemCount = 0;
-            sumWidth = 0;
+            itemCount = 1;
+            sumWidth = nowWidth;
         }else{
+            // 在同一行
             itemCount++;
         }
         
-        
-        
         if (!lastButton) {
+            // 第一个按钮
             [button mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(marign*row+labelHeight*row);
                 make.left.mas_equalTo(marign);
@@ -74,7 +78,9 @@
                 make.width.mas_equalTo(width);
             }];
         }else{
+            // 后续按钮
             if (lastRow == row) {
+                // 还在同一行
                 [button mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.mas_equalTo(lastButton.mas_right).offset(marign);
                     make.top.mas_equalTo(marign*row+labelHeight*row);
@@ -83,6 +89,7 @@
                     make.width.mas_equalTo(width);
                 }];
             }else{
+                // 换行后的
                 lastRow ++ ;
                 [button mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.mas_equalTo(marign);
@@ -95,6 +102,10 @@
         }
         lastButton = button;
     }
+}
+
+- (void)buttonClick:(UIButton *)btn{
+    NSLog(@"%@",btn.titleLabel.text);
 }
 
 

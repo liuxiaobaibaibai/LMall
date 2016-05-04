@@ -8,10 +8,15 @@
 #define BTN_HEIGHT 21
 #define padding 8
 
+#define marign 8
+#define labelHeight 21
+
 #define SCREEN_W           [UIScreen mainScreen].bounds.size.width
 
 #import "lwSelectCell.h"
 #import "lwSelectWindow.h"
+
+
 
 @implementation lwSelectCell
 {
@@ -36,6 +41,7 @@
     _labelArray = labelArray;
     
     [self viewView:labelArray];
+//    [self createdView:labelArray];
 }
 
 - (void)CreateBtnUI:(NSInteger)tag{    
@@ -53,6 +59,80 @@
     [_interestArray addObject:button];
     [_btnArray addObject:button];
 }
+
+- (void)createdView:(NSArray *)itemArray{
+    UIButton *lastButton = nil;
+    
+    CGFloat sumWidth = 0.0;
+    static int itemCount = 0;
+    
+    for (int i = 0; i<itemArray.count; i++) {
+        button = [[UIButton alloc] init];
+        [button setTitle:itemArray[i] forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [button setTitleColor:[lwStyleTool colorInstance].JDColor forState:UIControlStateNormal];
+        [button setTag:i];
+        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+        button.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        button.layer.borderWidth = 1.0;
+        button.layer.cornerRadius = 5.0;
+        button.layer.masksToBounds = YES;
+        [button addTarget:self action:@selector(rowdleButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
+        
+        sumWidth += [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width +10;
+        
+        CGFloat nowWidth = [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width +10;
+        
+        static int row = 1;
+        static int lastRow = 1;
+        
+        if (lW - ((sumWidth - nowWidth)+(marign*(itemCount+1))) <= nowWidth) {
+            // 不在同一行
+            row++;
+            itemCount = 1;
+            sumWidth = nowWidth;
+        }else{
+            // 在同一行
+            itemCount++;
+        }
+        
+        if (!lastButton) {
+            // 第一个按钮
+            [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(marign*row);
+                make.left.mas_equalTo(marign);
+                make.height.mas_equalTo(21);
+                CGFloat width = [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width + 10;
+                make.width.mas_equalTo(width);
+            }];
+        }else{
+            // 后续按钮
+            if (lastRow == row) {
+                // 还在同一行
+                [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(lastButton.mas_right).offset(marign);
+                    make.top.mas_equalTo(marign*row);
+                    make.height.mas_equalTo(21);
+                    CGFloat width = [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width + 10;
+                    make.width.mas_equalTo(width);
+                }];
+            }else{
+                // 换行后的
+                lastRow ++ ;
+                [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(marign);
+                    make.top.mas_equalTo(marign*row+labelHeight*row);
+                    make.height.mas_equalTo(21);
+                    CGFloat width = [itemArray[i] computedSize:CGSizeMake(MAXFLOAT, 21) Font:[UIFont systemFontOfSize:14.0]].width + 10;
+                    make.width.mas_equalTo(width);
+                }];
+            }
+        }
+        lastButton = button;
+    }
+}
+
 
 //第一种方法
 - (void)viewView:(NSArray *)titleArr{
@@ -151,6 +231,7 @@
     
     rowdleBtn.selected = !rowdleBtn.selected;
     [rowdleBtn setBackgroundColor:[UIColor redColor]];
+    [rowdleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     for (int i = 0; i<_interestArray.count; i++) {
         UIButton *btn = _interestArray[i];
         if (btn.tag != rowdleBtn.tag) {
