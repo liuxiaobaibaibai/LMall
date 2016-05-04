@@ -8,16 +8,16 @@
 最新更新
 动态关注效果：
 
-![enter image description here](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/YW.gif)
+![动态关注取关的效果](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/YW.gif)
 
 ----------
 
 界面大概截图如下：
+	
 
     1、首页
 
-
-![enter image description here](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/Simulator%20Screen%20Shot%202016%E5%B9%B44%E6%9C%8814%E6%97%A5%20%E4%B8%8B%E5%8D%884.32.39.png)
+![新版首页](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/Simulator%20Screen%20Shot%202016%E5%B9%B45%E6%9C%884%E6%97%A5%20%E4%B8%8B%E5%8D%881.55.31.png)
 
 
     2、商品详情
@@ -33,3 +33,10 @@
        4、订单确认页面
 
 ![enter image description here](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/Simulator%20Screen%20Shot%202016%E5%B9%B44%E6%9C%8814%E6%97%A5%20%E4%B8%8B%E5%8D%884.33.02.png)
+			
+       5、规格选择框
+
+![enter image description here](https://raw.githubusercontent.com/liuxiaobaibaibai/LMall/master/ScreenPhoto/select.gif)
+
+
+			 
