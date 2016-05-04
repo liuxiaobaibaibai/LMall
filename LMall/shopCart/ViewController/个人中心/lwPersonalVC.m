@@ -10,12 +10,25 @@
 
 #import "lwStoreManagerVC.h"
 
+#import "lwFlowLayout.h"
+#import "lwPeronalCell.h"
+
+
+#import "lwPersonalModel.h"
+
+#define itemCount 3
+#define minSpace 0
+
+static NSString *personalCellID = @"cellsb";
+static NSString *HedaerCell = @"headerCell";
 @interface lwPersonalVC ()
 <
-    UITableViewDataSource,UITableViewDelegate
+    UICollectionViewDataSource,
+    UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout
 >
 {
-    UITableView *myTableView;
+    UICollectionView *myCollectionView;
     NSMutableArray *dataArray;
 }
 
@@ -23,63 +36,114 @@
 
 @implementation lwPersonalVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initDataSource];
     [self setupView];
+    [self initDataSource];
+}
+
+- (void)setupView{
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    flowLayout.itemSize = CGSizeMake(lW/itemCount-minSpace*(itemCount +1), lW/itemCount-minSpace*(itemCount +1));
+//    flowLayout.minimumInteritemSpacing = minSpace;
+//    flowLayout.minimumLineSpacing = minSpace;
+    myCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    [myCollectionView registerClass:[lwPeronalCell class] forCellWithReuseIdentifier:personalCellID];
+    [myCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HedaerCell];
+    myCollectionView.backgroundColor = [UIColor whiteColor];
+    myCollectionView.delegate = self;
+    myCollectionView.dataSource = self;
+    [self.view addSubview:myCollectionView];
+    
+    [myCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+    }];
 }
 
 - (void)initDataSource{
     dataArray = [NSMutableArray new];
-    dataArray = [NSMutableArray arrayWithObjects:@"商家后台",@"用户后台",@"商家入驻", nil];
-}
-
-- (void)setupView{
-    myTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
-    myTableView.delegate = self;
-    myTableView.dataSource = self;
-    [self.view addSubview:myTableView];
-}
-
-#pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 2) {
-        lwStoreManagerVC *managerVC = [[lwStoreManagerVC alloc] init];
-        managerVC.title = @"商家入驻";
-        managerVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:managerVC animated:YES];
+    
+    NSMutableArray *sectionArray = [NSMutableArray new];
+    for (int i = 0; i<9; i++) {
+        lwPersonalModel *model = [lwPersonalModel new];
+        model.imgPath = @"http://www.easyicon.net/api/resizeApi.php?id=1108155&size=128";
+        model.title = @"百度贴吧";
+        [sectionArray addObject:model];
     }
+    
+    NSMutableArray *headerArray = [NSMutableArray new];
+    
+    for (int i = 0; i<4; i++) {
+        lwPersonalModel *model = [lwPersonalModel new];
+        model.imgPath = @"http://www.easyicon.net/api/resizeApi.php?id=1108155&size=128";
+        model.title = @"百度贴吧";
+        [headerArray addObject:model];
+    }
+    
+    [dataArray addObject:headerArray];
+    
+    for (int i = 0; i<6; i++) {
+        [dataArray addObject:sectionArray];
+    }
+    
+    
+    [myCollectionView reloadData];
 }
 
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
     return dataArray.count;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [dataArray[section] count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[lwEntity entitySingleton].lwPersonalCellID];
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return section == 0 ? CGSizeMake(lW, 100) : CGSizeMake(lW, 20);
+}
 
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[lwEntity entitySingleton].lwPersonalCellID];
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return section == 0 ? 0 : 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return section == 0 ? 0 : 0;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 ) {
+        return CGSizeMake(lW/4, lW/4);
+    }else{
+        return CGSizeMake(lW/itemCount-minSpace*(itemCount +1), lW/itemCount-minSpace*(itemCount +1));
     }
+}
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HedaerCell forIndexPath:indexPath];
+    reusableView.backgroundColor = RGB(arc4random()%255, arc4random()%255, arc4random()%255);
     
-    cell.textLabel.text = dataArray[indexPath.row];
+    return indexPath.section == 0 ? reusableView : reusableView;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    lwPeronalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:personalCellID forIndexPath:indexPath];
+    [cell setModel:(lwPersonalModel *)dataArray[indexPath.section][indexPath.row]];
     return cell;
 }
+
+
 
 
 

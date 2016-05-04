@@ -9,7 +9,7 @@
 
 #define nextBtnTag 10
 #define previousBtnTag 20
-#define URL @"http://192.168.1.73/lw/storeManager.json"
+#define URL @"http://192.168.1.29/lw/storeManager.json"
 
 #import "lwStoreManagerVC.h"
 

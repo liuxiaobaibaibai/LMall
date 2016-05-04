@@ -86,6 +86,10 @@
 		C98704871CD19CF70082A54E /* StoreInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C98704851CD19CF70082A54E /* StoreInfo.m */; };
 		C987048B1CD1D7150082A54E /* lwStoreManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C987048A1CD1D7150082A54E /* lwStoreManagerModel.m */; };
 		C987048F1CD1E9040082A54E /* lwStoreManagerImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C987048E1CD1E9040082A54E /* lwStoreManagerImgCell.m */; };
+		C988F3B81CD9CD2900D32139 /* lwFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3B71CD9CD2900D32139 /* lwFlowLayout.m */; };
+		C988F3BF1CD9CF2F00D32139 /* lwPeronalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3BE1CD9CF2F00D32139 /* lwPeronalCell.m */; };
+		C988F3C31CD9D01700D32139 /* lwPersonalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3C21CD9D01700D32139 /* lwPersonalModel.m */; };
+		C988F3C81CD9E55D00D32139 /* lwPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3C71CD9E55D00D32139 /* lwPersonalHeaderView.m */; };
 		C98C3CC11CC9AFC200213B22 /* lwCustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */; };
 		C98C3CC41CC9B1CB00213B22 /* lwCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC31CC9B1CB00213B22 /* lwCustomAnnotationView.m */; };
 		C98C3CC81CC9C1B100213B22 /* lwCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC71CC9C1B100213B22 /* lwCommon.m */; };
@@ -259,6 +263,14 @@
 		C987048A1CD1D7150082A54E /* lwStoreManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwStoreManagerModel.m; sourceTree = "<group>"; };
 		C987048D1CD1E9040082A54E /* lwStoreManagerImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwStoreManagerImgCell.h; sourceTree = "<group>"; };
 		C987048E1CD1E9040082A54E /* lwStoreManagerImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwStoreManagerImgCell.m; sourceTree = "<group>"; };
+		C988F3B61CD9CD2900D32139 /* lwFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwFlowLayout.h; sourceTree = "<group>"; };
+		C988F3B71CD9CD2900D32139 /* lwFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwFlowLayout.m; sourceTree = "<group>"; };
+		C988F3BD1CD9CF2F00D32139 /* lwPeronalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPeronalCell.h; sourceTree = "<group>"; };
+		C988F3BE1CD9CF2F00D32139 /* lwPeronalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPeronalCell.m; sourceTree = "<group>"; };
+		C988F3C11CD9D01700D32139 /* lwPersonalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonalModel.h; sourceTree = "<group>"; };
+		C988F3C21CD9D01700D32139 /* lwPersonalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalModel.m; sourceTree = "<group>"; };
+		C988F3C61CD9E55D00D32139 /* lwPersonalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonalHeaderView.h; sourceTree = "<group>"; };
+		C988F3C71CD9E55D00D32139 /* lwPersonalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalHeaderView.m; sourceTree = "<group>"; };
 		C98C3CB71CC9AD3F00213B22 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		C98C3CBF1CC9AFC200213B22 /* lwCustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCustomCalloutView.h; sourceTree = "<group>"; };
 		C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCustomCalloutView.m; sourceTree = "<group>"; };
@@ -424,20 +436,8 @@
 				013D370F1CCB24E5003D87B1 /* 商家后台 */,
 				013D370C1CCB1698003D87B1 /* lwPersonalVC.h */,
 				013D370D1CCB1698003D87B1 /* lwPersonalVC.m */,
-			);
-			path = "个人中心";
-			sourceTree = "<group>";
-		};
-		013D370A1CCB134D003D87B1 /* 个人中心 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "个人中心";
-			sourceTree = "<group>";
-		};
-		013D370B1CCB1354003D87B1 /* 个人中心 */ = {
-			isa = PBXGroup;
-			children = (
+				C988F3B61CD9CD2900D32139 /* lwFlowLayout.h */,
+				C988F3B71CD9CD2900D32139 /* lwFlowLayout.m */,
 			);
 			path = "个人中心";
 			sourceTree = "<group>";
@@ -767,6 +767,26 @@
 			path = "商家入驻";
 			sourceTree = "<group>";
 		};
+		C988F3BC1CD9CF2F00D32139 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				C988F3BD1CD9CF2F00D32139 /* lwPeronalCell.h */,
+				C988F3BE1CD9CF2F00D32139 /* lwPeronalCell.m */,
+				C988F3C61CD9E55D00D32139 /* lwPersonalHeaderView.h */,
+				C988F3C71CD9E55D00D32139 /* lwPersonalHeaderView.m */,
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		C988F3C01CD9CFFC00D32139 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				C988F3C11CD9D01700D32139 /* lwPersonalModel.h */,
+				C988F3C21CD9D01700D32139 /* lwPersonalModel.m */,
+			);
+			path = "个人中心";
+			sourceTree = "<group>";
+		};
 		C98C3CBE1CC9AFC200213B22 /* 地图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -850,8 +870,8 @@
 		C99588021C8D468D00A540B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C988F3C01CD9CFFC00D32139 /* 个人中心 */,
 				C98704881CD1D6FC0082A54E /* 商家入驻 */,
-				013D370B1CCB1354003D87B1 /* 个人中心 */,
 				C91DD7F71CC74CC300250E77 /* 发现 */,
 				C90C409C1CB77FC50090E3A1 /* 订单 */,
 				C90C40981CB77DC30090E3A1 /* 地址信息 */,
@@ -877,8 +897,8 @@
 		C99588071C8D468D00A540B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C988F3BC1CD9CF2F00D32139 /* 个人中心 */,
 				C987048C1CD1E8E50082A54E /* 商家入驻 */,
-				013D370A1CCB134D003D87B1 /* 个人中心 */,
 				C91DD7F61CC74CAB00250E77 /* 发现 */,
 				C90C40721CB777D10090E3A1 /* 订单完成 */,
 				C90C40731CB777D10090E3A1 /* 公共 */,
@@ -1081,6 +1101,7 @@
 				01156B9C1CB275CC0015C602 /* MASConstraintMaker.m in Sources */,
 				C99587F61C8D460800A540B0 /* shopCart.xcdatamodeld in Sources */,
 				C987048B1CD1D7150082A54E /* lwStoreManagerModel.m in Sources */,
+				C988F3C31CD9D01700D32139 /* lwPersonalModel.m in Sources */,
 				C96439141CBCBCAD0031B6F3 /* lwPersonalFooterView.m in Sources */,
 				C98C3CC11CC9AFC200213B22 /* lwCustomCalloutView.m in Sources */,
 				C99587ED1C8D460800A540B0 /* AppDelegate.m in Sources */,
@@ -1095,6 +1116,7 @@
 				01B7014A1CB919AC007110A9 /* lwCompletedCustomCell.m in Sources */,
 				C922F8A11CC0B6B9009E0E39 /* lwCommodityModel.m in Sources */,
 				C90C40701CB7772A0090E3A1 /* lwCommodityDetailVC.m in Sources */,
+				C988F3B81CD9CD2900D32139 /* lwFlowLayout.m in Sources */,
 				0116A9E11CB8E5BF0080B07F /* UIKeyboardView.m in Sources */,
 				C90C40961CB778870090E3A1 /* lwCustomCellContentFrameModel.m in Sources */,
 				C90C40821CB777D10090E3A1 /* lwStepper.m in Sources */,
@@ -1123,6 +1145,7 @@
 				C987048F1CD1E9040082A54E /* lwStoreManagerImgCell.m in Sources */,
 				C90C40A81CB7A3890090E3A1 /* lwNoContentView.m in Sources */,
 				C90C40941CB778870090E3A1 /* lwShopcartModel.m in Sources */,
+				C988F3C81CD9E55D00D32139 /* lwPersonalHeaderView.m in Sources */,
 				C90C40971CB778870090E3A1 /* lwCustomModel.m in Sources */,
 				C90C40831CB777D10090E3A1 /* lwShopcartCell.m in Sources */,
 				C90C409B1CB77DE80090E3A1 /* lwMall_AddressModel.m in Sources */,
@@ -1138,6 +1161,7 @@
 				01156B9B1CB275CC0015C602 /* MASConstraint.m in Sources */,
 				013D370E1CCB1698003D87B1 /* lwPersonalVC.m in Sources */,
 				C90C40AC1CB7AAFD0090E3A1 /* lwAddressCell.m in Sources */,
+				C988F3BF1CD9CF2F00D32139 /* lwPeronalCell.m in Sources */,
 				C98C3CCE1CC9F11500213B22 /* lwSortHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
