@@ -28,7 +28,6 @@
 		0116A9E61CB8E61A0080B07F /* lwBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A9E51CB8E61A0080B07F /* lwBaseVC.m */; };
 		0116A9E91CB8E81A0080B07F /* UITableView+lwTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0116A9E81CB8E81A0080B07F /* UITableView+lwTableView.m */; };
 		013D370E1CCB1698003D87B1 /* lwPersonalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D370D1CCB1698003D87B1 /* lwPersonalVC.m */; };
-		013D37121CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */; };
 		013D37161CCB4AF8003D87B1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D37151CCB4AF8003D87B1 /* libz.tbd */; };
 		013D37181CCB4B03003D87B1 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013D37171CCB4B03003D87B1 /* JavaScriptCore.framework */; };
 		013D371B1CCB6486003D87B1 /* lwPatchTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 013D371A1CCB6486003D87B1 /* lwPatchTool.m */; };
@@ -90,6 +89,7 @@
 		C988F3BF1CD9CF2F00D32139 /* lwPeronalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3BE1CD9CF2F00D32139 /* lwPeronalCell.m */; };
 		C988F3C31CD9D01700D32139 /* lwPersonalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3C21CD9D01700D32139 /* lwPersonalModel.m */; };
 		C988F3C81CD9E55D00D32139 /* lwPersonalHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C988F3C71CD9E55D00D32139 /* lwPersonalHeaderView.m */; };
+		C98A81421CDB1F9D00E0D1C0 /* lwWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C98A81411CDB1F9D00E0D1C0 /* lwWalletVC.m */; };
 		C98C3CC11CC9AFC200213B22 /* lwCustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */; };
 		C98C3CC41CC9B1CB00213B22 /* lwCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC31CC9B1CB00213B22 /* lwCustomAnnotationView.m */; };
 		C98C3CC81CC9C1B100213B22 /* lwCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = C98C3CC71CC9C1B100213B22 /* lwCommon.m */; };
@@ -158,8 +158,6 @@
 		0116A9E81CB8E81A0080B07F /* UITableView+lwTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+lwTableView.m"; sourceTree = "<group>"; };
 		013D370C1CCB1698003D87B1 /* lwPersonalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonalVC.h; sourceTree = "<group>"; };
 		013D370D1CCB1698003D87B1 /* lwPersonalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalVC.m; sourceTree = "<group>"; };
-		013D37101CCB2513003D87B1 /* lwPersonal_ShopManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonal_ShopManagerVC.h; sourceTree = "<group>"; };
-		013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonal_ShopManagerVC.m; sourceTree = "<group>"; };
 		013D37151CCB4AF8003D87B1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		013D37171CCB4B03003D87B1 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		013D37191CCB6486003D87B1 /* lwPatchTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPatchTool.h; sourceTree = "<group>"; };
@@ -271,6 +269,8 @@
 		C988F3C21CD9D01700D32139 /* lwPersonalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalModel.m; sourceTree = "<group>"; };
 		C988F3C61CD9E55D00D32139 /* lwPersonalHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwPersonalHeaderView.h; sourceTree = "<group>"; };
 		C988F3C71CD9E55D00D32139 /* lwPersonalHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwPersonalHeaderView.m; sourceTree = "<group>"; };
+		C98A81401CDB1F9D00E0D1C0 /* lwWalletVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwWalletVC.h; sourceTree = "<group>"; };
+		C98A81411CDB1F9D00E0D1C0 /* lwWalletVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwWalletVC.m; sourceTree = "<group>"; };
 		C98C3CB71CC9AD3F00213B22 /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		C98C3CBF1CC9AFC200213B22 /* lwCustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lwCustomCalloutView.h; sourceTree = "<group>"; };
 		C98C3CC01CC9AFC200213B22 /* lwCustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lwCustomCalloutView.m; sourceTree = "<group>"; };
@@ -433,6 +433,7 @@
 		013D37091CCB1345003D87B1 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				C98A813F1CDB1F2500E0D1C0 /* 我的钱包 */,
 				013D370F1CCB24E5003D87B1 /* 商家后台 */,
 				013D370C1CCB1698003D87B1 /* lwPersonalVC.h */,
 				013D370D1CCB1698003D87B1 /* lwPersonalVC.m */,
@@ -445,8 +446,6 @@
 		013D370F1CCB24E5003D87B1 /* 商家后台 */ = {
 			isa = PBXGroup;
 			children = (
-				013D37101CCB2513003D87B1 /* lwPersonal_ShopManagerVC.h */,
-				013D37111CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m */,
 			);
 			path = "商家后台";
 			sourceTree = "<group>";
@@ -785,6 +784,15 @@
 				C988F3C21CD9D01700D32139 /* lwPersonalModel.m */,
 			);
 			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		C98A813F1CDB1F2500E0D1C0 /* 我的钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				C98A81401CDB1F9D00E0D1C0 /* lwWalletVC.h */,
+				C98A81411CDB1F9D00E0D1C0 /* lwWalletVC.m */,
+			);
+			path = "我的钱包";
 			sourceTree = "<group>";
 		};
 		C98C3CBE1CC9AFC200213B22 /* 地图 */ = {
@@ -1132,7 +1140,6 @@
 				C9CCBFE01CD302FA00302B7B /* lwOtherVC.m in Sources */,
 				01156BA01CB275CC0015C602 /* NSArray+MASAdditions.m in Sources */,
 				0116A9DA1CB8A9040080B07F /* lwCommodityCell.m in Sources */,
-				013D37121CCB2513003D87B1 /* lwPersonal_ShopManagerVC.m in Sources */,
 				C90C409F1CB77FD80090E3A1 /* lwMall_OrderModel.m in Sources */,
 				C9240DEE1CBF225400B5B5E9 /* lwHomeCommonCell.m in Sources */,
 				C916BBA31CC8C377001B4400 /* lwFindBaseVC.m in Sources */,
@@ -1144,6 +1151,7 @@
 				C98C3CC81CC9C1B100213B22 /* lwCommon.m in Sources */,
 				C987048F1CD1E9040082A54E /* lwStoreManagerImgCell.m in Sources */,
 				C90C40A81CB7A3890090E3A1 /* lwNoContentView.m in Sources */,
+				C98A81421CDB1F9D00E0D1C0 /* lwWalletVC.m in Sources */,
 				C90C40941CB778870090E3A1 /* lwShopcartModel.m in Sources */,
 				C988F3C81CD9E55D00D32139 /* lwPersonalHeaderView.m in Sources */,
 				C90C40971CB778870090E3A1 /* lwCustomModel.m in Sources */,

@@ -14,7 +14,8 @@
 @interface lwPeronalCell : UICollectionViewCell
 
 @property (retain, nonatomic) lwPersonalModel *model;
-
+@property (retain, nonatomic) UIImageView *imgView;
+@property (retain, nonatomic) UILabel *titleLabel;
 
 
 @end

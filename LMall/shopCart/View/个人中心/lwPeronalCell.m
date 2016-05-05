@@ -16,10 +16,7 @@
 
 
 @implementation lwPeronalCell
-{
-    UIImageView *imgView;
-    UILabel *titleLabel;
-}
+@synthesize imgView,titleLabel;
 
 - (id)init{
     self = [super init];
@@ -35,11 +32,10 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-//        self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//        self.layer.borderWidth = 0.5;
         imgView = [[UIImageView alloc] init];
         imgView.contentMode = UIViewContentModeScaleAspectFit;
         titleLabel = [[UILabel alloc] init];
+        titleLabel.font = [UIFont systemFontOfSize:14.0];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:imgView];
         [self addSubview:titleLabel];

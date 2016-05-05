@@ -11,6 +11,8 @@
 #import "lwFind_ListVC.h"
 #import "lwFind_MapVC.h"
 
+#import "lwSearchVC.h"
+
 #define h self.view.frame.size.height
 #define w self.view.frame.size.width
 
@@ -25,6 +27,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]
+                                  initWithImage:[UIImage imageNamed:@"find_Menu_Search"]
+                                          style:UIBarButtonItemStylePlain
+                                         target:self
+                                         action:@selector(barItemClick:)];
+    
+    UIButton *leftItem = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+    [leftItem setTitle:@"北塘区" forState:UIControlStateNormal];
+    [leftItem setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [leftItem setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [leftItem setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+    [leftItem setImageEdgeInsets:UIEdgeInsetsMake(0, 70, 0, 0)];
+    [leftItem.titleLabel setFont:[UIFont systemFontOfSize:16.0]];
+    
+    [leftItem addTarget:self
+                 action:@selector(leftItemClick:)
+       forControlEvents:UIControlEventTouchUpInside];
+    
+    [leftItem setImage:[UIImage imageNamed:@"btn_feedCell_unFold"] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initChildVC];
 }
@@ -34,17 +58,31 @@
     _find_ListVC = [[lwFind_ListVC alloc] init];
     _find_ListVC.view.frame = CGRectMake(0, 64, lW, h-108);
     [self.view addSubview:_find_ListVC.view];
-    
-    
+
     _find_MapVC = [[lwFind_MapVC alloc] init];
     _find_MapVC.view.frame = CGRectMake(0, 64, lW, h-108);
-//    [self.view addSubview:_find_MapVC.view];
-    
+
     [self addChildViewController:_find_ListVC];
-//    [self addChildViewController:_find_MapVC];
     
     [self.view addSubview:_find_ListVC.tableView];
     self.currentVC = _find_ListVC;
+}
+
+- (void)leftItemClick:(UIButton *)button{
+    if (button.selected) {
+        [button setImage:[UIImage imageNamed:@"btn_feedCell_unFold"] forState:UIControlStateNormal];
+        button.selected = NO;
+    }else{
+        [button setImage:[UIImage imageNamed:@"btn_feedCell_Fold"] forState:UIControlStateNormal];
+        button.selected = YES;
+    }
+}
+
+- (void)barItemClick:(UIBarButtonItem *)barItem{
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    lwSearchVC *searchVC = [main instantiateViewControllerWithIdentifier:@"searchVC"];
+    searchVC.searchStr = @"聚赢宝云商城";
+    [self presentViewController:searchVC animated:NO completion:nil];
 }
 
 - (IBAction)chanedVC:(id)sender {

@@ -11,6 +11,6 @@
 
 @interface lwPersonalHeaderView : UICollectionReusableView
 
-@property (retain, nonatomic) lwPersonalHeaderModel *hedaerModel;
+@property (retain, nonatomic) lwPersonalHeaderModel *headerModel;
 
 @end

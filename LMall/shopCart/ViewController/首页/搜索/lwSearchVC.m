@@ -11,7 +11,8 @@
 @interface lwSearchVC ()
 <
     UITableViewDataSource,
-    UITableViewDelegate
+    UITableViewDelegate,
+    UITextFieldDelegate
 >
 
 {
@@ -33,7 +34,18 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     searchTxtFiled.placeholder = _searchStr;
+    searchTxtFiled.delegate = self;
+    searchTxtFiled.returnKeyType = UIReturnKeySearch;
     [searchTxtFiled becomeFirstResponder];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSLog(@"%@",textField.placeholder);
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)goBack:(id)sender {
