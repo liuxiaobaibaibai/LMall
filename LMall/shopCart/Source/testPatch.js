@@ -5,11 +5,25 @@ defineClass("lwPersonalVC", {
 	
   	tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
         tableView.deselectRowAtIndexPath_animated(indexPath, YES);
-        var tab = JPTableViewController.alloc().init()
+//        var tab = JPTableViewController.alloc().init()
+            var tab = lwResultVC.alloc().init()
         tab.setHidesBottomBarWhenPushed(YES);
         tab.setTitle('测试页面');
         self.navigationController().pushViewController_animated(tab, YES)
   	},
+})
+
+defineClass('lwResultVC : UIViewController',{
+   viewDidLoad: function() {
+        self.ORIGviewDidLoad();
+            genView()
+   },
+   genView: function() {
+        var ciew = UIView.alloc().init();
+        ciew.setFrame(CGRectMake(0, 0, lW, lH));
+        ciew.setBackgroundColor(UIColor.redColor());
+        self.view().addSubview(ciew);
+   },
 })
 
 /** tableviewController*/
@@ -48,5 +62,4 @@ defineClass('JPTableViewController : UITableViewController <UIAlertViewDelegate>
         var alert = UIAlertView.alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles("提示", self.dataSource().objectAtIndex(indexPath.row()), self, "确定", "取消", null);
         alert.show();
     },
-    
 })
