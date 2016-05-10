@@ -151,7 +151,6 @@ static NSString *FooterCell = @"footerID";
         headerModel.superiorMobileNo = @"18887654321";
         reusableView.headerModel = headerModel;
         return indexPath.section == 0 ? reusableView : nil;
-        
     }else{
         // 返回尾部视图
         UICollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:FooterCell forIndexPath:indexPath];
@@ -177,8 +176,6 @@ static NSString *FooterCell = @"footerID";
         [self.navigationController pushViewController:wallet animated:YES];
     }
 }
-
-
 
 @end
 
