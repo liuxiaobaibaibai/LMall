@@ -20,11 +20,7 @@
     [lwStyleTool setStyleColor:[UIColor whiteColor] TitleColor:[UIColor blackColor]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [lwPatchTool createdLocalPatch:@"http://192.168.1.85/lw/testPatch.js"];
-
-
-    
-    
+    [lwPatchTool createdLocalPatch:@"http://192.168.1.12/lw/testPatch.js"];
     // 地图
     [lwLocation sharedInstance];
     [[MAMapServices sharedServices] setApiKey:gaodeMapKey];

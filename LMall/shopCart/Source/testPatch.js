@@ -2,15 +2,15 @@
 require('lwPersonalVC,UITableView,NSArray,NSIndexPath,UINavigationController')
 
 defineClass("lwPersonalVC", {
-	
-  	tableView_didSelectRowAtIndexPath: function(tableView, indexPath) {
-        tableView.deselectRowAtIndexPath_animated(indexPath, YES);
-//        var tab = JPTableViewController.alloc().init()
-            var tab = lwResultVC.alloc().init()
-        tab.setHidesBottomBarWhenPushed(YES);
-        tab.setTitle('测试页面');
-        self.navigationController().pushViewController_animated(tab, YES)
-  	},
+    collectionView_didSelectItemAtIndexPath: function(collectionView, indexPath) {
+        var cell = (lwPeronalCell * ) collectionView.cellForItemAtIndexPath(indexPath);
+        if (cell.titleLabel().text().isEqualToString("我的钱包")) {
+            var wallet = lwWalletVC.alloc().init();
+            wallet.setTitle("我的钱包");
+            wallet.setHidesBottomBarWhenPushed(YES);
+            self.navigationController().pushViewController_animated(wallet, YES);
+        }
+    },
 })
 
 defineClass('lwResultVC : UIViewController',{

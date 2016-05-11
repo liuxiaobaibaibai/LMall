@@ -18,6 +18,7 @@ func title(str:String)->String{
     return str;
 }
 
+daylight
 
 let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 568))
 containerView.backgroundColor = UIColor.whiteColor()
