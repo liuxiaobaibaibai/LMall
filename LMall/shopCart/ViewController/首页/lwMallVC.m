@@ -117,7 +117,7 @@ typedef struct rowStruct lwRow;
         if (!error) {
             for (int i = 0; i<[result count]; i++) {
                 lwCommodityModel *cModel = [lwCommodityModel new];
-                cModel.pid = result[i][@"pid"];
+                cModel.pid = result[i][@"id"];
                 cModel.commodityName = result[i][@"name"];
                 cModel.logoUrl = result[i][@"logourl"];
                 cModel.price = result[i][@"price"];

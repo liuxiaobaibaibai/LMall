@@ -39,6 +39,8 @@
     NSMutableDictionary *normDict;
 }
 
+@property (retain, nonatomic) lwCommodityDetailModel *detailModel;
+
 @end
 
 @implementation lwCommodityDetailVC
@@ -62,44 +64,26 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    [self getNormArray];
+    [self getProductData:nil];
 }
 
-
-- (void)getNormArray{
-    
-    normDict = [NSMutableDictionary new];
-    
-    __block NSMutableArray *normArray = [NSMutableArray new];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer new];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:_gid forKey:@"id"];
-    [manager GET:@"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getproduct" parameters:dict progress:^(NSProgress * _Nonnull downloadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        for (int i = 0; i<[responseObject[@"detail"] count]; i++) {
-            lwCommodityNormModel *model = [[lwCommodityNormModel alloc] initWithDict:[responseObject[@"detail"] objectAtIndex:i]];
-            [normArray addObject:model];
+- (void)getProductData:(id)sender{
+    dataArray = [NSMutableArray new];
+    [lwCommodityDetailModel getProduct:_gid Completion:^(id result, NSError *error) {
+        if (error) {
+            return;
         }
-        
-        [normDict setObject:normArray forKey:@"detail"];
-        [normDict setObject:responseObject[@"cat_nors"] forKey:@"cat_nors"];
-        [normDict setObject:responseObject[@"num"] forKey:@"KC"];
-        [normDict setObject:responseObject[@"oprice"] forKey:@"oPrice"];
-        [normDict setObject:responseObject[@"price"] forKey:@"price"];
-        [self initDataSource];
+        _detailModel = [[lwCommodityDetailModel alloc] initWithDict:result];
+        [self initDataSource:_detailModel];
         [self setToolView];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
 }
 
-- (void)initDataSource{
-    dataArray = [NSMutableArray new];
-    dataArray = [NSMutableArray arrayWithObjects:@"测试数据0",@"测试数据1",@"测试数据2",@"测试数据3", nil];
 
+- (void)initDataSource:(id)m{
+    
+    lwCommodityDetailModel *model = (lwCommodityDetailModel *)m;
+    
 
     lwCustomModel *lqModel = [lwCustomModel new];
     lqModel.title = @"领券";
@@ -124,7 +108,7 @@
     
     lwCustomModel *jfModel = [lwCustomModel new];
     jfModel.title = @"积分";
-    jfModel.subArray = @[[NSString stringWithFormat:@"【 返%@积分 】",normDict[@"price"]]];
+    jfModel.subArray = @[[NSString stringWithFormat:@"【 返%@积分 】",model.price]];
     jfModel.currentColor = [lwStyleTool colorInstance].JDColor;
     lwCustomCellContentFrameModel *jfFModel = [lwCustomCellContentFrameModel new];
     jfFModel.customModel = jfModel;
@@ -213,83 +197,27 @@
             break;
         case 5:
         {
+            if (_detailModel.detailArray.count == 0) {
+                NSLog(@"没有规格");
+                return;
+            }
+            NSMutableArray *normArray = [NSMutableArray new];
+            for (int i = 0; i<[_detailModel.detailArray count]; i++) {
+                [normArray addObject:_detailModel.detailArray[i]];
+            }
+            
+            NSMutableArray *titleArray = [NSMutableArray new];
+            for (int i = 0; i<[_detailModel.catNorms count]; i++) {
+                [titleArray addObject:_detailModel.catNorms[i]];
+            }
+            
+            lwCommodityDetailModel *commodityDetailModel = [lwCommodityDetailModel new];
+            commodityDetailModel = _detailModel;
+            
             selectWindow = [[lwSelectWindow alloc] initWithFrame:self.view.frame Delegate:self];
-            NSMutableArray *n_array = [NSMutableArray new];
-            NSMutableArray *a_array = [NSMutableArray new];
-            NSMutableArray *t_array = [NSMutableArray new];
-            
-            NSMutableArray *r_NormArray = [NSMutableArray new];
-            
-            if ([normDict[@"detail"] count] == 0) {
-                [r_NormArray addObject:@[@"标准款"]];
-            }
-            
-            for (int i = 0; i<[normDict[@"detail"] count]; i++) {
-                lwCommodityNormModel *norm = normDict[@"detail"][i];
-                if ([norm.colorName isNull]) {
-                    [n_array addObject:@"标准款"];
-                }
-                if ([norm.format isNull]) {
-                    [a_array addObject:@"标准款"];
-                }
-                [n_array addObject:norm.formatName];
-                [a_array addObject:norm.colorName];
-            }
-
-            
-            for (int i = 0; i<[[normDict[@"cat_nors"] allObjects] count]; i++) {
-                NSString *name = [normDict[@"cat_nors"] allValues][i];
-                if ([name isNull]) {
-                    [t_array addObject:@"规格"];
-                }else{
-                    [t_array addObject:name];
-                }
-                
-            }
-            
-            
-            NSMutableDictionary *formatDict = [NSMutableDictionary new];
-            for (NSString *str in n_array) {
-                [formatDict setObject:str forKey:str];
-            }
-            NSMutableArray *rn_array = [NSMutableArray new];
-            for (int i = 0; i<[[formatDict allKeys] count]; i++) {
-                [rn_array addObject:[formatDict allKeys][i]];
-            }
-            if (rn_array.count != 0) {
-                [r_NormArray addObject:rn_array];
-            }
-            
-            
-            NSMutableDictionary *colorDict= [NSMutableDictionary new];
-            for (NSString *str in a_array) {
-                [colorDict setObject:str forKey:str];
-            }
-            NSMutableArray *ra_array = [NSMutableArray new];
-            for (int i = 0; i<[[colorDict allKeys] count]; i++) {
-                [ra_array addObject:[colorDict allKeys][i]];
-            }
-            if (ra_array.count != 0) {
-                [r_NormArray addObject:ra_array];
-            }
-            
-            NSMutableDictionary *t_dict = [NSMutableDictionary new];
-            for (NSString *str in t_array) {
-                [t_dict setObject:str forKey:str];
-            }
-            NSMutableArray *rt_array = [NSMutableArray new];
-            for (int i = 0; i<[[t_dict allKeys] count]; i++) {
-                [rt_array addObject:[t_dict allKeys][i]];
-            }
-            
-            
-            lwCommodityDetailModel *detailModel = [lwCommodityDetailModel new];
-            detailModel.price = normDict[@"price"];
-            detailModel.KC = normDict[@"KC"];
-            selectWindow.detailModel = detailModel;
-            selectWindow.normArray = r_NormArray;
-            selectWindow.titleArray = rt_array;
-            selectWindow.normModelArray = normDict[@"detail"];
+            selectWindow.detailModel = commodityDetailModel;
+            selectWindow.normArray = normArray;
+            selectWindow.titleArray = titleArray;
             [selectWindow showInView:self.tableView];
         }
             break;

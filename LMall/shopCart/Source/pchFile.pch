@@ -58,4 +58,7 @@
 /// getProducts
 #define mall_getPrducts @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getRecProducts"
 
+// 获取商品详情
+#define mall_getProduct @"http://www.juyingbao.cn/index.php?&g=Wap&m=API&a=getproduct"
+
 #endif

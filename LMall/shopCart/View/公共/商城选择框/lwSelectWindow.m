@@ -318,7 +318,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _normArray.count;
+    return _titleArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -346,8 +346,18 @@
         cell.lwSelectWindow = self;
     }
 
-    if (indexPath.section < _normArray.count) {
-        [cell setLabelArray:_normArray[indexPath.section]];
+    if (indexPath.section < _titleArray.count) {
+        NSMutableDictionary *color = [NSMutableDictionary new];
+        NSMutableDictionary *norm = [NSMutableDictionary new];
+        for (lwCommodityNormModel *normModel in _normArray) {
+            [color setObject:normModel.color forKey:normModel.color];
+            [norm setObject:normModel.format forKey:normModel.format];
+        }
+        cell.cellTag = indexPath.section;
+        NSArray *normsArray = @[[color allKeys],[norm allKeys]];
+        [cell setLabelArray:normsArray[indexPath.section]];
+        [cell setPrice:((lwCommodityNormModel *)_normArray[indexPath.row]).price];
+        [cell setKC:((lwCommodityNormModel *)_normArray[indexPath.row]).num];
     }
     
     if (indexPath.section < _titleArray.count) {
@@ -362,56 +372,28 @@ static NSString *label;
  *  选择规格，修改头部标签
  *
  */
-- (void)updateInfo:(NSString *)param Sign:(NSString *)sign{
-    if (info.count == 0) {
-        return;
+- (void)updateInfo:(NSString *)param Price:(NSString *)price KC:(NSString *)kc Sign:(NSInteger)sign{
+    [_titleArray replaceObjectAtIndex:sign withObject:param];
+    NSString *norm = [NSString new];
+    for (int i = 0; i<_titleArray.count; i++) {
+        norm = [norm stringByAppendingString:[NSString stringWithFormat:@"【%@】",_titleArray[i]]];
     }
     
-    if ([sign isEqualToString:label]) {
-        for (int i = 0; i<[[_normArray firstObject]count]; i++) {
-            NSString *str = [_normArray firstObject][i];
-            if ([str isEqualToString:param]) {
-                [info replaceObjectAtIndex:0 withObject:param];
-            }
-        }
-    }else{
-        for (int i = 0; i<[[_normArray lastObject]count]; i++) {
-            NSString *str = [_normArray lastObject][i];
-            if ([str isEqualToString:param]) {
-                [info replaceObjectAtIndex:info.count-1 withObject:param];
-            }
-        }
-    }
-    
-    
-    if (_titleArray.count != 2) {
-        normLabel.text = param;
-    }else{
-        normLabel.text = [NSString stringWithFormat:@"%@ | %@",[info firstObject],[info lastObject]];
-    }
-    
-    for (int i = 0; i<_normModelArray.count; i++) {
-        lwCommodityNormModel *model = [_normModelArray objectAtIndex:i];
-        if ([[info firstObject] isEqualToString:model.formatName] && [[info lastObject] isEqualToString:model.colorName]) {
-            priceLabel.text = [NSString stringWithFormat:@"￥ %@",model.price];
-            inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",model.num];
-        }
-    }
-    
-    
+    normLabel.text = norm;
+    inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",kc];
+    priceLabel.text = [NSString stringWithFormat:@"￥ %@",price];
 }
 
 
 - (void)setTitleArray:(NSMutableArray *)titleArray{
     _titleArray = titleArray;
-    info = titleArray;
     label = [titleArray firstObject];
 }
 
 
 - (void)setDetailModel:(lwCommodityDetailModel *)detailModel{
     priceLabel.text = [NSString stringWithFormat:@"￥ %@",detailModel.price];
-    inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",detailModel.KC];
+    inventoryLabel.text = [NSString stringWithFormat:@"库存：%@",detailModel.num];
 }
 
 
@@ -448,8 +430,8 @@ static NSString *label;
 //    NSString *norm = [NSString new];
     for (int i = 0; i<_normModelArray.count; i++) {
         lwCommodityNormModel *model = _normModelArray[i];
-        if ([[info firstObject] isEqualToString:model.formatName] && [[info lastObject] isEqualToString:model.colorName]) {
-            NSLog(@"\n颜色：%@ 颜色ID：%@\n规格：%@ 规格ID：%@",model.colorName,model.color,model.formatName,model.format);
+        if ([[info firstObject] isEqualToString:model.format] && [[info lastObject] isEqualToString:model.color]) {
+            NSLog(@"\n颜色ID：%@",model.pid);
         }else{
             NSLog(@"标准款");
         }

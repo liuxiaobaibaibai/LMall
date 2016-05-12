@@ -39,6 +39,6 @@
 
 @property (retain, nonatomic) NSMutableArray *normModelArray;
 
-- (void)updateInfo:(NSString *)param Sign:(NSString *)sign;
+- (void)updateInfo:(NSString *)param Price:(NSString *)price KC:(NSString *)kc Sign:(NSInteger)sign;
 
 @end

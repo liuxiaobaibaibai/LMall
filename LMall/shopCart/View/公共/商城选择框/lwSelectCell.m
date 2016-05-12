@@ -16,7 +16,7 @@
 #import "lwSelectCell.h"
 #import "lwSelectWindow.h"
 
-
+#import "lwCommodityNormModel.h"
 
 @implementation lwSelectCell
 {
@@ -39,7 +39,6 @@
 - (void)setLabelArray:(NSMutableArray *)labelArray{
     [self removeConstraints:[self constraints]];
     _labelArray = labelArray;
-    
     [self viewView:labelArray];
 //    [self createdView:labelArray];
 }
@@ -227,7 +226,7 @@
 
 - (void)rowdleButton:(UIButton *)rowdleBtn{
     
-    [(lwSelectWindow *)_lwSelectWindow updateInfo:rowdleBtn.titleLabel.text Sign:_sign];
+    [(lwSelectWindow *)_lwSelectWindow updateInfo:rowdleBtn.titleLabel.text Price:_price KC:_KC Sign:_cellTag];
     
     rowdleBtn.selected = !rowdleBtn.selected;
     [rowdleBtn setBackgroundColor:[UIColor redColor]];

@@ -13,19 +13,11 @@
 - (id)initWithDict:(NSMutableDictionary *)dict{
     self = [super init];
     if (self) {
-        self.nid    = dict[@"id"];
-        self.pid    = dict[@"pid"];
-        self.format = dict[@"format"];
-        self.color  = dict[@"format"];
+        self.pid    = dict[@"id"];
+        self.color  = dict[@"color"];
         self.num    = dict[@"num"];
         self.price  = dict[@"price"];
-        self.vprice = dict[@"vprice"];
-        self.logo   = dict[@"logo"];
-        self.oprice = dict[@"oprice"];
-        self.bno    = dict[@"bno"];
-        self.formatName = dict[@"formatName"];
-        self.colorName = dict[@"colorName"];
-        self.prcurl = dict[@"prcurl"];
+        self.format = dict[@"format"];
     }
     return self;
 }

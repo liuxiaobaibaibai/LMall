@@ -16,4 +16,11 @@
 
 @property (copy, nonatomic) NSString *sign;
 
+@property (assign, nonatomic) NSInteger cellTag;
+
+@property (copy, nonatomic) NSString *price;
+
+@property (copy, nonatomic) NSString *KC;
+
+
 @end
